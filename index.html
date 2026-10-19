@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="ko"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#14304a">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="국양7호">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<link rel="icon" href="icon-192.png">
+<title>KOOK YANG 7 작업일지</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: chart-plate header → daily summary strip → plotted track with replay → numbered work log keyed to the plot */
+:root{
+  --sea:#e8f0f3; --land:#f6f7f4; --ink:#14304a; --ink-2:#4f6a80; --rule:#c6d5de;
+  --track:#1f5f8b; --work:#d9822b; --mid:#5b9bb5; --ship:#6c7a86; --hit:#b8432f; --card:#ffffff;
+  --landfill:#e6dec7; --coast:#a3967a;
+  --f-ui:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --f-data:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --sea:#0e1c27; --land:#0a141c; --ink:#dbe7ef; --ink-2:#8fa6b6; --rule:#24394a;
+  --track:#6fb3e0; --work:#f0a24e; --mid:#4c8aa6; --ship:#8d9aa5; --hit:#ee7a64; --card:#12222f;
+  --landfill:#1d2a2c; --coast:#3e5257; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --sea:#0e1c27; --land:#0a141c; --ink:#dbe7ef; --ink-2:#8fa6b6; --rule:#24394a;
+  --track:#6fb3e0; --work:#f0a24e; --mid:#4c8aa6; --ship:#8d9aa5; --hit:#ee7a64; --card:#12222f;
+  --landfill:#1d2a2c; --coast:#3e5257; color-scheme:dark}
+body{background:var(--land);color:var(--ink);font-family:var(--f-ui);line-height:1.55}
+.wrap{max-width:1080px;margin:0 auto;padding-block:28px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:20px}
+header{display:flex;flex-wrap:wrap;gap:12px 32px;align-items:flex-end;justify-content:space-between;border-bottom:2px solid var(--ink);padding-bottom:12px}
+h1{font-size:clamp(1.5rem,3.6vw,2.2rem);margin:0;letter-spacing:.01em;text-wrap:balance}
+.sub{color:var(--ink-2);margin:2px 0 0}
+dl.meta{display:grid;grid-template-columns:repeat(4,auto);gap:2px 20px;margin:0;font-family:var(--f-data);font-size:12px}
+dl.meta dt{color:var(--ink-2);text-transform:uppercase;letter-spacing:.08em;font-size:10.5px}
+dl.meta dd{margin:0;font-variant-numeric:tabular-nums}
+@media (max-width:620px){dl.meta{grid-template-columns:repeat(2,auto)}}
+.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.day{flex:0 0 auto;text-align:left;font:inherit;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:4px;padding:8px 12px;cursor:pointer;display:grid;gap:1px;min-width:118px}
+.day b{font-family:var(--f-data);font-size:13px;font-weight:600}
+.day span{font-size:12px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.day[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 -3px 0 var(--work)}
+.scale{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:-8px}
+.scale span{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2);margin-right:4px}
+.scale button{border-radius:14px;padding:4px 12px;background:var(--card)}
+.scale button[aria-pressed="true"]{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.plate{background:var(--sea);border:1px solid var(--rule);border-radius:4px;overflow:hidden}
+.plate svg{display:block;width:100%;height:auto}
+.ctl{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;padding:10px 14px;border-top:1px solid var(--rule);background:var(--card)}
+.ctl input[type=range]{flex:1 1 260px;min-width:0;accent-color:var(--track)}
+.clock{font-family:var(--f-data);font-size:13px;font-variant-numeric:tabular-nums;min-width:15ch}
+button{font:inherit;font-size:13px;border:1px solid var(--rule);background:var(--land);color:var(--ink);padding:5px 12px;border-radius:3px;cursor:pointer}
+button:focus-visible,input:focus-visible,tr:focus-visible{outline:2px solid var(--hit);outline-offset:2px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--ink-2)}
+.legend i{display:inline-block;width:18px;height:3px;vertical-align:middle;margin-right:5px;border-radius:2px}
+h2{font-size:1.15rem;margin:8px 0 0}
+.note{color:var(--ink-2);font-size:13px;max-width:72ch;margin:0}
+.tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:4px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:13.5px}
+th{text-align:left;font-weight:500;font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--ink-2);padding:9px 12px;border-bottom:1px solid var(--rule)}
+td{padding:8px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+tr:last-child td{border-bottom:0}
+tbody tr{cursor:pointer}
+tbody tr.quiet td{color:var(--ink-2);font-size:12.5px}
+tbody tr:hover,tbody tr.on{background:color-mix(in srgb,var(--work) 12%,transparent)}
+td.t{font-family:var(--f-data);white-space:nowrap;font-variant-numeric:tabular-nums}
+.n{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;font-family:var(--f-data);font-size:11px;font-weight:600;color:var(--card);background:var(--work)}
+.pill{display:inline-block;font-size:11px;padding:1px 8px;border-radius:10px;border:1px solid currentColor;white-space:nowrap}
+.hi{color:var(--hit)} .md{color:var(--work)}
+#msg{color:var(--ink-2)}
+svg text{font-family:var(--f-data)}
+</style>
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
+</head><body>
+
+<div class="wrap">
+<header>
+  <div>
+    <h1>KOOK YANG 7 작업일지</h1>
+    <p class="sub">예인선 · AIS 항적 기반 누적 일지 · 매일 오후 5시 갱신</p>
+  </div>
+  <dl class="meta">
+    <div><dt>MMSI</dt><dd>440066190</dd></div>
+    <div><dt>호출부호</dt><dd>227KOOK</dd></div>
+    <div><dt>수집 기간 (KST)</dt><dd id="range">—</dd></div>
+    <div><dt>마지막 갱신</dt><dd id="upd">—</dd></div>
+  </dl>
+</header>
+
+<div class="days" id="days" role="group" aria-label="날짜 선택"><p id="msg">항적 데이터를 불러오는 중입니다.</p></div>
+
+<div class="scale" role="group" aria-label="지도 축척">
+  <span>축척</span>
+  <button type="button" data-m="auto" aria-pressed="true">자동</button>
+  <button type="button" data-m="detail" aria-pressed="false">대산항 상세</button>
+  <button type="button" data-m="region" aria-pressed="false">광역 · 10 km</button>
+  <button type="button" data-m="nation" aria-pressed="false">전국 · 100 km</button>
+</div>
+
+<section class="plate" aria-label="항적도">
+  <svg id="map" viewBox="0 0 1000 540" role="img" aria-label="선택한 날의 항적과 작업 지점"></svg>
+  <div class="ctl">
+    <button id="play" type="button">재생</button>
+    <input id="slider" type="range" min="0" max="1000" value="1000" aria-label="재생 시각">
+    <span class="clock" id="clock"></span>
+  </div>
+</section>
+<div class="legend">
+  <span><i style="background:var(--track)"></i>항해 (7 kn 이상)</span>
+  <span><i style="background:var(--mid)"></i>감속 (3~7 kn)</span>
+  <span><i style="background:var(--work)"></i>3 kn 미만 저속·정지</span>
+  <span>▲ 주변 대형선 (확인 시점 위치)</span>
+  <span>육지 윤곽 © OpenStreetMap contributors</span>
+</div>
+
+<h2 id="logtitle">작업일지</h2>
+<p class="note">시각은 한국시간(KST)입니다. 번호가 붙은 행이 작업 추정 구간이며, 행을 누르면 지도에 표시됩니다. 축척을 '자동'으로 두면 그날 항적이 대산항 안이면 상세, 평택·인천까지 가면 광역, 여수 등 더 멀리 가면 전국 지도로 바뀝니다.</p>
+<div class="tbl"><table>
+  <thead><tr><th>#</th><th>시작</th><th>종료</th><th>움직임</th><th>인접 선박 (거리)</th><th>작업 가능성</th></tr></thead>
+  <tbody id="log"></tbody>
+</table></div>
+<p class="note">근거: MarineTraffic 최근 24시간 항적을 매일 받아 누적한 기록입니다. 3 kn 미만 저속 기동이나 정지가 계류지 밖에서 3분 이상 이어지면 작업 후보로 보고, 대형선 250 m 이내에서 8분 이상이거나 일정 침로로 저속 동행하면 '높음'으로 표시합니다. 주변 선박은 매일 확인 시점의 위치라서, 그 전에 떠난 선박은 이름이 나오지 않을 수 있습니다. 실제 작업 여부는 선사 기록으로 확인이 필요합니다.</p>
+</div>
+
+<script src="./analyze.js"></script>
+<script>
+const svg=document.getElementById('map'),NS='http://www.w3.org/2000/svg';
+const W=1000,H=540,PAD=34;
+const el=(n,a,p=svg)=>{const e=document.createElementNS(NS,n);for(const k in a)e.setAttribute(k,a[k]);p.appendChild(e);return e};
+const tx=(x,y,t,a={},p=svg)=>{const e=el('text',{x,y,...a},p);e.textContent=t;return e};
+const fmtKST=t=>KY7.kst(t)+' KST';
+// Scale levels: detail = Daesan port (fits the day's track), region = Incheon–Daesan–Pyeongtaek (10 km bar), nation = Korean coast incl. Yeosu (100 km bar)
+const FRAMES={region:{lat:37.12,lon:126.45,half:.5},nation:{lat:36.0,lon:128.4,half:3.0}};
+const SCALE_NAMES={detail:'대산항 상세',region:'광역 · 10 km',nation:'전국 · 100 km'};
+let MODE='auto',CUR='detail',CLIPN=0;
+try{const v=localStorage.getItem('ky7-scale');if(v&&(v==='auto'||SCALE_NAMES[v]))MODE=v}catch(e){}
+function inside(b,lo0,la0,lo1,la1,m){return lo0>=b[0]+m&&lo1<=b[2]-m&&la0>=b[1]+m&&la1<=b[3]-m}
+function modeFor(lo0,la0,lo1,la1){
+  if(MODE!=='auto')return MODE;
+  if(!BM)return 'detail';
+  if(inside(BM.layers.detail.bbox,lo0,la0,lo1,la1,.004))return 'detail';
+  const f=FRAMES.region,kx=Math.cos(f.lat*Math.PI/180),hl=f.half*(W-2*PAD)/(H-2*PAD)/kx;
+  if(inside([f.lon-hl,f.lat-f.half,f.lon+hl,f.lat+f.half],lo0,la0,lo1,la1,.03))return 'region';
+  return 'nation';
+}
+function markScale(){document.querySelectorAll('.scale button').forEach(b=>{const m=b.dataset.m;b.setAttribute('aria-pressed',m===MODE);
+  if(m==='auto')b.textContent=MODE==='auto'?'자동 ('+SCALE_NAMES[CUR]+')':'자동'})}
+document.querySelectorAll('.scale button').forEach(b=>b.addEventListener('click',()=>{MODE=b.dataset.m;
+  try{localStorage.setItem('ky7-scale',MODE)}catch(e){}if(P){stop();draw();}else markScale()}));
+let BM=null,D,EV,day,P,segs=[],dot,lbl,hl,T0,T1,X,Y,timer=null;
+const slider=document.getElementById('slider'),clock=document.getElementById('clock'),btn=document.getElementById('play');
+
+Promise.all([fetch('./data.json',{cache:'no-store'}).then(r=>r.json()),fetch('./basemap.json').then(r=>r.ok?r.json():null).catch(()=>null)]).then(([d,bm])=>{
+  BM=bm;D=d;D.points.sort((a,b)=>a[0]-b[0]);
+  EV=KY7.analyze(D.points,D.snapshots);
+  document.getElementById('range').textContent=KY7.kst(D.points[0][0])+' ~ '+KY7.kst(D.points[D.points.length-1][0]);
+  document.getElementById('upd').textContent=KY7.kst(D.updated);
+  const days=[...new Set(D.points.map(p=>KY7.kstDay(p[0])))];
+  const box=document.getElementById('days');box.innerHTML='';
+  days.forEach(dy=>{const w=EV.filter(e=>e.kind==='work'&&e.day===dy);const mins=w.reduce((s,e)=>s+e.dur,0);
+    const b=document.createElement('button');b.className='day';b.type='button';b.dataset.day=dy;
+    b.innerHTML=`<b>${dy.slice(5)}</b><span>작업 ${w.length}건 · ${Math.round(mins)}분</span>`;
+    b.addEventListener('click',()=>pick(dy));box.appendChild(b)});
+  pick(days[days.length-1]);
+}).catch(()=>{document.getElementById('msg').textContent='항적 데이터를 불러오지 못했습니다. 페이지를 새로 고쳐 주세요.'});
+
+function pick(dy){
+  day=dy;stop();
+  document.querySelectorAll('.day').forEach(b=>b.setAttribute('aria-pressed',b.dataset.day===dy));
+  document.getElementById('logtitle').textContent='작업일지 · '+dy;
+  P=D.points.filter(p=>KY7.kstDay(p[0])===dy);
+  draw();renderLog();
+}
+
+function draw(){
+  svg.innerHTML='';segs=[];
+  let la0=Infinity,la1=-Infinity,lo0=Infinity,lo1=-Infinity;
+  P.forEach(p=>{la0=Math.min(la0,p[2]);la1=Math.max(la1,p[2]);lo0=Math.min(lo0,p[1]);lo1=Math.max(lo1,p[1])});
+  const mode=modeFor(lo0,la0,lo1,la1);CUR=mode;markScale();
+  if(mode==='detail'){
+    const padLa=Math.max(.004,(la1-la0)*.12),padLo=Math.max(.006,(lo1-lo0)*.08);
+    la0-=padLa;la1+=padLa;lo0-=padLo;lo1+=padLo;
+  }else{const f=FRAMES[mode];la0=f.lat-f.half;la1=f.lat+f.half;lo0=lo1=f.lon}
+  let kx=Math.cos((la0+la1)/2*Math.PI/180);
+  if(mode!=='detail'){const half=(la1-la0)*(W-2*PAD)/(H-2*PAD)/kx/2;lo0-=half;lo1+=half}
+  const s=Math.min((W-2*PAD)/((lo1-lo0)*kx),(H-2*PAD)/(la1-la0));
+  const ox=(W-(lo1-lo0)*kx*s)/2,oy=(H-(la1-la0)*s)/2;
+  X=lo=>ox+(lo-lo0)*kx*s;Y=la=>H-oy-(la-la0)*s;
+  const vis=(la,lo)=>X(lo)>0&&X(lo)<W&&Y(la)>0&&Y(la)<H;
+  if(BM){
+    // finest layer wins; each coarser layer is clipped to the area outside the finer layer's box
+    const order=['detail','region','nation'],rect=b=>{const x0=X(b[0]),x1=X(b[2]),y0=Y(b[3]),y1=Y(b[1]);return `M${x0},${y0}H${x1}V${y1}H${x0}Z`};
+    const inset=b=>{const m=3;return `M${X(b[0])+m},${Y(b[3])+m}H${X(b[2])-m}V${Y(b[1])-m}H${X(b[0])+m}Z`};
+    let finer=null;
+    order.forEach(k=>{const L=BM.layers[k];if(!L)return;const b=L.bbox;
+      if(b[2]<lo0||b[0]>lo1||b[3]<la0||b[1]>la1)return;
+      if(X(b[2])-X(b[0])<40||Y(b[1])-Y(b[3])<40)return; // too small to matter at this scale
+      // clip to own box (inset, hides the cut edge) minus the finer layer's box
+      const id='clip-'+k+'-'+(++CLIPN),cp=el('clipPath',{id});
+      el('path',{d:inset(b)+(finer?inset(finer):''),'clip-rule':'evenodd'},cp);finer=b;
+      const clip='url(#'+id+')';
+      let d='';for(const r of L.rings){d+='M'+X(r[0]).toFixed(1)+','+Y(r[1]).toFixed(1);for(let j=2;j<r.length;j+=2)d+='L'+X(r[j]).toFixed(1)+','+Y(r[j+1]).toFixed(1);d+='Z'}
+      const a={d,fill:'var(--landfill)',stroke:'var(--coast)','stroke-width':mode==='detail'?1:.7,'fill-rule':'evenodd','stroke-linejoin':'round'};
+      a['clip-path']=clip;el('path',a)});
+  }
+  const span=Math.max(la1-la0,lo1-lo0),step=span<.06?.01:span<.15?.02:span<.4?.05:span<1?.1:span<3?.25:span<8?1:2;
+  const dm=v=>{const d=Math.floor(v),m=(v-d)*60;return d+'°'+m.toFixed(1)+'′'};
+  for(let la=Math.ceil((la0-.5)/step)*step;la<=la1+.5;la+=step){const y=Y(la);if(y<0||y>H)continue;el('line',{x1:0,x2:W,y1:y,y2:y,stroke:'var(--rule)'});tx(6,y-4,dm(la)+'N',{'font-size':10,fill:'var(--ink-2)'})}
+  for(let lo=Math.ceil((lo0-.5)/step)*step;lo<=lo1+.5;lo+=step){const x=X(lo);if(x<0||x>W)continue;el('line',{y1:0,y2:H,x1:x,x2:x,stroke:'var(--rule)'});tx(x+4,H-6,dm(lo)+'E',{'font-size':10,fill:'var(--ink-2)'})}
+  const m=mode==='nation'?100000:mode==='region'?10000:span<.06?500:span<.2?1000:5000,px=m/111320*s,bx=W-PAD-px,by=28;
+  el('line',{x1:bx,x2:bx+px,y1:by,y2:by,stroke:'var(--ink)','stroke-width':2});
+  [bx,bx+px].forEach(x=>el('line',{x1:x,x2:x,y1:by-5,y2:by+5,stroke:'var(--ink)','stroke-width':2}));
+  tx(bx+px/2,by-9,m>=1000?m/1000+' km':m+' m',{'font-size':11,fill:'var(--ink)','text-anchor':'middle'});
+  // ships: latest snapshot on or after this day, else latest
+  const dEnd=Math.max(...P.map(p=>p[0]));
+  const snaps=D.snapshots.slice().sort((a,b)=>Math.abs(a.ts-dEnd)-Math.abs(b.ts-dEnd));
+  const shown=new Set();
+  if(snaps[0]&&mode==='detail')snaps[0].ships.forEach(([n,t,len,la,lo])=>{if(!vis(la,lo)||shown.has(n))return;shown.add(n);const x=X(lo),y=Y(la),r=Math.max(4,Math.min(9,len/28));
+    el('path',{d:`M${x},${y-r} L${x+r*.8},${y+r*.7} L${x-r*.8},${y+r*.7}Z`,fill:'var(--ship)'});
+    tx(x+r+3,y+4,n,{'font-size':10.5,fill:'var(--ship)'})});
+  // moored spots
+  EV.filter(e=>e.kind==='moored'&&e.day===day).forEach(e=>{if(!vis(e.lat,e.lon))return;
+    el('rect',{x:X(e.lon)-5,y:Y(e.lat)-5,width:10,height:10,fill:'none',stroke:'var(--ink)','stroke-width':2})});
+  // work zones
+  EV.filter(e=>e.kind==='work'&&e.day===day).forEach(e=>{const x=X(e.lon),y=Y(e.lat);
+    el('circle',{cx:x,cy:y,r:24,fill:'var(--work)','fill-opacity':.12,stroke:'var(--work)','stroke-dasharray':'3 3'});
+    el('circle',{cx:x+20,cy:y-20,r:10,fill:'var(--work)'});
+    tx(x+20,y-16,String(e.no),{'font-size':11,'font-weight':600,fill:'var(--card)','text-anchor':'middle'})});
+  const col=v=>v<3?'var(--work)':v<7?'var(--mid)':'var(--track)';
+  for(let i=1;i<P.length;i++){const a=P[i-1],b=P[i];if(b[0]-a[0]>1800&&KY7.dist(a[2],a[1],b[2],b[1])>300)continue;
+    segs.push({t:b[0],e:el('line',{x1:X(a[1]),y1:Y(a[2]),x2:X(b[1]),y2:Y(b[2]),stroke:col(Math.max(a[3],b[3])),'stroke-width':2.6,'stroke-linecap':'round'})})}
+  hl=el('polyline',{fill:'none',stroke:'var(--hit)','stroke-width':4.5,'stroke-linecap':'round','stroke-linejoin':'round',opacity:0});
+  dot=el('circle',{r:7,fill:'var(--hit)',stroke:'var(--card)','stroke-width':2});
+  lbl=tx(0,0,'KOOK YANG 7',{'font-size':11.5,'font-weight':600,fill:'var(--hit)'});
+  T0=P[0][0];T1=P[P.length-1][0];slider.value=1000;show(T1);
+}
+function at(t){let i=0;while(i<P.length-1&&P[i+1][0]<=t)i++;return P[i]}
+function show(t){const p=at(t);dot.setAttribute('cx',X(p[1]));dot.setAttribute('cy',Y(p[2]));
+  lbl.setAttribute('x',X(p[1])+10);lbl.setAttribute('y',Y(p[2])+18);
+  segs.forEach(s=>s.e.setAttribute('opacity',s.t<=t?1:.18));
+  clock.textContent=fmtKST(t)+' · '+p[3].toFixed(1)+' kn';}
+slider.addEventListener('input',()=>{stop();show(T0+(T1-T0)*slider.value/1000)});
+function stop(){clearInterval(timer);timer=null;btn.textContent='재생'}
+btn.addEventListener('click',()=>{if(timer)return stop();if(+slider.value>=1000)slider.value=0;btn.textContent='정지';
+  timer=setInterval(()=>{slider.value=Math.min(1000,+slider.value+4);show(T0+(T1-T0)*slider.value/1000);if(+slider.value>=1000)stop()},60)});
+
+function renderLog(){
+  const tb=document.getElementById('log');tb.innerHTML='';
+  EV.filter(e=>e.day===day).forEach(e=>{const tr=document.createElement('tr');tr.tabIndex=0;
+    const w=e.kind==='work';if(!w)tr.className='quiet';
+    const near=w?(e.near.length?e.near.map(n=>`${n.name} (${n.d} m)`).join(', '):'500 m 이내 확인된 대형선 없음'):'—';
+    const lv=w?(e.level==='high'?'<span class="pill hi">높음</span>':'<span class="pill md">중간</span>'):'';
+    tr.innerHTML=`<td>${w?`<span class="n">${e.no}</span>`:''}</td><td class="t">${e.s}</td><td class="t">${e.e}</td><td>${e.text}</td><td>${near}</td><td>${lv}</td>`;
+    const go=()=>{tb.querySelectorAll('tr').forEach(r=>r.classList.remove('on'));tr.classList.add('on');stop();
+      const pts=P.filter(p=>p[0]>=e.t0-60&&p[0]<=e.t1+60);
+      hl.setAttribute('points',pts.map(p=>X(p[1])+','+Y(p[2])).join(' '));hl.setAttribute('opacity',.85);
+      slider.value=Math.round((Math.min(e.t1,T1)-T0)/Math.max(1,T1-T0)*1000);show(Math.min(e.t1,T1));
+      svg.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'})};
+    tr.addEventListener('click',go);tr.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();go()}});
+    tb.appendChild(tr)});
+}
+</script>
+
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});</script>
+</body></html>
