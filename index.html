@@ -41,6 +41,10 @@ dl.meta dd{margin:0;font-variant-numeric:tabular-nums}
 .day b{font-family:var(--f-data);font-size:13px;font-weight:600}
 .day span{font-size:12px;color:var(--ink-2);font-variant-numeric:tabular-nums}
 .day[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 -3px 0 var(--work)}
+table.sum{min-width:520px}
+tr.subtotal td{font-weight:600;background:color-mix(in srgb,var(--rule) 35%,transparent)}
+tr.total td{font-weight:700;border-top:2px solid var(--ink)}
+.sumsec{display:grid;gap:12px}
 .scale{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:-8px}
 .scale span{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-2);margin-right:4px}
 .scale button{border-radius:14px;padding:4px 12px;background:var(--card)}
@@ -120,6 +124,14 @@ svg text{font-family:var(--f-data)}
   <thead><tr><th>#</th><th>시작</th><th>종료</th><th>움직임</th><th>인접 선박 (거리)</th><th>작업 가능성</th></tr></thead>
   <tbody id="log"></tbody>
 </table></div>
+<section id="sumsec" class="sumsec">
+<h2>누적 요약</h2>
+<p class="note">기록이 시작된 날부터 지금까지 날짜별·월별 합계입니다. 날짜를 누르면 위 지도와 일지가 그날로 바뀝니다. 항해 거리는 AIS 위치 사이 직선거리의 합(해리)입니다.</p>
+<div class="tbl"><table class="sum">
+  <thead><tr><th>날짜</th><th>작업 추정</th><th>작업 시간</th><th>항해 거리</th><th>운항 범위</th></tr></thead>
+  <tbody id="sum"></tbody>
+</table></div>
+</section>
 <p class="note">근거: MarineTraffic 최근 24시간 항적을 매일 받아 누적한 기록입니다. 3 kn 미만 저속 기동이나 정지가 계류지 밖에서 3분 이상 이어지면 작업 후보로 보고, 대형선 250 m 이내에서 8분 이상이거나 일정 침로로 저속 동행하면 '높음'으로 표시합니다. 주변 선박은 매일 확인 시점의 위치라서, 그 전에 떠난 선박은 이름이 나오지 않을 수 있습니다. 실제 작업 여부는 선사 기록으로 확인이 필요합니다.</p>
 </div>
 
@@ -138,6 +150,9 @@ try{const v=localStorage.getItem('ky7-scale');if(v&&(v==='auto'||SCALE_NAMES[v])
 function inside(b,lo0,la0,lo1,la1,m){return lo0>=b[0]+m&&lo1<=b[2]-m&&la0>=b[1]+m&&la1<=b[3]-m}
 function modeFor(lo0,la0,lo1,la1){
   if(MODE!=='auto')return MODE;
+  return autoMode(lo0,la0,lo1,la1);
+}
+function autoMode(lo0,la0,lo1,la1){
   if(!BM)return 'detail';
   if(inside(BM.layers.detail.bbox,lo0,la0,lo1,la1,.004))return 'detail';
   const f=FRAMES.region,kx=Math.cos(f.lat*Math.PI/180),hl=f.half*(W-2*PAD)/(H-2*PAD)/kx;
@@ -162,6 +177,7 @@ Promise.all([fetch('./data.json',{cache:'no-store'}).then(r=>r.json()),fetch('./
     const b=document.createElement('button');b.className='day';b.type='button';b.dataset.day=dy;
     b.innerHTML=`<b>${dy.slice(5)}</b><span>작업 ${w.length}건 · ${Math.round(mins)}분</span>`;
     b.addEventListener('click',()=>pick(dy));box.appendChild(b)});
+  renderSummary(days);
   pick(days[days.length-1]);
 }).catch(()=>{document.getElementById('msg').textContent='항적 데이터를 불러오지 못했습니다. 페이지를 새로 고쳐 주세요.'});
 
@@ -245,6 +261,29 @@ function stop(){clearInterval(timer);timer=null;btn.textContent='재생'}
 btn.addEventListener('click',()=>{if(timer)return stop();if(+slider.value>=1000)slider.value=0;btn.textContent='정지';
   timer=setInterval(()=>{slider.value=Math.min(1000,+slider.value+4);show(T0+(T1-T0)*slider.value/1000);if(+slider.value>=1000)stop()},60)});
 
+function renderSummary(days){
+  const tb=document.getElementById('sum');tb.innerHTML='';
+  const fmtMin=m=>m>=60?Math.floor(m/60)+'시간 '+Math.round(m%60)+'분':Math.round(m)+'분';
+  const rows=days.map(dy=>{const pts=D.points.filter(p=>KY7.kstDay(p[0])===dy);
+    let nm=0,lo0=Infinity,la0=Infinity,lo1=-Infinity,la1=-Infinity;
+    pts.forEach((p,i)=>{lo0=Math.min(lo0,p[1]);lo1=Math.max(lo1,p[1]);la0=Math.min(la0,p[2]);la1=Math.max(la1,p[2]);
+      if(i&&p[0]-pts[i-1][0]<1800)nm+=KY7.dist(pts[i-1][2],pts[i-1][1],p[2],p[1])/1852});
+    const w=EV.filter(e=>e.kind==='work'&&e.day===dy);
+    return {dy,n:w.length,min:w.reduce((s,e)=>s+e.dur,0),nm,scope:autoMode(lo0,la0,lo1,la1)}});
+  const scopeName={detail:'대산항',region:'광역',nation:'전국'};
+  const add=(html,cls,dy)=>{const tr=document.createElement('tr');tr.innerHTML=html;if(cls)tr.className=cls;
+    if(dy){tr.tabIndex=0;const go=()=>{pick(dy);document.getElementById('map').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'})};
+      tr.addEventListener('click',go);tr.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}})}
+    tb.appendChild(tr)};
+  const months=[...new Set(rows.map(r=>r.dy.slice(0,7)))];
+  let T={n:0,min:0,nm:0,d:0};
+  months.forEach(mo=>{const rs=rows.filter(r=>r.dy.startsWith(mo));
+    rs.forEach(r=>add(`<td class="t">${r.dy}</td><td>${r.n}건</td><td>${fmtMin(r.min)}</td><td class="t">${r.nm.toFixed(1)} nm</td><td>${scopeName[r.scope]}</td>`,'',r.dy));
+    const s=rs.reduce((a,r)=>({n:a.n+r.n,min:a.min+r.min,nm:a.nm+r.nm}),{n:0,min:0,nm:0});
+    T={n:T.n+s.n,min:T.min+s.min,nm:T.nm+s.nm,d:T.d+rs.length};
+    add(`<td class="t">${mo.replace('-','년 ')}월 소계 (${rs.length}일)</td><td>${s.n}건</td><td>${fmtMin(s.min)}</td><td class="t">${s.nm.toFixed(1)} nm</td><td></td>`,'subtotal')});
+  add(`<td>전체 (${T.d}일)</td><td>${T.n}건</td><td>${fmtMin(T.min)}</td><td class="t">${T.nm.toFixed(1)} nm</td><td></td>`,'total');
+}
 function renderLog(){
   const tb=document.getElementById('log');tb.innerHTML='';
   EV.filter(e=>e.day===day).forEach(e=>{const tr=document.createElement('tr');tr.tabIndex=0;
