@@ -71,7 +71,8 @@ tbody tr:hover,tbody tr.on{background:color-mix(in srgb,var(--work) 12%,transpar
 td.t{font-family:var(--f-data);white-space:nowrap;font-variant-numeric:tabular-nums}
 .n{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;font-family:var(--f-data);font-size:11px;font-weight:600;color:var(--card);background:var(--work)}
 .pill{display:inline-block;font-size:11px;padding:1px 8px;border-radius:10px;border:1px solid currentColor;white-space:nowrap}
-.hi{color:var(--hit)} .md{color:var(--work)}
+.hi{color:var(--hit)} .md{color:var(--work)} .ok{color:var(--track)} .muted{color:var(--ink-2)}
+table.pilot{min-width:640px}
 #msg{color:var(--ink-2)}
 svg text{font-family:var(--f-data)}
 </style>
@@ -82,7 +83,7 @@ svg text{font-family:var(--f-data)}
 <header>
   <div>
     <h1>KOOK YANG 7 작업일지</h1>
-    <p class="sub">예인선 · AIS 항적 기반 누적 일지 · 매일 오후 5시 갱신</p>
+    <p class="sub">예인선 · AIS 항적 기반 누적 일지 · 매일 19:30 마감 갱신</p>
   </div>
   <dl class="meta">
     <div><dt>MMSI</dt><dd>440066190</dd></div>
@@ -124,11 +125,21 @@ svg text{font-family:var(--f-data)}
   <thead><tr><th>#</th><th>시작</th><th>종료</th><th>움직임</th><th>인접 선박 (거리)</th><th>작업 가능성</th></tr></thead>
   <tbody id="log"></tbody>
 </table></div>
+<section id="pilotsec" class="sumsec">
+<h2 id="pilottitle">도선 배정 대조</h2>
+<p class="note" id="pilotnote">도선사회 배정 기록에서 국양7호가 예선으로 배정된 작업과, 그 시간대 국양7호 AIS 기록을 맞춰 본 결과입니다.</p>
+<div class="tbl"><table class="pilot">
+  <thead><tr><th>POB</th><th>본선 (구간)</th><th>배정</th><th>배정 상태</th><th>국양7호 AIS 기록</th><th>판정</th></tr></thead>
+  <tbody id="pilot"></tbody>
+</table></div>
+<div id="extras" class="sumsec"></div>
+</section>
+
 <section id="sumsec" class="sumsec">
 <h2>누적 요약</h2>
 <p class="note">기록이 시작된 날부터 지금까지 날짜별·월별 합계입니다. 날짜를 누르면 위 지도와 일지가 그날로 바뀝니다. 항해 거리는 AIS 위치 사이 직선거리의 합(해리)입니다.</p>
 <div class="tbl"><table class="sum">
-  <thead><tr><th>날짜</th><th>작업 추정</th><th>작업 시간</th><th>항해 거리</th><th>운항 범위</th></tr></thead>
+  <thead><tr><th>날짜</th><th>작업 추정</th><th>작업 시간</th><th>항해 거리</th><th>운항 범위</th><th>도선 배정 대조</th></tr></thead>
   <tbody id="sum"></tbody>
 </table></div>
 </section>
@@ -163,10 +174,11 @@ function markScale(){document.querySelectorAll('.scale button').forEach(b=>{cons
   if(m==='auto')b.textContent=MODE==='auto'?'자동 ('+SCALE_NAMES[CUR]+')':'자동'})}
 document.querySelectorAll('.scale button').forEach(b=>b.addEventListener('click',()=>{MODE=b.dataset.m;
   try{localStorage.setItem('ky7-scale',MODE)}catch(e){}if(P){stop();draw();}else markScale()}));
-let BM=null,D,EV,day,P,segs=[],dot,lbl,hl,T0,T1,X,Y,timer=null;
+let PL=null,BM=null,D,EV,day,P,segs=[],dot,lbl,hl,T0,T1,X,Y,timer=null;
 const slider=document.getElementById('slider'),clock=document.getElementById('clock'),btn=document.getElementById('play');
 
-Promise.all([fetch('./data.json',{cache:'no-store'}).then(r=>r.json()),fetch('./basemap.json').then(r=>r.ok?r.json():null).catch(()=>null)]).then(([d,bm])=>{
+Promise.all([fetch('./data.json',{cache:'no-store'}).then(r=>r.json()),fetch('./basemap.json').then(r=>r.ok?r.json():null).catch(()=>null),fetch('./pilot.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null)]).then(([d,bm,pl])=>{
+  PL=pl;
   BM=bm;D=d;D.points.sort((a,b)=>a[0]-b[0]);
   EV=KY7.analyze(D.points,D.snapshots);
   document.getElementById('range').textContent=KY7.kst(D.points[0][0])+' ~ '+KY7.kst(D.points[D.points.length-1][0]);
@@ -186,7 +198,7 @@ function pick(dy){
   document.querySelectorAll('.day').forEach(b=>b.setAttribute('aria-pressed',b.dataset.day===dy));
   document.getElementById('logtitle').textContent='작업일지 · '+dy;
   P=D.points.filter(p=>KY7.kstDay(p[0])===dy);
-  draw();renderLog();
+  draw();renderLog();renderPilot();
 }
 
 function draw(){
@@ -278,11 +290,35 @@ function renderSummary(days){
   const months=[...new Set(rows.map(r=>r.dy.slice(0,7)))];
   let T={n:0,min:0,nm:0,d:0};
   months.forEach(mo=>{const rs=rows.filter(r=>r.dy.startsWith(mo));
-    rs.forEach(r=>add(`<td class="t">${r.dy}</td><td>${r.n}건</td><td>${fmtMin(r.min)}</td><td class="t">${r.nm.toFixed(1)} nm</td><td>${scopeName[r.scope]}</td>`,'',r.dy));
+    rs.forEach(r=>add(`<td class="t">${r.dy}</td><td>${r.n}건</td><td>${fmtMin(r.min)}</td><td class="t">${r.nm.toFixed(1)} nm</td><td>${scopeName[r.scope]}</td><td>${pilotCell(r.dy)}</td>`,'',r.dy));
     const s=rs.reduce((a,r)=>({n:a.n+r.n,min:a.min+r.min,nm:a.nm+r.nm}),{n:0,min:0,nm:0});
     T={n:T.n+s.n,min:T.min+s.min,nm:T.nm+s.nm,d:T.d+rs.length};
-    add(`<td class="t">${mo.replace('-','년 ')}월 소계 (${rs.length}일)</td><td>${s.n}건</td><td>${fmtMin(s.min)}</td><td class="t">${s.nm.toFixed(1)} nm</td><td></td>`,'subtotal')});
-  add(`<td>전체 (${T.d}일)</td><td>${T.n}건</td><td>${fmtMin(T.min)}</td><td class="t">${T.nm.toFixed(1)} nm</td><td></td>`,'total');
+    add(`<td class="t">${mo.replace('-','년 ')}월 소계 (${rs.length}일)</td><td>${s.n}건</td><td>${fmtMin(s.min)}</td><td class="t">${s.nm.toFixed(1)} nm</td><td></td><td></td>`,'subtotal')});
+  add(`<td>전체 (${T.d}일)</td><td>${T.n}건</td><td>${fmtMin(T.min)}</td><td class="t">${T.nm.toFixed(1)} nm</td><td></td><td></td>`,'total');
+}
+// Pilot-assignment comparison (pilot.json): assignments where KOOK YANG 7 was a named tug, judged against its AIS track
+const VCLS=v=>v.startsWith('불일치')?'hi':v.startsWith('확인')?'md':'ok';
+function pilotCell(dy){
+  if(!PL||!PL.covered.includes(dy))return '<span class="muted">자료 없음</span>';
+  const a=PL.assignments.filter(x=>x.date===dy),done=a.filter(x=>x.status==='완료');
+  const ok=done.filter(x=>x.verdict.startsWith('일치')).length,bad=a.filter(x=>!x.verdict.startsWith('일치')).length,ex=PL.extras.filter(x=>x.date===dy).length;
+  return `완료 ${done.length}건 중 ${ok}건 일치`+(bad?` · <span class="pill hi">확인 ${bad}</span>`:'')+(ex?` · 배정 외 ${ex}구간`:'');
+}
+function renderPilot(){
+  const sec=document.getElementById('pilotsec'),tb=document.getElementById('pilot'),ex=document.getElementById('extras');
+  document.getElementById('pilottitle').textContent='도선 배정 대조 · '+day;
+  tb.innerHTML='';ex.innerHTML='';
+  if(!PL||!PL.covered.includes(day)){
+    tb.innerHTML='<tr><td colspan="6" class="muted">이 날짜는 도선 배정 자료와 아직 대조하지 않았습니다.'+(PL?' 대조된 날짜: '+PL.covered.join(', '):'')+'</td></tr>';return}
+  const a=PL.assignments.filter(x=>x.date===day).sort((x,y)=>x.pob<y.pob?-1:1);
+  if(!a.length)tb.innerHTML='<tr><td colspan="6" class="muted">이 날짜에 국양7호 배정 작업이 없습니다.</td></tr>';
+  a.forEach(x=>{const tr=document.createElement('tr');
+    tr.innerHTML=`<td class="t">${x.pob}</td><td>${x.ship} <span class="muted">(${x.route})</span></td><td>예선 ${x.role}</td><td>${x.status}</td><td>${x.ais}</td><td><span class="pill ${VCLS(x.verdict)}">${x.verdict}</span></td>`;
+    tb.appendChild(tr)});
+  const e=PL.extras.filter(x=>x.date===day);
+  if(e.length){const h=document.createElement('p');h.className='note';h.innerHTML='<b>배정 기록에 없는 AIS 움직임</b> — 도선사 없는 이안·선석 이동 지원이나 대기 중 이동일 수 있어 확인이 필요합니다.';ex.appendChild(h);
+    const w=document.createElement('div');w.className='tbl';
+    w.innerHTML='<table class="pilot"><thead><tr><th>시각</th><th>AIS 기록</th><th>주변 배정</th></tr></thead><tbody>'+e.map(x=>`<tr><td class="t">${x.time}</td><td>${x.ais}</td><td>${x.context}</td></tr>`).join('')+'</tbody></table>';ex.appendChild(w)}
 }
 function renderLog(){
   const tb=document.getElementById('log');tb.innerHTML='';
