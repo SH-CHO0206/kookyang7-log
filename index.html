@@ -297,10 +297,10 @@ function renderSummary(days){
   add(`<td>전체 (${T.d}일)</td><td>${T.n}건</td><td>${fmtMin(T.min)}</td><td class="t">${T.nm.toFixed(1)} nm</td><td></td><td></td>`,'total');
 }
 // Pilot-assignment comparison (pilot.json): assignments where KOOK YANG 7 was a named tug, judged against its AIS track
-const VCLS=v=>v.startsWith('불일치')?'hi':v.startsWith('확인')?'md':'ok';
+const VCLS=v=>v.startsWith('불일치')?'hi':v.startsWith('확인')?'md':v.startsWith('판정')?'muted':'ok';
 function pilotCell(dy){
   if(!PL||!PL.covered.includes(dy))return '<span class="muted">자료 없음</span>';
-  const a=PL.assignments.filter(x=>x.date===dy),done=a.filter(x=>x.status==='완료');
+  const a=PL.assignments.filter(x=>x.date===dy),done=a.filter(x=>!/취소/.test(x.status)&&!/보류/.test(x.verdict));
   const ok=done.filter(x=>x.verdict.startsWith('일치')).length,bad=a.filter(x=>!x.verdict.startsWith('일치')).length,ex=PL.extras.filter(x=>x.date===dy).length;
   return `완료 ${done.length}건 중 ${ok}건 일치`+(bad?` · <span class="pill hi">확인 ${bad}</span>`:'')+(ex?` · 배정 외 ${ex}구간`:'');
 }
