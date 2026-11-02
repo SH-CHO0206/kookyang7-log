@@ -86,6 +86,91 @@
     var n = 0; ev.forEach(function (e) { e.day = kstDay(e.t0); e.s = kst(e.t0); e.e = kst(e.t1, false); if (e.kind === 'work') e.no = ++n; });
     return ev;
   }
-  var api = { analyze: analyze, kst: kst, kstDay: kstDay, dist: dist };
+  // Tie AIS events to pilot assignments (pilot.json). Counts and the orange cumulative numbers come only from
+  // assignments; AIS movement on compared days that no assignment explains is flagged red as a special note.
+  //  - assignment ranges = the "HH:MM~HH:MM" spans written in each non-cancelled assignment's AIS text
+  //  - an outing (sortie) runs from leaving the home berth to returning; legs and waits inside an outing that
+  //    served an assignment stay normal; work-like segments no assignment covers are red; an outing with no
+  //    assignment at all is red end to end (unless it is only a short berth shift under 500 m)
+  function link(ev, pl) {
+    var cl = [];
+    ev.forEach(function (e) {
+      if (e.kind !== 'moored') return;
+      var c = cl.filter(function (c) { return dist(c.lat, c.lon, e.lat, e.lon) < 400; })[0];
+      if (!c) { c = { lat: e.lat, lon: e.lon, h: 0 }; cl.push(c); }
+      c.h += e.dur;
+    });
+    cl.sort(function (a, b) { return b.h - a.h; });
+    var home = cl[0] || null;
+    var atHome = function (e) { return home && (e.kind === 'moored' || e.kind === 'shift') && dist(home.lat, home.lon, e.lat, e.lon) < 600; };
+    var covered = {}; ((pl && pl.covered) || []).forEach(function (d) { covered[d] = 1; });
+    var day0 = function (d) { return Date.parse(d + 'T00:00:00+09:00') / 1000; };
+    var hm = function (s) { var m = /(\d{1,2}):(\d{2})/.exec(s || ''); return m ? (+m[1]) * 3600 + (+m[2]) * 60 : 0; };
+    var all = ((pl && pl.assignments) || []).map(function (a) {
+      var o = {}; for (var k in a) o[k] = a[k]; o.t = day0(a.date) + hm(a.pob); o.cancel = /취소/.test(a.status || ''); o.ranges = []; o.evs = []; return o;
+    }).sort(function (x, y) { return x.t - y.t; });
+    var asg = all.filter(function (a) { return !a.cancel; });
+    asg.forEach(function (a, i) {
+      a.no = i + 1;
+      if (/^(불일치|판정)/.test(a.verdict || '')) return;
+      var re = /(\d{1,2}):(\d{2})\s*~\s*(\d{1,2}):(\d{2})/g, m, b = day0(a.date);
+      while ((m = re.exec(a.ais || ''))) {
+        var r0 = b + (+m[1]) * 3600 + (+m[2]) * 60, r1 = b + (+m[3]) * 3600 + (+m[4]) * 60;
+        if (r1 < r0) r1 += 86400;
+        if (r1 - r0 > 12 * 3600 || Math.abs(r0 - a.t) > 8 * 3600) continue;
+        a.ranges.push([r0, r1 + 59]);
+      }
+    });
+    var info = ev.map(function () { return { asg: null, red: false }; });
+    ev.forEach(function (e, i) {
+      var cand = e.kind === 'work' || ((e.kind === 'moored' || e.kind === 'shift') && !atHome(e));
+      if (!cand) return;
+      var best = null, bo = 0;
+      asg.forEach(function (a) {
+        a.ranges.forEach(function (r) {
+          var o = Math.min(e.t1, r[1]) - Math.max(e.t0, r[0]);
+          if (o >= Math.min(60, Math.max(1, (e.t1 - e.t0) * 0.5)) && o > bo) { bo = o; best = a; }
+        });
+      });
+      if (best) { info[i].asg = best.no; best.evs.push(i); }
+    });
+    // outings
+    var sorties = [], cur = null;
+    ev.forEach(function (e, i) {
+      if (atHome(e)) { cur = null; return; }
+      if (!cur) { cur = { idx: [] }; sorties.push(cur); }
+      cur.idx.push(i); info[i].sortie = sorties.length - 1;
+    });
+    var notes = [];
+    sorties.forEach(function (s) {
+      var es = s.idx.map(function (i) { return ev[i]; });
+      if (!es.some(function (e) { return covered[e.day]; })) return;
+      var hasAsg = s.idx.some(function (i) { return info[i].asg; });
+      var hasWork = es.some(function (e) { return e.kind === 'work'; });
+      var far = home ? Math.max.apply(null, es.map(function (e) { return dist(home.lat, home.lon, e.lat, e.lon) + e.span; })) : 0;
+      var red = [];
+      if (!hasAsg && (hasWork || far > 500)) red = s.idx.slice();
+      else s.idx.forEach(function (i) { if (ev[i].kind === 'work' && !info[i].asg) red.push(i); });
+      if (!red.length) return;
+      red.forEach(function (i) { info[i].red = true; });
+      var re = red.map(function (i) { return ev[i]; }), t0 = re[0].t0, t1 = re[re.length - 1].t1;
+      var parts = re.filter(function (e) { return e.kind === 'work'; }).map(function (e) { return kst(e.t0, false) + '~' + kst(e.t1, false) + ' ' + e.text; });
+      var text = hasAsg ? parts.join(', ') : kst(es[0].t0, false) + ' 출항 ~ ' + kst(es[es.length - 1].t1, false) + ' 복귀' + (parts.length ? ' · ' + parts.join(', ') : ' · 이동만');
+      var ctx;
+      if (hasAsg) {
+        var ns = []; s.idx.forEach(function (i) { var n = info[i].asg; if (n && ns.indexOf(n) < 0) ns.push(n); });
+        ctx = '배정 작업 ' + ns.map(function (n) { return '#' + n + ' ' + asg[n - 1].ship; }).join(', ') + ' 출동 중 배정 외 기동';
+      } else {
+        var cx = all.filter(function (a) { return a.cancel && a.t >= t0 - 7200 && a.t <= t1 + 7200; });
+        ctx = cx.length ? '배정 없는 출동 — 취소된 배정 ' + cx.map(function (a) { return a.ship + ' (POB ' + a.pob + ')'; }).join(', ') + ' 시간대' : '배정 없는 출동';
+      }
+      notes.push({ day: kstDay(t0), t0: t0, t1: t1, text: text, context: ctx, idx: red, lat: re[0].lat, lon: re[0].lon,
+        whole: !hasAsg });
+    });
+    return { home: home, covered: covered, all: all, asg: asg, info: info, notes: notes,
+      count: function (d) { return covered[d] ? asg.filter(function (a) { return a.date === d; }).length : null; },
+      noteCount: function (d) { return covered[d] ? notes.filter(function (n) { return n.day === d; }).length : null; } };
+  }
+  var api = { analyze: analyze, link: link, kst: kst, kstDay: kstDay, dist: dist };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.KY7 = api;
 })(this);

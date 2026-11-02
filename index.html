@@ -14,18 +14,18 @@
 /* Layout: chart-plate header → daily summary strip → plotted track with replay → numbered work log keyed to the plot */
 :root{
   --sea:#e8f0f3; --land:#f6f7f4; --ink:#14304a; --ink-2:#4f6a80; --rule:#c6d5de;
-  --track:#1f5f8b; --work:#d9822b; --mid:#5b9bb5; --ship:#6c7a86; --hit:#b8432f; --card:#ffffff;
+  --track:#1f5f8b; --work:#d9822b; --mid:#5b9bb5; --ship:#6c7a86; --hit:#b8432f; --card:#ffffff; --alert:#d4242b;
   --landfill:#e6dec7; --coast:#a3967a;
   --f-ui:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
   --f-data:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --sea:#0e1c27; --land:#0a141c; --ink:#dbe7ef; --ink-2:#8fa6b6; --rule:#24394a;
-  --track:#6fb3e0; --work:#f0a24e; --mid:#4c8aa6; --ship:#8d9aa5; --hit:#ee7a64; --card:#12222f;
+  --track:#6fb3e0; --work:#f0a24e; --mid:#4c8aa6; --ship:#8d9aa5; --hit:#ee7a64; --card:#12222f; --alert:#ff5a5f;
   --landfill:#1d2a2c; --coast:#3e5257; color-scheme:dark}}
 :root[data-theme="dark"]{
   --sea:#0e1c27; --land:#0a141c; --ink:#dbe7ef; --ink-2:#8fa6b6; --rule:#24394a;
-  --track:#6fb3e0; --work:#f0a24e; --mid:#4c8aa6; --ship:#8d9aa5; --hit:#ee7a64; --card:#12222f;
+  --track:#6fb3e0; --work:#f0a24e; --mid:#4c8aa6; --ship:#8d9aa5; --hit:#ee7a64; --card:#12222f; --alert:#ff5a5f;
   --landfill:#1d2a2c; --coast:#3e5257; color-scheme:dark}
 body{background:var(--land);color:var(--ink);font-family:var(--f-ui);line-height:1.55}
 .wrap{max-width:1080px;margin:0 auto;padding-block:28px 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:grid;gap:20px}
@@ -36,11 +36,24 @@ dl.meta{display:grid;grid-template-columns:repeat(4,auto);gap:2px 20px;margin:0;
 dl.meta dt{color:var(--ink-2);text-transform:uppercase;letter-spacing:.08em;font-size:10.5px}
 dl.meta dd{margin:0;font-variant-numeric:tabular-nums}
 @media (max-width:620px){dl.meta{grid-template-columns:repeat(2,auto)}}
-.days{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
-.day{flex:0 0 auto;text-align:left;font:inherit;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:4px;padding:8px 12px;cursor:pointer;display:grid;gap:1px;min-width:118px}
-.day b{font-family:var(--f-data);font-size:13px;font-weight:600}
-.day span{font-size:12px;color:var(--ink-2);font-variant-numeric:tabular-nums}
-.day[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 -3px 0 var(--work)}
+.cal{background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:12px;display:grid;gap:8px;max-width:640px;width:100%;box-sizing:border-box}
+.calhead{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.calhead b{font-size:1.05rem}
+.calhead button{padding:4px 12px}
+.calhead button:disabled{opacity:.35;cursor:default}
+.calgrid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
+.calgrid .wd{font-size:11px;color:var(--ink-2);text-align:center;padding:2px 0}
+.calgrid .wd.sun{color:var(--alert)}
+.cell{font:inherit;min-height:58px;padding:4px 5px;border:1px solid var(--rule);border-radius:4px;background:var(--land);color:var(--ink);display:flex;flex-direction:column;align-items:flex-start;gap:1px;text-align:left;cursor:pointer;min-width:0}
+.cell:disabled{background:transparent;border-color:transparent;color:var(--ink-2);opacity:.45;cursor:default}
+.cell .dn{font-family:var(--f-data);font-size:12px;font-weight:600}
+.cell .cw,.cell .cx,.cell .na{font-size:10.5px;line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.cell .cw{color:var(--work);font-weight:600}.cell .cw.zero{color:var(--ink-2);font-weight:400}
+.cell .cx{color:var(--alert);font-weight:600}
+.cell .na{color:var(--ink-2)}
+.cell[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 -3px 0 var(--work);background:var(--card)}
+.cell.today .dn{text-decoration:underline}
+@media (max-width:480px){.cal{padding:10px 8px}.calgrid{gap:2px}.cell{padding:3px 2px;min-height:50px}.cell .cw,.cell .cx,.cell .na{font-size:9.5px;letter-spacing:-.02em;text-overflow:clip}}
 table.sum{min-width:520px}
 tr.subtotal td{font-weight:600;background:color-mix(in srgb,var(--rule) 35%,transparent)}
 tr.total td{font-weight:700;border-top:2px solid var(--ink)}
@@ -71,7 +84,10 @@ tbody tr:hover,tbody tr.on{background:color-mix(in srgb,var(--work) 12%,transpar
 td.t{font-family:var(--f-data);white-space:nowrap;font-variant-numeric:tabular-nums}
 .n{display:inline-grid;place-items:center;width:22px;height:22px;border-radius:50%;font-family:var(--f-data);font-size:11px;font-weight:600;color:var(--card);background:var(--work)}
 .pill{display:inline-block;font-size:11px;padding:1px 8px;border-radius:10px;border:1px solid currentColor;white-space:nowrap}
-.hi{color:var(--hit)} .md{color:var(--work)} .ok{color:var(--track)} .muted{color:var(--ink-2)}
+.hi{color:var(--hit)} .md{color:var(--work)} .ok{color:var(--track)} .muted{color:var(--ink-2)} .red{color:var(--alert)}
+.n.x{background:var(--alert)}
+tbody tr.alert td{background:color-mix(in srgb,var(--alert) 7%,transparent)}
+.secgrid{display:grid;gap:12px}
 table.pilot{min-width:640px}
 #msg{color:var(--ink-2)}
 svg text{font-family:var(--f-data)}
@@ -93,7 +109,11 @@ svg text{font-family:var(--f-data)}
   </dl>
 </header>
 
-<div class="days" id="days" role="group" aria-label="날짜 선택"><p id="msg">항적 데이터를 불러오는 중입니다.</p></div>
+<section class="cal" aria-label="날짜 선택 달력">
+  <div class="calhead"><button type="button" id="calprev" aria-label="이전 달">◀</button><b id="calmonth">—</b><button type="button" id="calnext" aria-label="다음 달">▶</button></div>
+  <div class="calgrid" id="calgrid"><p id="msg">항적 데이터를 불러오는 중입니다.</p></div>
+  <p class="note" style="font-size:12px"><span class="md"><b>작업 N</b></span> 도선 배정 작업 수 · <span class="red"><b>특이 N</b></span> 배정 없이 움직인 건 · <span class="muted">대조 전</span> 배정 자료와 아직 맞추지 않은 날</p>
+</section>
 
 <div class="scale" role="group" aria-label="지도 축척">
   <span>축척</span>
@@ -115,35 +135,46 @@ svg text{font-family:var(--f-data)}
   <span><i style="background:var(--track)"></i>항해 (7 kn 이상)</span>
   <span><i style="background:var(--mid)"></i>감속 (3~7 kn)</span>
   <span><i style="background:var(--work)"></i>3 kn 미만 저속·정지</span>
+  <span><i style="background:var(--alert);height:4px"></i>배정 없는 움직임 (특이 사항)</span>
+  <span><span class="n" style="width:16px;height:16px;font-size:9px">1</span> 배정 작업 누적 번호</span>
   <span>▲ 주변 대형선 (확인 시점 위치)</span>
   <span>육지 윤곽 © OpenStreetMap contributors</span>
 </div>
 
+<section id="logsec" class="secgrid">
 <h2 id="logtitle">작업일지</h2>
-<p class="note">시각은 한국시간(KST)입니다. 번호가 붙은 행이 작업 추정 구간이며, 행을 누르면 지도에 표시됩니다. 축척을 '자동'으로 두면 그날 항적이 대산항 안이면 상세, 평택·인천까지 가면 광역, 여수 등 더 멀리 가면 전국 지도로 바뀝니다.</p>
+<p class="note">시각은 한국시간(KST)입니다. 주황 번호는 도선 배정 작업의 누적 번호이고, 빨간 행은 배정 없이 움직인 구간(특이 사항)입니다. 행을 누르면 지도에 표시됩니다. 축척을 '자동'으로 두면 그날 항적이 대산항 안이면 상세, 평택·인천까지 가면 광역, 여수 등 더 멀리 가면 전국 지도로 바뀝니다.</p>
 <div class="tbl"><table>
-  <thead><tr><th>#</th><th>시작</th><th>종료</th><th>움직임</th><th>인접 선박 (거리)</th><th>작업 가능성</th></tr></thead>
+  <thead><tr><th>#</th><th>시작</th><th>종료</th><th>움직임</th><th>인접 선박 (거리)</th><th>구분</th></tr></thead>
   <tbody id="log"></tbody>
 </table></div>
+</section>
 <section id="pilotsec" class="sumsec">
 <h2 id="pilottitle">도선 배정 대조</h2>
 <p class="note" id="pilotnote">도선사회 배정 기록에서 국양7호가 예선으로 배정된 작업과, 그 시간대 국양7호 AIS 기록을 맞춰 본 결과입니다.</p>
 <div class="tbl"><table class="pilot">
-  <thead><tr><th>POB</th><th>본선 (구간)</th><th>배정</th><th>배정 상태</th><th>국양7호 AIS 기록</th><th>판정</th></tr></thead>
+  <thead><tr><th>#</th><th>POB</th><th>본선 (구간)</th><th>배정</th><th>배정 상태</th><th>국양7호 AIS 기록</th><th>판정</th></tr></thead>
   <tbody id="pilot"></tbody>
 </table></div>
-<div id="extras" class="sumsec"></div>
+</section>
+<section id="notesec" class="sumsec">
+<h2 id="notetitle" class="red">특이 사항</h2>
+<p class="note">도선 배정 기록에 없는데 국양7호가 움직인 구간입니다. 배정 없이 출동한 경우는 출항부터 복귀까지, 배정 작업 중 끼어든 기동은 그 구간만 지도에 빨간 선으로 표시합니다. 도선사 없는 이안·선석 이동 지원 등일 수 있어 선사 확인이 필요합니다.</p>
+<div class="tbl"><table class="pilot">
+  <thead><tr><th></th><th>시각</th><th>AIS 움직임</th><th>배정과의 관계</th></tr></thead>
+  <tbody id="notes"></tbody>
+</table></div>
 </section>
 
 <section id="sumsec" class="sumsec">
 <h2>누적 요약</h2>
-<p class="note">기록이 시작된 날부터 지금까지 날짜별·월별 합계입니다. 날짜를 누르면 위 지도와 일지가 그날로 바뀝니다. 항해 거리는 AIS 위치 사이 직선거리의 합(해리)입니다.</p>
+<p class="note">기록이 시작된 날부터 지금까지 날짜별·월별 합계입니다. 작업 건수는 도선 배정 기록 기준이며, 배정 자료와 대조하기 전 날짜는 '대조 전'으로 둡니다. 날짜를 누르면 위 지도와 일지가 그날로 바뀝니다. 항해 거리는 AIS 위치 사이 직선거리의 합(해리)입니다.</p>
 <div class="tbl"><table class="sum">
-  <thead><tr><th>날짜</th><th>작업 추정</th><th>작업 시간</th><th>항해 거리</th><th>운항 범위</th><th>도선 배정 대조</th></tr></thead>
+  <thead><tr><th>날짜</th><th>배정 작업</th><th>특이 사항</th><th>항해 거리</th><th>운항 범위</th><th>도선 배정 대조</th></tr></thead>
   <tbody id="sum"></tbody>
 </table></div>
 </section>
-<p class="note">근거: MarineTraffic 최근 24시간 항적을 매일 받아 누적한 기록입니다. 3 kn 미만 저속 기동이나 정지가 계류지 밖에서 3분 이상 이어지면 작업 후보로 보고, 대형선 250 m 이내에서 8분 이상이거나 일정 침로로 저속 동행하면 '높음'으로 표시합니다. 주변 선박은 매일 확인 시점의 위치라서, 그 전에 떠난 선박은 이름이 나오지 않을 수 있습니다. 실제 작업 여부는 선사 기록으로 확인이 필요합니다.</p>
+<p class="note">근거: MarineTraffic 최근 24시간 항적을 매일 받아 누적한 기록과, 대산항 도선 배정 기록(국양7호가 배정 예인선인 건, 취소 제외)을 맞춘 결과입니다. 작업 건수와 누적 번호는 배정 기록만 셉니다. 계류지 밖 3 kn 미만 저속 기동·정지가 3분 이상이면 작업성 움직임으로 보고, 배정 시간대의 기록과 겹치지 않으면 특이 사항으로 분류합니다. 주변 선박은 매일 확인 시점의 위치라서, 그 전에 떠난 선박은 이름이 나오지 않을 수 있습니다. 실제 작업 여부는 선사 기록으로 확인이 필요합니다.</p>
 </div>
 
 <script src="./analyze.js"></script>
@@ -174,32 +205,55 @@ function markScale(){document.querySelectorAll('.scale button').forEach(b=>{cons
   if(m==='auto')b.textContent=MODE==='auto'?'자동 ('+SCALE_NAMES[CUR]+')':'자동'})}
 document.querySelectorAll('.scale button').forEach(b=>b.addEventListener('click',()=>{MODE=b.dataset.m;
   try{localStorage.setItem('ky7-scale',MODE)}catch(e){}if(P){stop();draw();}else markScale()}));
-let PL=null,BM=null,D,EV,day,P,segs=[],dot,lbl,hl,T0,T1,X,Y,timer=null;
+let PL=null,BM=null,LK=null,D,EV,day,P,segs=[],dot,lbl,hl,T0,T1,X,Y,timer=null,DAYS=[],MONTH=null;
 const slider=document.getElementById('slider'),clock=document.getElementById('clock'),btn=document.getElementById('play');
 
 Promise.all([fetch('./data.json',{cache:'no-store'}).then(r=>r.json()),fetch('./basemap.json').then(r=>r.ok?r.json():null).catch(()=>null),fetch('./pilot.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null)]).then(([d,bm,pl])=>{
   PL=pl;
   BM=bm;D=d;D.points.sort((a,b)=>a[0]-b[0]);
-  EV=KY7.analyze(D.points,D.snapshots);
+  EV=KY7.analyze(D.points,D.snapshots);LK=KY7.link(EV,PL);
   document.getElementById('range').textContent=KY7.kst(D.points[0][0])+' ~ '+KY7.kst(D.points[D.points.length-1][0]);
   document.getElementById('upd').textContent=KY7.kst(D.updated);
-  const days=[...new Set(D.points.map(p=>KY7.kstDay(p[0])))];
-  const box=document.getElementById('days');box.innerHTML='';
-  days.forEach(dy=>{const w=EV.filter(e=>e.kind==='work'&&e.day===dy);const mins=w.reduce((s,e)=>s+e.dur,0);
-    const b=document.createElement('button');b.className='day';b.type='button';b.dataset.day=dy;
-    b.innerHTML=`<b>${dy.slice(5)}</b><span>작업 ${w.length}건 · ${Math.round(mins)}분</span>`;
-    b.addEventListener('click',()=>pick(dy));box.appendChild(b)});
+  const days=[...new Set(D.points.map(p=>KY7.kstDay(p[0])))];DAYS=days;
   renderSummary(days);
   pick(days[days.length-1]);
 }).catch(()=>{document.getElementById('msg').textContent='항적 데이터를 불러오지 못했습니다. 페이지를 새로 고쳐 주세요.'});
 
 function pick(dy){
-  day=dy;stop();
-  document.querySelectorAll('.day').forEach(b=>b.setAttribute('aria-pressed',b.dataset.day===dy));
+  day=dy;stop();MONTH=dy.slice(0,7);renderCal();
   document.getElementById('logtitle').textContent='작업일지 · '+dy;
   P=D.points.filter(p=>KY7.kstDay(p[0])===dy);
-  draw();renderLog();renderPilot();
+  draw();renderLog();renderPilot();renderNotes();
 }
+// Calendar: one month at a time; counts come from pilot assignments only
+const WD=['일','월','화','수','목','금','토'];
+function renderCal(){
+  const g=document.getElementById('calgrid');g.innerHTML='';
+  const [y,m]=MONTH.split('-').map(Number);
+  document.getElementById('calmonth').textContent=y+'년 '+m+'월';
+  const months=[...new Set(DAYS.map(d=>d.slice(0,7)))];
+  const i=months.indexOf(MONTH);
+  document.getElementById('calprev').disabled=i<=0;document.getElementById('calnext').disabled=i<0||i>=months.length-1;
+  WD.forEach((w,k)=>{const d=document.createElement('div');d.className='wd'+(k===0?' sun':'');d.textContent=w;g.appendChild(d)});
+  const first=new Date(Date.UTC(y,m-1,1)).getUTCDay(),n=new Date(Date.UTC(y,m,0)).getUTCDate();
+  for(let k=0;k<first;k++)g.appendChild(document.createElement('div'));
+  const today=KY7.kstDay(Date.now()/1000);
+  for(let dd=1;dd<=n;dd++){
+    const ds=MONTH+'-'+String(dd).padStart(2,'0'),has=DAYS.includes(ds);
+    const b=document.createElement('button');b.type='button';b.className='cell'+(ds===today?' today':'');b.dataset.day=ds;
+    b.setAttribute('aria-pressed',ds===day);
+    let h=`<span class="dn">${dd}</span>`;
+    if(has){const c=LK.count(ds),x=LK.noteCount(ds);
+      if(c===null)h+='<span class="na">대조 전</span>';
+      else{h+=`<span class="cw${c?'':' zero'}">작업 ${c}</span>`;if(x)h+=`<span class="cx">특이 ${x}</span>`}
+      b.setAttribute('aria-label',ds+(c===null?' 배정 대조 전':' 배정 작업 '+c+'건'+(x?', 특이 사항 '+x+'건':'')));
+      b.addEventListener('click',()=>pick(ds));
+    }else b.disabled=true;
+    b.innerHTML=h;g.appendChild(b);
+  }
+}
+document.getElementById('calprev').addEventListener('click',()=>{const ms=[...new Set(DAYS.map(d=>d.slice(0,7)))],i=ms.indexOf(MONTH);if(i>0){MONTH=ms[i-1];renderCal()}});
+document.getElementById('calnext').addEventListener('click',()=>{const ms=[...new Set(DAYS.map(d=>d.slice(0,7)))],i=ms.indexOf(MONTH);if(i<ms.length-1){MONTH=ms[i+1];renderCal()}});
 
 function draw(){
   svg.innerHTML='';segs=[];
@@ -250,17 +304,24 @@ function draw(){
   // moored spots
   EV.filter(e=>e.kind==='moored'&&e.day===day).forEach(e=>{if(!vis(e.lat,e.lon))return;
     el('rect',{x:X(e.lon)-5,y:Y(e.lat)-5,width:10,height:10,fill:'none',stroke:'var(--ink)','stroke-width':2})});
-  // work zones
-  EV.filter(e=>e.kind==='work'&&e.day===day).forEach(e=>{const x=X(e.lon),y=Y(e.lat);
+  const col=v=>v<3?'var(--work)':v<7?'var(--mid)':'var(--track)';
+  // event index per point time (events are contiguous and ordered)
+  let k=0;const evAt=t=>{while(k<EV.length-1&&EV[k+1].t0<=t)k++;while(k>0&&EV[k].t0>t)k--;return k};
+  for(let i=1;i<P.length;i++){const a=P[i-1],b=P[i];if(b[0]-a[0]>1800&&KY7.dist(a[2],a[1],b[2],b[1])>300)continue;
+    const red=LK.info[evAt(b[0])].red;
+    segs.push({t:b[0],e:el('line',{x1:X(a[1]),y1:Y(a[2]),x2:X(b[1]),y2:Y(b[2]),stroke:red?'var(--alert)':col(Math.max(a[3],b[3])),'stroke-width':red?3.4:2.6,'stroke-linecap':'round'})})}
+  // assignment markers (orange cumulative numbers) and special-note markers (red)
+  LK.asg.filter(a=>a.date===day&&a.evs.length).forEach(a=>{const e=EV[a.evs[0]];if(!vis(e.lat,e.lon))return;const x=X(e.lon),y=Y(e.lat);
     el('circle',{cx:x,cy:y,r:24,fill:'var(--work)','fill-opacity':.12,stroke:'var(--work)','stroke-dasharray':'3 3'});
     el('circle',{cx:x+20,cy:y-20,r:10,fill:'var(--work)'});
-    tx(x+20,y-16,String(e.no),{'font-size':11,'font-weight':600,fill:'var(--card)','text-anchor':'middle'})});
-  const col=v=>v<3?'var(--work)':v<7?'var(--mid)':'var(--track)';
-  for(let i=1;i<P.length;i++){const a=P[i-1],b=P[i];if(b[0]-a[0]>1800&&KY7.dist(a[2],a[1],b[2],b[1])>300)continue;
-    segs.push({t:b[0],e:el('line',{x1:X(a[1]),y1:Y(a[2]),x2:X(b[1]),y2:Y(b[2]),stroke:col(Math.max(a[3],b[3])),'stroke-width':2.6,'stroke-linecap':'round'})})}
-  hl=el('polyline',{fill:'none',stroke:'var(--hit)','stroke-width':4.5,'stroke-linecap':'round','stroke-linejoin':'round',opacity:0});
-  dot=el('circle',{r:7,fill:'var(--hit)',stroke:'var(--card)','stroke-width':2});
-  lbl=tx(0,0,'KOOK YANG 7',{'font-size':11.5,'font-weight':600,fill:'var(--hit)'});
+    tx(x+20,y-16,String(a.no),{'font-size':11,'font-weight':600,fill:'var(--card)','text-anchor':'middle'})});
+  LK.notes.filter(n=>n.day===day).forEach(n=>{const w=n.idx.map(i=>EV[i]).find(e=>e.kind==='work')||EV[n.idx[0]];if(!vis(w.lat,w.lon))return;const x=X(w.lon),y=Y(w.lat);
+    el('circle',{cx:x,cy:y,r:20,fill:'var(--alert)','fill-opacity':.08,stroke:'var(--alert)','stroke-dasharray':'3 3'});
+    el('circle',{cx:x-17,cy:y-17,r:9,fill:'var(--alert)'});
+    tx(x-17,y-13,'!',{'font-size':11,'font-weight':700,fill:'#fff','text-anchor':'middle'})});
+  hl=el('polyline',{fill:'none',stroke:'var(--ink)','stroke-width':6,'stroke-linecap':'round','stroke-linejoin':'round',opacity:0});
+  dot=el('circle',{r:7,fill:'var(--ink)',stroke:'var(--card)','stroke-width':2});
+  lbl=tx(0,0,'KOOK YANG 7',{'font-size':11.5,'font-weight':600,fill:'var(--ink)'});
   T0=P[0][0];T1=P[P.length-1][0];slider.value=1000;show(T1);
 }
 function at(t){let i=0;while(i<P.length-1&&P[i+1][0]<=t)i++;return P[i]}
@@ -280,59 +341,77 @@ function renderSummary(days){
     let nm=0,lo0=Infinity,la0=Infinity,lo1=-Infinity,la1=-Infinity;
     pts.forEach((p,i)=>{lo0=Math.min(lo0,p[1]);lo1=Math.max(lo1,p[1]);la0=Math.min(la0,p[2]);la1=Math.max(la1,p[2]);
       if(i&&p[0]-pts[i-1][0]<1800)nm+=KY7.dist(pts[i-1][2],pts[i-1][1],p[2],p[1])/1852});
-    const w=EV.filter(e=>e.kind==='work'&&e.day===dy);
-    return {dy,n:w.length,min:w.reduce((s,e)=>s+e.dur,0),nm,scope:autoMode(lo0,la0,lo1,la1)}});
+    return {dy,n:LK.count(dy),x:LK.noteCount(dy),nm,scope:autoMode(lo0,la0,lo1,la1)}});
   const scopeName={detail:'대산항',region:'광역',nation:'전국'};
   const add=(html,cls,dy)=>{const tr=document.createElement('tr');tr.innerHTML=html;if(cls)tr.className=cls;
     if(dy){tr.tabIndex=0;const go=()=>{pick(dy);document.getElementById('map').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'})};
       tr.addEventListener('click',go);tr.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}})}
     tb.appendChild(tr)};
   const months=[...new Set(rows.map(r=>r.dy.slice(0,7)))];
-  let T={n:0,min:0,nm:0,d:0};
+  const na='<span class="muted">대조 전</span>';
+  const cnt=(n,c)=>n===null?na:n+'건';const xc=x=>x===null?na:x?`<span class="red"><b>${x}건</b></span>`:'0건';
+  const tot=(rs)=>{const c=rs.filter(r=>r.n!==null);return {n:c.reduce((a,r)=>a+r.n,0),x:c.reduce((a,r)=>a+r.x,0),nm:rs.reduce((a,r)=>a+r.nm,0),cd:c.length,d:rs.length}};
+  const cdl=t=>t.cd<t.d?` <span class="muted">(대조 ${t.cd}일)</span>`:'';
   months.forEach(mo=>{const rs=rows.filter(r=>r.dy.startsWith(mo));
-    rs.forEach(r=>add(`<td class="t">${r.dy}</td><td>${r.n}건</td><td>${fmtMin(r.min)}</td><td class="t">${r.nm.toFixed(1)} nm</td><td>${scopeName[r.scope]}</td><td>${pilotCell(r.dy)}</td>`,'',r.dy));
-    const s=rs.reduce((a,r)=>({n:a.n+r.n,min:a.min+r.min,nm:a.nm+r.nm}),{n:0,min:0,nm:0});
-    T={n:T.n+s.n,min:T.min+s.min,nm:T.nm+s.nm,d:T.d+rs.length};
-    add(`<td class="t">${mo.replace('-','년 ')}월 소계 (${rs.length}일)</td><td>${s.n}건</td><td>${fmtMin(s.min)}</td><td class="t">${s.nm.toFixed(1)} nm</td><td></td><td></td>`,'subtotal')});
-  add(`<td>전체 (${T.d}일)</td><td>${T.n}건</td><td>${fmtMin(T.min)}</td><td class="t">${T.nm.toFixed(1)} nm</td><td></td><td></td>`,'total');
+    rs.forEach(r=>add(`<td class="t">${r.dy}</td><td>${cnt(r.n)}</td><td>${xc(r.x)}</td><td class="t">${r.nm.toFixed(1)} nm</td><td>${scopeName[r.scope]}</td><td>${pilotCell(r.dy)}</td>`,'',r.dy));
+    const t=tot(rs);
+    add(`<td class="t">${mo.replace('-','년 ')}월 소계 (${t.d}일)</td><td>${t.cd?t.n+'건'+cdl(t):na}</td><td>${t.cd?t.x+'건':na}</td><td class="t">${t.nm.toFixed(1)} nm</td><td></td><td></td>`,'subtotal')});
+  const T=tot(rows);
+  add(`<td>전체 (${T.d}일)</td><td>${T.n}건${cdl(T)}</td><td>${T.x}건</td><td class="t">${T.nm.toFixed(1)} nm</td><td></td><td></td>`,'total');
 }
 // Pilot-assignment comparison (pilot.json): assignments where KOOK YANG 7 was a named tug, judged against its AIS track
 const VCLS=v=>v.startsWith('불일치')?'hi':v.startsWith('확인')?'md':v.startsWith('판정')?'muted':'ok';
 function pilotCell(dy){
   if(!PL||!PL.covered.includes(dy))return '<span class="muted">자료 없음</span>';
   const a=PL.assignments.filter(x=>x.date===dy),done=a.filter(x=>!/취소/.test(x.status)&&!/보류/.test(x.verdict));
-  const ok=done.filter(x=>x.verdict.startsWith('일치')).length,bad=a.filter(x=>!x.verdict.startsWith('일치')).length,ex=PL.extras.filter(x=>x.date===dy).length;
-  return `완료 ${done.length}건 중 ${ok}건 일치`+(bad?` · <span class="pill hi">확인 ${bad}</span>`:'')+(ex?` · 배정 외 ${ex}구간`:'');
+  const ok=done.filter(x=>x.verdict.startsWith('일치')).length,bad=a.filter(x=>!x.verdict.startsWith('일치')).length;
+  if(!a.length)return '<span class="muted">배정 없음</span>';
+  return `${done.length}건 중 ${ok}건 일치`+(bad?` · <span class="pill hi">확인 ${bad}</span>`:'');
 }
 function renderPilot(){
-  const sec=document.getElementById('pilotsec'),tb=document.getElementById('pilot'),ex=document.getElementById('extras');
+  const tb=document.getElementById('pilot');
   document.getElementById('pilottitle').textContent='도선 배정 대조 · '+day;
-  tb.innerHTML='';ex.innerHTML='';
+  tb.innerHTML='';
   if(!PL||!PL.covered.includes(day)){
-    tb.innerHTML='<tr><td colspan="6" class="muted">이 날짜는 도선 배정 자료와 아직 대조하지 않았습니다.'+(PL?' 대조된 날짜: '+PL.covered.join(', '):'')+'</td></tr>';return}
-  const a=PL.assignments.filter(x=>x.date===day).sort((x,y)=>x.pob<y.pob?-1:1);
-  if(!a.length)tb.innerHTML='<tr><td colspan="6" class="muted">이 날짜에 국양7호 배정 작업이 없습니다.</td></tr>';
+    tb.innerHTML='<tr><td colspan="7" class="muted">이 날짜는 도선 배정 자료와 아직 대조하지 않았습니다.'+(PL&&PL.covered.length?' 대조 시작일: '+PL.covered[0]:'')+'</td></tr>';return}
+  const a=LK.all.filter(x=>x.date===day);
+  if(!a.length)tb.innerHTML='<tr><td colspan="7" class="muted">이 날짜에 국양7호 배정 작업이 없습니다.</td></tr>';
   a.forEach(x=>{const tr=document.createElement('tr');
-    tr.innerHTML=`<td class="t">${x.pob}</td><td>${x.ship} <span class="muted">(${x.route})</span></td><td>예선 ${x.role}</td><td>${x.status}</td><td>${x.ais}</td><td><span class="pill ${VCLS(x.verdict)}">${x.verdict}</span></td>`;
+    tr.innerHTML=`<td>${x.cancel?'<span class="muted">취소</span>':`<span class="n">${x.no}</span>`}</td><td class="t">${x.pob}</td><td>${x.ship} <span class="muted">(${x.route})</span></td><td>예선 ${x.role}</td><td>${x.status}</td><td>${x.ais}</td><td><span class="pill ${VCLS(x.verdict)}">${x.verdict}</span></td>`;
+    if(x.evs.length){tr.tabIndex=0;const go=()=>focusSpan(EV[x.evs[0]].t0,EV[x.evs[x.evs.length-1]].t1,tr);tr.addEventListener('click',go);tr.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();go()}})}
     tb.appendChild(tr)});
-  const e=PL.extras.filter(x=>x.date===day);
-  if(e.length){const h=document.createElement('p');h.className='note';h.innerHTML='<b>배정 기록에 없는 AIS 움직임</b> — 도선사 없는 이안·선석 이동 지원이나 대기 중 이동일 수 있어 확인이 필요합니다.';ex.appendChild(h);
-    const w=document.createElement('div');w.className='tbl';
-    w.innerHTML='<table class="pilot"><thead><tr><th>시각</th><th>AIS 기록</th><th>주변 배정</th></tr></thead><tbody>'+e.map(x=>`<tr><td class="t">${x.time}</td><td>${x.ais}</td><td>${x.context}</td></tr>`).join('')+'</tbody></table>';ex.appendChild(w)}
+}
+function focusSpan(t0,t1,tr){
+  document.querySelectorAll('tbody tr.on').forEach(r=>r.classList.remove('on'));if(tr)tr.classList.add('on');stop();
+  const pts=P.filter(p=>p[0]>=t0-60&&p[0]<=t1+60);
+  hl.setAttribute('points',pts.map(p=>X(p[1])+','+Y(p[2])).join(' '));hl.setAttribute('opacity',.35);
+  const t=Math.max(T0,Math.min(t1,T1));slider.value=Math.round((t-T0)/Math.max(1,T1-T0)*1000);show(t);
+  svg.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'});
 }
 function renderLog(){
   const tb=document.getElementById('log');tb.innerHTML='';
-  EV.filter(e=>e.day===day).forEach(e=>{const tr=document.createElement('tr');tr.tabIndex=0;
-    const w=e.kind==='work';if(!w)tr.className='quiet';
+  const cov=LK.covered[day];
+  EV.forEach((e,i)=>{if(e.day!==day)return;const inf=LK.info[i],a=inf.asg?LK.asg[inf.asg-1]:null;
+    const tr=document.createElement('tr');tr.tabIndex=0;
+    const w=e.kind==='work';
+    tr.className=inf.red?'alert':(a||w)?'':'quiet';
     const near=w?(e.near.length?e.near.map(n=>`${n.name} (${n.d} m)`).join(', '):'500 m 이내 확인된 대형선 없음'):'—';
-    const lv=w?(e.level==='high'?'<span class="pill hi">높음</span>':'<span class="pill md">중간</span>'):'';
-    tr.innerHTML=`<td>${w?`<span class="n">${e.no}</span>`:''}</td><td class="t">${e.s}</td><td class="t">${e.e}</td><td>${e.text}</td><td>${near}</td><td>${lv}</td>`;
-    const go=()=>{tb.querySelectorAll('tr').forEach(r=>r.classList.remove('on'));tr.classList.add('on');stop();
-      const pts=P.filter(p=>p[0]>=e.t0-60&&p[0]<=e.t1+60);
-      hl.setAttribute('points',pts.map(p=>X(p[1])+','+Y(p[2])).join(' '));hl.setAttribute('opacity',.85);
-      slider.value=Math.round((Math.min(e.t1,T1)-T0)/Math.max(1,T1-T0)*1000);show(Math.min(e.t1,T1));
-      svg.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'})};
+    const tag=a?`<span class="pill md">배정 #${a.no} ${a.ship}</span>`:inf.red?'<span class="pill red">특이 사항</span>':(w&&!cov)?'<span class="muted">작업성 움직임 (배정 대조 전)</span>':'';
+    const no=a?`<span class="n">${a.no}</span>`:inf.red?'<span class="n x">!</span>':'';
+    tr.innerHTML=`<td>${no}</td><td class="t">${e.s}</td><td class="t">${e.e}</td><td>${e.text}</td><td>${near}</td><td>${tag}</td>`;
+    const go=()=>focusSpan(e.t0,e.t1,tr);
     tr.addEventListener('click',go);tr.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();go()}});
+    tb.appendChild(tr)});
+}
+function renderNotes(){
+  const tb=document.getElementById('notes');tb.innerHTML='';
+  document.getElementById('notetitle').textContent='특이 사항 · '+day;
+  if(!LK.covered[day]){tb.innerHTML='<tr><td colspan="4" class="muted">도선 배정 자료와 대조하기 전 날짜라 특이 사항을 가리지 않았습니다.</td></tr>';return}
+  const ns=LK.notes.filter(n=>n.day===day);
+  if(!ns.length){tb.innerHTML='<tr><td colspan="4" class="muted">배정 없이 움직인 구간이 없습니다.</td></tr>';return}
+  ns.forEach(n=>{const tr=document.createElement('tr');tr.tabIndex=0;tr.className='alert';
+    tr.innerHTML=`<td><span class="n x">!</span></td><td class="t">${KY7.kst(n.t0,false)}~${KY7.kst(n.t1,false)}</td><td>${n.text}</td><td>${n.context}</td>`;
+    const go=()=>focusSpan(n.t0,n.t1,tr);tr.addEventListener('click',go);tr.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();go()}});
     tb.appendChild(tr)});
 }
 </script>
