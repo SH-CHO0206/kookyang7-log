@@ -146,6 +146,10 @@
       if (!cur) { cur = { idx: [] }; sorties.push(cur); }
       cur.idx.push(i); info[i].sortie = sorties.length - 1;
     });
+    var others = ((pl && pl.others) || []).map(function (a) {
+      var o = {}; for (var k in a) o[k] = a[k]; o.t = day0(a.date) + hm(a.pob); return o;
+    }).filter(function (o) { return !/취소/.test(o.status || '') && o.tugs.indexOf('국양7호') < 0 && o.tugs.join('').replace(/\s/g, '').indexOf('국양7호') < 0; })
+      .sort(function (x, y) { return x.t - y.t; });
     var notes = [];
     sorties.forEach(function (s) {
       var es = s.idx.map(function (i) { return ev[i]; });
@@ -169,8 +173,16 @@
         var cx = all.filter(function (a) { return a.cancel && a.t >= t0 - 7200 && a.t <= t1 + 7200; });
         ctx = cx.length ? '배정 없는 출동 — 취소된 배정 ' + cx.map(function (a) { return a.ship + ' (POB ' + a.pob + ')'; }).join(', ') + ' 시간대' : '배정 없는 출동';
       }
+      // other ships' pilot jobs (with tugs) around this time: tug window = POB-30min ~ POB+90min overlapping the note
+      var oc = {}; ((pl && pl.others_covered) || []).forEach(function (d) { oc[d] = 1; });
+      var oth = others.filter(function (o) { return o.t - 1800 <= t1 && o.t + 5400 >= t0; });
+      if (oth.length) ctx += ' · 해당 시간에 ' + oth.map(function (o) {
+        return o.ship + ' ' + jobKind(o.route) + ' 작업(POB ' + o.pob + ', ' + o.route + (/완료|도선|^$/.test(o.status) ? '' : ', ' + o.status) + ')' +
+          '이 있었으며 예선 ' + o.tugs.join(', ') + '의 작업이 배정됨';
+      }).join(' / ');
+      else if (oc[kstDay(t0)] || oc[kstDay(t1)]) ctx += ' · 해당 시간에 다른 선박 예선 배정 없음';
       notes.push({ day: kstDay(t0), t0: t0, t1: t1, text: text, context: ctx, idx: red, lat: re[0].lat, lon: re[0].lon,
-        whole: !hasAsg });
+        whole: !hasAsg, others: oth.map(function (o) { return { pob: o.pob, date: o.date, ship: o.ship, route: o.route, kind: jobKind(o.route), status: o.status, tugs: o.tugs }; }) });
     });
     return { home: home, covered: covered, all: all, asg: asg, info: info, notes: notes,
       count: function (d) { return covered[d] ? asg.filter(function (a) { return a.date === d; }).length : null; },
@@ -190,7 +202,17 @@
     return { mode: 'week', key: a, from: a, to: b, title: a + '(월) ~ ' + b.slice(5) + '(일)' };
   }
   function inPeriod(p, ds) { return ds >= p.from && ds <= p.to; }
-  var api = { analyze: analyze, link: link, kst: kst, kstDay: kstDay, dist: dist,
+  // Job type from the pilot route: PS* = pilot station (sea), *WAA*/WAQ = anchorage, anything else = berth
+  function jobKind(route) {
+    var p = String(route || '').split('→'), cls = function (x) { x = (x || '').trim(); return !x ? '' : /^PS/i.test(x) ? 'sea' : /WA[AQ]/i.test(x) ? 'anc' : 'berth'; };
+    var a = cls(p[0]), b = cls(p[1]);
+    if (b === 'berth') return a === 'berth' ? '선석 이동(이안·접안)' : a === 'anc' ? '묘박지→부두 접안' : '입항 접안';
+    if (a === 'berth') return b === 'anc' ? '이안(묘박지로)' : '이안 출항';
+    if (a === 'anc' && b === 'sea') return '묘박지 출항';
+    if (a === 'sea' && b === 'anc') return '묘박지 입항';
+    return '이동';
+  }
+  var api = { analyze: analyze, jobKind: jobKind, link: link, kst: kst, kstDay: kstDay, dist: dist,
     addDays: addDays, weekStart: weekStart, period: period, inPeriod: inPeriod };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.KY7 = api;
 })(this);

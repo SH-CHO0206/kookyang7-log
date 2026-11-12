@@ -38,7 +38,7 @@ console.log(JSON.stringify({
   range: per ? per.title + ' (' + B + '까지)' : K.kst(t0) + ' ~ ' + K.kst(t1) + ' KST',
   assignments: asg.filter(a => !a.cancel).map(pick),
   cancelled: asg.filter(a => a.cancel).map(pick),
-  notes: notes.map(n => ({ day: n.day, time: K.kst(n.t0, false) + '~' + K.kst(n.t1, false), text: n.text, context: n.context })),
+  notes: notes.map(n => ({ day: n.day, time: K.kst(n.t0, false) + '~' + K.kst(n.t1, false), text: n.text, context: n.context, other_jobs: n.others })),
   uncovered_days_in_range: per ? sumP(per).days_uncovered
     : [...new Set(ev.filter(e => inR(e.t0)).map(e => e.day))].filter(x => !L.covered[x]),
   totals: {

@@ -537,5 +537,4612 @@
    "ais": "계류지 북동쪽 약 10 km에서 저속 기동(37분)",
    "context": "15:30 SEAMERIDIAN 취소 건과 같은 시간대"
   }
+ ],
+ "others": [
+  {
+   "date": "2026-11-12",
+   "pob": "22:45",
+   "ship": "SUNNY LAUREL",
+   "route": "MB4-01→PS3",
+   "status": "익일새벽",
+   "tugs": [
+    "해양1호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "21:30",
+   "ship": "IRIS CORAL",
+   "route": "MDK-19→PS3",
+   "status": "야간예보",
+   "tugs": [
+    "상록9호",
+    "서해23호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "21:30",
+   "ship": "GAS OCEANROAD",
+   "route": "MDK-11→PS3",
+   "status": "야간예보",
+   "tugs": [
+    "상록9호",
+    "서해23호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "18:15",
+   "ship": "TONG ZHOU 6",
+   "route": "PS3→MDH-22",
+   "status": "완료",
+   "tugs": [
+    "상록9호",
+    "서해23호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "18:00",
+   "ship": "GAS FREEWAY",
+   "route": "→",
+   "status": "취소",
+   "tugs": [
+    "서해25호",
+    "대동7호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "17:00",
+   "ship": "UDE NOAH",
+   "route": "MB2-01→PS3",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "17:00",
+   "ship": "LUCKY ANNIE",
+   "route": "PS3→MB2-01",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "16:30",
+   "ship": "FORTUNE KAREN",
+   "route": "MDK-16→PS2",
+   "status": "완료",
+   "tugs": [
+    "동양1호",
+    "서해36호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "15:30",
+   "ship": "C.GRACE",
+   "route": "SPM-01→WAA-11 MDK",
+   "status": "완료",
+   "tugs": [
+    "대동12호",
+    "상록8호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "15:00",
+   "ship": "PAN TAEAN",
+   "route": "MDT-53→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동10호",
+    "서해63호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "14:00",
+   "ship": "JN CAMELLIA",
+   "route": "PS2→MDK-18",
+   "status": "완료",
+   "tugs": [
+    "국양7호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "11:30",
+   "ship": "OCEAN APHRODITE",
+   "route": "MDB-42→PS1",
+   "status": "완료",
+   "tugs": [
+    "보령3호",
+    "보령5호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "11:30",
+   "ship": "BS NGHI SON",
+   "route": "MDK-18→MDS-31",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "10:30",
+   "ship": "PEGASUS STAR",
+   "route": "MDK-15→PS2",
+   "status": "완료",
+   "tugs": [
+    "상록6호",
+    "상록7호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "10:00",
+   "ship": "NAVE OHANA",
+   "route": "MDK-19→WAA-9 MDK",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "10:00",
+   "ship": "IRIS CORAL",
+   "route": "WAA-1 MDK→MDK-19",
+   "status": "완료",
+   "tugs": [
+    "삼우호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "10:00",
+   "ship": "GAS OCEANROAD",
+   "route": "WAA-2 MDK→MDK-11",
+   "status": "완료",
+   "tugs": [
+    "삼우호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "09:45",
+   "ship": "SUNNY LAUREL",
+   "route": "PS3→MB4-01",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "09:00",
+   "ship": "RIXTA OLDENDORFF",
+   "route": "B.WAA-04→MDB-41",
+   "status": "완료",
+   "tugs": [
+    "상록10호",
+    "해양9호",
+    "보령5호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "06:00",
+   "ship": "TONG XIN YUAN",
+   "route": "MDH-25→PS3",
+   "status": "완료",
+   "tugs": [
+    "서해25호",
+    "대동7호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "06:00",
+   "ship": "LEMAN",
+   "route": "MDS-36→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동10호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "06:00",
+   "ship": "JN SIRIUS",
+   "route": "MDS-31→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-12",
+   "pob": "05:30",
+   "ship": "GAS FREEWAY",
+   "route": "PS3→MDS-33",
+   "status": "완료",
+   "tugs": [
+    "상록9호",
+    "서해23호"
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "pob": "21:30",
+   "ship": "HUA NAN 1",
+   "route": "MDK-11→WAA-1 MDK",
+   "status": "야간예보",
+   "tugs": [
+    "동양1호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "pob": "18:00",
+   "ship": "LEMAN",
+   "route": "MDS-36→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동10호",
+    "서해53호"
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "pob": "17:30",
+   "ship": "STI SAN TELMO",
+   "route": "MDN-11→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동9호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "pob": "16:30",
+   "ship": "NAVE CIELO",
+   "route": "MDH-21→WAA-09",
+   "status": "완료",
+   "tugs": [
+    "상록6호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "pob": "16:30",
+   "ship": "KUN SHUN",
+   "route": "MDH-26→WAA-04",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "pob": "11:00",
+   "ship": "PAN KOMIPO",
+   "route": "MDB-41→PS1",
+   "status": "완료",
+   "tugs": [
+    "상록10호",
+    "해양9호",
+    "보령11호"
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "pob": "10:30",
+   "ship": "TONG XIN YUAN",
+   "route": "PS3→MDH-25",
+   "status": "완료",
+   "tugs": [
+    "삼우호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "pob": "10:15",
+   "ship": "GREAT HOPE",
+   "route": "B.WAA-02→MDB-43",
+   "status": "완료",
+   "tugs": [
+    "보령3호",
+    "보령5호"
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "pob": "10:00",
+   "ship": "HUA NAN 5",
+   "route": "MDH-25→PS3",
+   "status": "완료",
+   "tugs": [
+    "동양1호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "pob": "09:45",
+   "ship": "GREAT HOPE",
+   "route": "MDB-43→B.WAA-02",
+   "status": "완료",
+   "tugs": [
+    "보령3호",
+    "보령5호"
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "pob": "09:30",
+   "ship": "SEA ORION",
+   "route": "PS4→MDT-62",
+   "status": "완료",
+   "tugs": [
+    "삼우47호",
+    "서해53호"
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "pob": "09:30",
+   "ship": "JN SIRIUS",
+   "route": "MDK-16→MDS-31",
+   "status": "완료",
+   "tugs": [
+    "해양1호",
+    "대동5호"
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "pob": "09:30",
+   "ship": "HUA NAN 1",
+   "route": "PS3→MDK-11",
+   "status": "완료",
+   "tugs": [
+    "대동7호",
+    "서해25호"
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "pob": "09:00",
+   "ship": "PEGASUS STAR",
+   "route": "WAA-10 MDK→MDK-15",
+   "status": "완료",
+   "tugs": [
+    "상록6호",
+    "대동10호"
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "pob": "08:30",
+   "ship": "ES GRAND SEA",
+   "route": "MDT-62→PS4",
+   "status": "완료",
+   "tugs": [
+    "삼우47호",
+    "서해53호",
+    "서해63호"
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "pob": "08:30",
+   "ship": "CL YINGDU",
+   "route": "MDK-15→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동10호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-11-11",
+   "pob": "07:00",
+   "ship": "C.GRACE",
+   "route": "WAA-11 MDK→SPM-01",
+   "status": "완료",
+   "tugs": [
+    "대동12호",
+    "상록8호"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "pob": "17:00",
+   "ship": "ES GRAND SEA",
+   "route": "→",
+   "status": "취소",
+   "tugs": [
+    "대동12호",
+    "상록7호"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "pob": "16:00",
+   "ship": "YUYO",
+   "route": "MDS-31→WAA-09",
+   "status": "완료",
+   "tugs": [
+    "상록6호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "pob": "16:00",
+   "ship": "LEMAN",
+   "route": "PS2→MDS-36",
+   "status": "완료",
+   "tugs": [
+    "대동9호",
+    "삼우47호"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "pob": "15:30",
+   "ship": "HUA NAN 1",
+   "route": "→",
+   "status": "취소",
+   "tugs": [
+    "삼우호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "pob": "11:00",
+   "ship": "FORTUNE KAREN",
+   "route": "MDK-16→PS2",
+   "status": "완료",
+   "tugs": [
+    "해양1호",
+    "서해23호"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "pob": "10:30",
+   "ship": "KUN SHUN",
+   "route": "PS3→MDH-26",
+   "status": "완료",
+   "tugs": [
+    "서해25호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "pob": "10:30",
+   "ship": "DS VEGA",
+   "route": "MDS-37→WAA-05",
+   "status": "완료",
+   "tugs": [
+    "국양7호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "pob": "10:00",
+   "ship": "MH SAKURA",
+   "route": "MDS-33→PS3",
+   "status": "완료",
+   "tugs": [
+    "서해25호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "pob": "10:00",
+   "ship": "CRANE SOL",
+   "route": "MDS-32→PS3",
+   "status": "완료",
+   "tugs": [
+    "대동7호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "pob": "09:00",
+   "ship": "ORIENTAL LEADER",
+   "route": "PS4→MDT-61",
+   "status": "완료",
+   "tugs": [
+    "대동10호",
+    "상록6호"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "pob": "09:00",
+   "ship": "HUA NAN 5",
+   "route": "PS3→MDH-25",
+   "status": "완료",
+   "tugs": [
+    "국양7호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "pob": "09:00",
+   "ship": "GC BERYL",
+   "route": "MDK-19→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동9호",
+    "삼우47호"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "pob": "08:30",
+   "ship": "RICSEA",
+   "route": "B.WAA-04→MDA-01",
+   "status": "완료",
+   "tugs": [
+    "보령3호",
+    "보령5호"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "pob": "08:30",
+   "ship": "NAVE OHANA",
+   "route": "PS2-2→MDK-19",
+   "status": "완료",
+   "tugs": [
+    "대동9호",
+    "삼우47호"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "pob": "08:30",
+   "ship": "NAVE CIELO",
+   "route": "WAA-09→MDH-21",
+   "status": "완료",
+   "tugs": [
+    "상록7호",
+    "상록8호"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "pob": "08:00",
+   "ship": "STI SAN TELMO",
+   "route": "PS2→MDN-11",
+   "status": "완료",
+   "tugs": [
+    "서해53호",
+    "서해36호"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "pob": "08:00",
+   "ship": "GLOVIS DAYLIGHT",
+   "route": "PS2→MDT-51",
+   "status": "완료",
+   "tugs": [
+    "서해63호",
+    "서해53호"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "pob": "08:00",
+   "ship": "C.GRACE",
+   "route": "PS2→WAA-11 MDK",
+   "status": "완료",
+   "tugs": [
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "pob": "07:30",
+   "ship": "BUENA LUNA",
+   "route": "MDK-12→WAA-4 MDK",
+   "status": "완료",
+   "tugs": [
+    "서해23호",
+    "대산1호"
+   ]
+  },
+  {
+   "date": "2026-11-10",
+   "pob": "06:30",
+   "ship": "F.OCEAN",
+   "route": "MDT-51→PS2",
+   "status": "완료",
+   "tugs": [
+    "서해63호",
+    "서해53호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "20:30",
+   "ship": "GAIN SPRING",
+   "route": "MB2-01→PS3",
+   "status": "야간예보",
+   "tugs": [
+    "대동5호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "17:00",
+   "ship": "F.OCEAN",
+   "route": "MDT-51→PS2",
+   "status": "완료",
+   "tugs": [
+    "서해63호",
+    "삼우47호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "16:30",
+   "ship": "DS VEGA",
+   "route": "WAA-05→MDS-37",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "16:00",
+   "ship": "LEMAN",
+   "route": "→대동10호",
+   "status": "취소",
+   "tugs": [
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "15:30",
+   "ship": "POLARIS",
+   "route": "MDS-37→WAA-05",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "15:00",
+   "ship": "CL YINGDU",
+   "route": "PS2-2→MDK-15",
+   "status": "완료",
+   "tugs": [
+    "해양5호",
+    "상록8호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "11:30",
+   "ship": "GC BERYL",
+   "route": "PS2→MDK-19",
+   "status": "완료",
+   "tugs": [
+    "대동8호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "10:10",
+   "ship": "CORAL ALICIA",
+   "route": "MDH-26→PS3",
+   "status": "완료",
+   "tugs": [
+    "국양7호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "10:00",
+   "ship": "OCEAN CARRIER",
+   "route": "MDT-61→PS4",
+   "status": "완료",
+   "tugs": [
+    "상록7호",
+    "상록8호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "09:30",
+   "ship": "ROOIBOS GALAXY",
+   "route": "MDH-21→PS2",
+   "status": "완료",
+   "tugs": [
+    "국양7호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "09:30",
+   "ship": "HL BORYEONG",
+   "route": "MDA-01→PS1",
+   "status": "완료",
+   "tugs": [
+    "상록10호",
+    "해양9호",
+    "보령5호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "09:15",
+   "ship": "BUENA LUNA",
+   "route": "PS3→MDK-12",
+   "status": "완료",
+   "tugs": [
+    "동양1호",
+    "서해36호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "09:00",
+   "ship": "MH SAKURA",
+   "route": "PS3→MDS-33",
+   "status": "완료",
+   "tugs": [
+    "서해25호",
+    "서해23호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "09:00",
+   "ship": "CIELO DI HOUSTON",
+   "route": "MDN-11→PS2",
+   "status": "완료",
+   "tugs": [
+    "삼우47호",
+    "대동10호",
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "08:30",
+   "ship": "WOOJIN KELLY",
+   "route": "MDH-23→PS2",
+   "status": "완료",
+   "tugs": [
+    "국양7호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "08:30",
+   "ship": "TORM ALICE",
+   "route": "MDK-15→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동9호",
+    "서해36호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "08:30",
+   "ship": "MARITIME GUARDIAN",
+   "route": "MDS-31→PS2",
+   "status": "완료",
+   "tugs": [
+    "해양5호",
+    "상록8호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "08:30",
+   "ship": "LOYALTY GALAXY",
+   "route": "MDK-16→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "08:30",
+   "ship": "GOLDEN KEY HANA",
+   "route": "MDH-25→PS3",
+   "status": "완료",
+   "tugs": [
+    "대동7호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "08:30",
+   "ship": "CORAL PALMATA",
+   "route": "MDK-19→PS2",
+   "status": "완료",
+   "tugs": [
+    "해양1호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "08:20",
+   "ship": "CRANE SOL",
+   "route": "WAA-07→MDS-32",
+   "status": "완료",
+   "tugs": [
+    "서해23호",
+    "서해25호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "08:00",
+   "ship": "YUYO",
+   "route": "PS2→MDS-31",
+   "status": "완료",
+   "tugs": [
+    "해양5호",
+    "상록6호"
+   ]
+  },
+  {
+   "date": "2026-11-09",
+   "pob": "07:00",
+   "ship": "PILATUS 65",
+   "route": "→상록9호",
+   "status": "취소",
+   "tugs": [
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "21:30",
+   "ship": "GOLDEN KEY HANA",
+   "route": "→",
+   "status": "취소",
+   "tugs": [
+    "상록9호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "21:30",
+   "ship": "CORAL ALICIA",
+   "route": "→",
+   "status": "취소",
+   "tugs": [
+    "서해36호",
+    "해양1호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "16:00",
+   "ship": "OCEAN CARRIER",
+   "route": "→",
+   "status": "취소",
+   "tugs": [
+    "상록6호",
+    "상록7호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "15:30",
+   "ship": "POLARIS",
+   "route": "PS2→MDS-37",
+   "status": "완료",
+   "tugs": [
+    "국양7호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "15:30",
+   "ship": "LEMAN",
+   "route": "PS2→MDS-36",
+   "status": "완료",
+   "tugs": [
+    "해양5호",
+    "상록8호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "15:00",
+   "ship": "HL BORYEONG",
+   "route": "→",
+   "status": "취소",
+   "tugs": [
+    "해양9호",
+    "상록10호",
+    "보령7호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "14:30",
+   "ship": "LOYALTY GALAXY",
+   "route": "PS2→MDK-16",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "14:15",
+   "ship": "PILATUS 65",
+   "route": "PS3→MDK-11",
+   "status": "완료",
+   "tugs": [
+    "상록9호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "14:00",
+   "ship": "WOOJIN KELLY",
+   "route": "MDH-23→PS2",
+   "status": "완료",
+   "tugs": [
+    "대산1호",
+    "서해36호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "14:00",
+   "ship": "MH SAKURA",
+   "route": "PS3→MDH-23",
+   "status": "완료",
+   "tugs": [
+    "서해23호",
+    "서해25호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "13:30",
+   "ship": "SC EQUATOR",
+   "route": "MDK-19→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동12호",
+    "삼우47호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "13:30",
+   "ship": "CORAL PALMATA",
+   "route": "PS2-2→MDK-19",
+   "status": "완료",
+   "tugs": [
+    "해양1호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "12:00",
+   "ship": "FRONT DUCHESS",
+   "route": "SPM-01→WAA-11 MDK",
+   "status": "완료",
+   "tugs": [
+    "대동9호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "10:00",
+   "ship": "GOLDEN KEY HANA",
+   "route": "PS3→MDH-25",
+   "status": "완료",
+   "tugs": [
+    "서해23호",
+    "서해25호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "09:30",
+   "ship": "CORAL ALICIA",
+   "route": "PS3→MDH-26",
+   "status": "완료",
+   "tugs": [
+    "동양1호",
+    "서해36호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "09:00",
+   "ship": "LIAN YANG HU",
+   "route": "MDH-21→PS2",
+   "status": "완료",
+   "tugs": [
+    "상록6호",
+    "대동10호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "08:45",
+   "ship": "YC COSMOS",
+   "route": "MDH-24→WAA-02",
+   "status": "완료",
+   "tugs": [
+    "서해25호",
+    "서해23호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "08:30",
+   "ship": "ROOIBOS GALAXY",
+   "route": "PS2-2→MDH-21",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "08:00",
+   "ship": "OCEAN WAVE I",
+   "route": "MDS-31→WAA-09",
+   "status": "완료",
+   "tugs": [
+    "삼우47호",
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "08:00",
+   "ship": "MARITIME GUARDIAN",
+   "route": "WAA-09→MDS-31",
+   "status": "완료",
+   "tugs": [
+    "삼우47호",
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "08:00",
+   "ship": "FORTUNE KAREN",
+   "route": "MDK-16→PS2",
+   "status": "완료",
+   "tugs": [
+    "국양7호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-08",
+   "pob": "07:30",
+   "ship": "GREAT HOPE",
+   "route": "B.WAA-04→MDB-43",
+   "status": "도선",
+   "tugs": [
+    "보령9호",
+    "보령11호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "21:30",
+   "ship": "NO.7 SJ GAS",
+   "route": "MDS-35→PS3",
+   "status": "야간예보",
+   "tugs": [
+    "상록9호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "15:30",
+   "ship": "OCEAN WAVE I",
+   "route": "MDS-31→WAA-09",
+   "status": "완료",
+   "tugs": [
+    "대동10호",
+    "상록8호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "15:00",
+   "ship": "OC EPICURUS",
+   "route": "MDS-36→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동12호",
+    "상록7호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "15:00",
+   "ship": "FRONT DUCHESS",
+   "route": "WAA-11 MDK→SPM-01",
+   "status": "완료",
+   "tugs": [
+    "대동9호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "14:30",
+   "ship": "CIELO DI HOUSTON",
+   "route": "WAA-10→MDN-11",
+   "status": "완료",
+   "tugs": [
+    "삼우47호",
+    "상록7호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "14:00",
+   "ship": "OCEAN APHRODITE",
+   "route": "B.WAA-02→MDB-42",
+   "status": "완료",
+   "tugs": [
+    "보령3호",
+    "보령5호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "13:30",
+   "ship": "OCEAN APHRODITE",
+   "route": "MDB-42→B.WAA-02",
+   "status": "완료",
+   "tugs": [
+    "보령3호",
+    "보령5호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "13:00",
+   "ship": "LEMAN",
+   "route": "PS2→MDS-37",
+   "status": "완료",
+   "tugs": [
+    "동양9호",
+    "서해36호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "09:00",
+   "ship": "WOOJIN KELLY",
+   "route": "WAA-03→MDH-23",
+   "status": "완료",
+   "tugs": [
+    "국양7호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "09:00",
+   "ship": "POS GUANGZHOU",
+   "route": "PS3→MB4-01",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "09:00",
+   "ship": "NO.7 SJ GAS",
+   "route": "PS3→MDS-35",
+   "status": "완료",
+   "tugs": [
+    "대동7호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "08:15",
+   "ship": "HL MIDLAND",
+   "route": "MDB-43→PS1",
+   "status": "완료",
+   "tugs": [
+    "상록10호",
+    "해양9호",
+    "보령11호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "08:00",
+   "ship": "YC COSMOS",
+   "route": "PS3→MDH-24",
+   "status": "완료",
+   "tugs": [
+    "서해23호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "08:00",
+   "ship": "WOODSIDE BILANGARA",
+   "route": "MDA-52→PS1",
+   "status": "완료",
+   "tugs": [
+    "보령9호",
+    "신성호",
+    "보령3호",
+    "보령5호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "07:00",
+   "ship": "PAN TAEAN",
+   "route": "PS2→MDT-53",
+   "status": "완료",
+   "tugs": [
+    "삼우47호",
+    "서해53호",
+    "서해63호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "07:00",
+   "ship": "F.OCEAN",
+   "route": "PS2→MDT-51",
+   "status": "완료",
+   "tugs": [
+    "상록7호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "06:50",
+   "ship": "SAEHAN ASTRO",
+   "route": "WAA-04→MDH-25",
+   "status": "도선",
+   "tugs": [
+    "대동7호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "06:30",
+   "ship": "EVERGREEN MARINER",
+   "route": "MDK-15→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "06:00",
+   "ship": "TORM ALICE",
+   "route": "PS2-2→MDK-15",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "06:00",
+   "ship": "OC GRANDE",
+   "route": "MDK-14→PS2",
+   "status": "완료",
+   "tugs": [
+    "해양1호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-11-07",
+   "pob": "06:00",
+   "ship": "LIAN YANG HU",
+   "route": "PS2-2→MDH-21",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "국양7호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-06",
+   "pob": "20:00",
+   "ship": "EVA PL",
+   "route": "MB3-01→PS3",
+   "status": "야간예보",
+   "tugs": [
+    "대산1호",
+    "서해25호"
+   ]
+  },
+  {
+   "date": "2026-11-06",
+   "pob": "19:30",
+   "ship": "EVERGREEN MARINER",
+   "route": "MDK-15→PS2",
+   "status": "야간예보",
+   "tugs": [
+    "삼우47호",
+    "서해53호"
+   ]
+  },
+  {
+   "date": "2026-11-06",
+   "pob": "14:00",
+   "ship": "OCEAN WAVE I",
+   "route": "PS2→MDS-31",
+   "status": "완료",
+   "tugs": [
+    "서해63호",
+    "삼우47호"
+   ]
+  },
+  {
+   "date": "2026-11-06",
+   "pob": "13:30",
+   "ship": "HL MIDLAND",
+   "route": "MDB-43→PS1",
+   "status": "완료",
+   "tugs": [
+    "해양9호",
+    "상록10호",
+    "보령7호"
+   ]
+  },
+  {
+   "date": "2026-11-06",
+   "pob": "13:00",
+   "ship": "WOODSIDE BILANGARA",
+   "route": "MDA-52→PS1",
+   "status": "완료",
+   "tugs": [
+    "보령9호",
+    "신성호",
+    "보령3호",
+    "보령5호"
+   ]
+  },
+  {
+   "date": "2026-11-06",
+   "pob": "12:30",
+   "ship": "EPICURUS",
+   "route": "WAA-09→MDS-36",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "삼우47호"
+   ]
+  },
+  {
+   "date": "2026-11-06",
+   "pob": "12:00",
+   "ship": "AFRICAN SANDPIPER",
+   "route": "MB5-01→PS2",
+   "status": "완료",
+   "tugs": [
+    "삼우47호",
+    "서해53호"
+   ]
+  },
+  {
+   "date": "2026-11-06",
+   "pob": "05:30",
+   "ship": "SC EQUATOR",
+   "route": "WAA-9 MDK→MDK-19",
+   "status": "완료",
+   "tugs": [
+    "삼우47호",
+    "서해53호"
+   ]
+  },
+  {
+   "date": "2026-11-06",
+   "pob": "05:30",
+   "ship": "OC GRANDE",
+   "route": "WAA-3 MDK→MDK-14",
+   "status": "완료",
+   "tugs": [
+    "해양1호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-11-06",
+   "pob": "05:30",
+   "ship": "MORNING HOPE",
+   "route": "MDK-12→WAA-4 MDK",
+   "status": "완료",
+   "tugs": [
+    "상록9호",
+    "서해23호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "21:30",
+   "ship": "MORNING HOPE",
+   "route": "MDK-12→PS3",
+   "status": "야간예보",
+   "tugs": [
+    "상록9호",
+    "서해23호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "20:00",
+   "ship": "DOOLA STAR",
+   "route": "MDK-17→PS3",
+   "status": "야간예보",
+   "tugs": [
+    "해양1호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "19:30",
+   "ship": "XSSC BRIGHT",
+   "route": "MDT-51→T.WAA-01",
+   "status": "야간예보",
+   "tugs": [
+    "상록6호",
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "19:30",
+   "ship": "WOOLIM 5",
+   "route": "MDK-18→PS2",
+   "status": "야간예보",
+   "tugs": [
+    "대동5호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "18:30",
+   "ship": "WAN MING FU QIANG",
+   "route": "MDT-53→PS2",
+   "status": "완료",
+   "tugs": [
+    "상록6호",
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "17:50",
+   "ship": "PLATYTERA",
+   "route": "MDS-37→PS2",
+   "status": "완료",
+   "tugs": [
+    "삼우47호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "16:30",
+   "ship": "FRONT DUCHESS",
+   "route": "PS2→WAA-11 MDK",
+   "status": "완료",
+   "tugs": [
+    "대동9호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "15:00",
+   "ship": "FRONT DUCHESS",
+   "route": "SPM-01→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동9호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "14:30",
+   "ship": "WOO CHAN",
+   "route": "MDS-36→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동7호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "13:30",
+   "ship": "KHOS STELLAR",
+   "route": "PS4→MDT-61",
+   "status": "완료",
+   "tugs": [
+    "상록9호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "13:30",
+   "ship": "HL MIDLAND",
+   "route": "→",
+   "status": "취소",
+   "tugs": [
+    "상록10호",
+    "해양9호",
+    "보령11호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "12:30",
+   "ship": "FORTUNE KAREN",
+   "route": "MDK-16→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동8호",
+    "서해23호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "12:00",
+   "ship": "거제코델리아",
+   "route": "MDK-14→PS2",
+   "status": "완료",
+   "tugs": [
+    "해양1호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "11:30",
+   "ship": "SILVER HEBA",
+   "route": "MDK-19→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동10호",
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "11:00",
+   "ship": "WOODSIDE BILANGARA",
+   "route": "PS1→MDA-52",
+   "status": "완료",
+   "tugs": [
+    "보령9호",
+    "신성호",
+    "보령3호",
+    "보령5호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "10:30",
+   "ship": "MORNING HOPE",
+   "route": "WAA-1 MDK→MDK-12",
+   "status": "완료",
+   "tugs": [
+    "서해25호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "08:30",
+   "ship": "MONIQUE GLORY",
+   "route": "MDN-11→PS2",
+   "status": "완료",
+   "tugs": [
+    "서해53호",
+    "서해63호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "08:00",
+   "ship": "OCEAN CARRIER",
+   "route": "MDT-61→MDT-61",
+   "status": "완료",
+   "tugs": [
+    "상록7호",
+    "대동10호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "07:00",
+   "ship": "SAEHAN ASTRO",
+   "route": "WAA-03→MDH-25",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "07:00",
+   "ship": "GAIN SPRING",
+   "route": "PS3→MB2-01",
+   "status": "완료",
+   "tugs": [
+    "삼우호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-05",
+   "pob": "05:30",
+   "ship": "DOOLA STAR",
+   "route": "PS3→MDK-17",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "21:30",
+   "ship": "GAS FRONTIER",
+   "route": "MDK-12→PS3",
+   "status": "야간예보",
+   "tugs": [
+    "삼우호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "19:45",
+   "ship": "MORNING HOPE",
+   "route": "MDH-23→WAA-01",
+   "status": "야간예보",
+   "tugs": [
+    "삼우호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "19:30",
+   "ship": "JN NEPTUNE",
+   "route": "MDK-18→PS2",
+   "status": "야간예보",
+   "tugs": [
+    "해양1호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "18:30",
+   "ship": "TORM DURGA",
+   "route": "MDS-36→PS2",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "18:00",
+   "ship": "거제코델리아",
+   "route": "WAA-3 MDK→MDK-14",
+   "status": "완료",
+   "tugs": [
+    "대산1호",
+    "대동5호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "15:00",
+   "ship": "EVA PL",
+   "route": "PS3→MB2-01",
+   "status": "완료",
+   "tugs": [
+    "삼우호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "13:00",
+   "ship": "HONG PENG",
+   "route": "MDS-33→PS2",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "12:30",
+   "ship": "MORNING HOPE",
+   "route": "PS3→MDH-23",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "12:30",
+   "ship": "MONIQUE GLORY",
+   "route": "WAA-10→MDN-11",
+   "status": "완료",
+   "tugs": [
+    "서해53호",
+    "서해63호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "12:30",
+   "ship": "FRONT DUCHESS",
+   "route": "WAA-11 MDK→SPM-01",
+   "status": "완료",
+   "tugs": [
+    "대동9호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "12:00",
+   "ship": "MARAN TRANSPORTER",
+   "route": "PS4→MDT-63",
+   "status": "완료",
+   "tugs": [
+    "삼우47호",
+    "대동10호",
+    "대동12호",
+    "상록7호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "11:00",
+   "ship": "OCEAN CARRIER",
+   "route": "MDT-63→MDT-61",
+   "status": "완료",
+   "tugs": [
+    "상록8호",
+    "상록6호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "11:00",
+   "ship": "EVERGREEN MARINER",
+   "route": "PS2-2→MDK-15",
+   "status": "완료",
+   "tugs": [
+    "해양1호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "11:00",
+   "ship": "ARGENT IRIS",
+   "route": "MDK-16→PS2",
+   "status": "완료",
+   "tugs": [
+    "해양1호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "10:30",
+   "ship": "MONIQUE GLORY",
+   "route": "MDK-15→WAA-10 MDK",
+   "status": "완료",
+   "tugs": [
+    "해양1호",
+    "해양2호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "10:00",
+   "ship": "KASTELLI WAVE",
+   "route": "MDT-61→PS4",
+   "status": "완료",
+   "tugs": [
+    "상록8호",
+    "상록6호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "09:00",
+   "ship": "PLATYTERA",
+   "route": "PS2→MDS-37",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "07:00",
+   "ship": "CONCERTO",
+   "route": "MB4-01→PS3",
+   "status": "완료",
+   "tugs": [
+    "대동8호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "06:30",
+   "ship": "KARA",
+   "route": "MDS-37→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동12호",
+    "상록6호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "06:30",
+   "ship": "BS NGHI SON",
+   "route": "MDS-31→PS2",
+   "status": "완료",
+   "tugs": [
+    "삼우호",
+    "대동5호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "05:30",
+   "ship": "GAS FRONTIER",
+   "route": "PS3→MDK-12",
+   "status": "완료",
+   "tugs": [
+    "서해25호",
+    "대동7호"
+   ]
+  },
+  {
+   "date": "2026-11-04",
+   "pob": "02:00",
+   "ship": "SUNNY LAUREL",
+   "route": "MB3-01→PS3",
+   "status": "익일새벽",
+   "tugs": [
+    "대동7호",
+    "대동5호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "23:00",
+   "ship": "SUNNY LILAC",
+   "route": "MB4-01→PS3",
+   "status": "야간예보",
+   "tugs": [
+    "대동8호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "23:00",
+   "ship": "CONCERTO",
+   "route": "PS3→MB4-01",
+   "status": "야간예보",
+   "tugs": [
+    "대동8호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "18:30",
+   "ship": "HUA NAN 1",
+   "route": "MDK-11→PS3",
+   "status": "완료",
+   "tugs": [
+    "서해25호",
+    "대동7호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "17:00",
+   "ship": "KASTELLI WAVE",
+   "route": "→",
+   "status": "취소",
+   "tugs": [
+    "상록6호",
+    "상록7호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "17:00",
+   "ship": "FARRIE RUSS",
+   "route": "MDK-16→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동8호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "17:00",
+   "ship": "BUENA LUNA",
+   "route": "MDH-25→WAA-03",
+   "status": "완료",
+   "tugs": [
+    "삼우호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "16:30",
+   "ship": "C.CREATOR",
+   "route": "SPM-01→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동9호",
+    "상록8호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "16:30",
+   "ship": "ARGENT IRIS",
+   "route": "PS2-2→MDK-16",
+   "status": "완료",
+   "tugs": [
+    "대동8호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "15:30",
+   "ship": "TORM DURGA",
+   "route": "PS2→MDS-36",
+   "status": "완료",
+   "tugs": [
+    "대동10호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "15:30",
+   "ship": "SUNNY LAUREL",
+   "route": "PS3→MB3-01",
+   "status": "완료",
+   "tugs": [
+    "대동8호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "15:30",
+   "ship": "CORAL ALICIA",
+   "route": "MDH-24→WAA-04",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "대동7호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "13:30",
+   "ship": "HL BORYEONG",
+   "route": "B.WAA-04→MDA-01",
+   "status": "완료",
+   "tugs": [
+    "상록10호",
+    "해양9호",
+    "보령5호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "12:30",
+   "ship": "HAKATA PRINCESS",
+   "route": "MDS-36→WAA-08",
+   "status": "완료",
+   "tugs": [
+    "대동10호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "12:00",
+   "ship": "FRONT DUCHESS",
+   "route": "PS2→WAA-11 MDK",
+   "status": "완료",
+   "tugs": [
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "11:30",
+   "ship": "FORTUNE KAREN",
+   "route": "MDK-14→WAA-4 MDK",
+   "status": "완료",
+   "tugs": [
+    "상록9호",
+    "해양1호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "11:00",
+   "ship": "SUNNY LILAC",
+   "route": "PS3→MB4-01",
+   "status": "완료",
+   "tugs": [
+    "대동7호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "10:30",
+   "ship": "SEA EMPIRE",
+   "route": "MDT-51→PS2",
+   "status": "완료",
+   "tugs": [
+    "서해53호",
+    "서해63호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "09:30",
+   "ship": "HONG PENG",
+   "route": "PS2-2→MDS-33",
+   "status": "완료",
+   "tugs": [
+    "서해25호",
+    "서해36호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "09:15",
+   "ship": "MONIQUE GLORY",
+   "route": "PS2-2→MDK-15",
+   "status": "완료",
+   "tugs": [
+    "해양2호",
+    "대동5호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "07:00",
+   "ship": "SILVER HEBA",
+   "route": "WAA-8 MDK→MDK-19",
+   "status": "완료",
+   "tugs": [
+    "대동10호",
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "06:30",
+   "ship": "HUA NAN 1",
+   "route": "WAA-6 MDK→MDK-11",
+   "status": "완료",
+   "tugs": [
+    "대산1호",
+    "서해23호"
+   ]
+  },
+  {
+   "date": "2026-11-03",
+   "pob": "06:00",
+   "ship": "TONG ZHOU 6",
+   "route": "MDS-32→PS3",
+   "status": "완료",
+   "tugs": [
+    "삼우호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "pob": "21:30",
+   "ship": "PILATUS 65",
+   "route": "MDK-11→PS3",
+   "status": "야간예보",
+   "tugs": [
+    "서해25호",
+    "대동7호"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "pob": "15:30",
+   "ship": "CYH FUJIAN",
+   "route": "MDS-31→PS2",
+   "status": "완료",
+   "tugs": [
+    "해양5호",
+    "상록7호"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "pob": "15:30",
+   "ship": "BS NGHI SON",
+   "route": "WAA-04→MDS-31",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "pob": "15:00",
+   "ship": "CORAL ALICIA",
+   "route": "PS3→MDH-24",
+   "status": "완료",
+   "tugs": [
+    "대동8호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "pob": "14:15",
+   "ship": "KARA",
+   "route": "PS2→MDS-37",
+   "status": "완료",
+   "tugs": [
+    "서해63호",
+    "삼우47호",
+    "대동10호"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "pob": "14:00",
+   "ship": "TONG ZHOU 6",
+   "route": "PS3→MDS-32",
+   "status": "완료",
+   "tugs": [
+    "서해23호",
+    "대산1호"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "pob": "14:00",
+   "ship": "BUENA LUNA",
+   "route": "PS3→MDH-25",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "pob": "11:00",
+   "ship": "PILATUS 65",
+   "route": "PS3→MDK-11",
+   "status": "완료",
+   "tugs": [
+    "서해23호",
+    "대동7호"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "pob": "10:00",
+   "ship": "C.CREATOR",
+   "route": "WAA-11 MDK→SPM-01",
+   "status": "완료",
+   "tugs": [
+    "대동9호",
+    "상록8호"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "pob": "09:00",
+   "ship": "NEW GLOBAL",
+   "route": "MDS-34→PS3",
+   "status": "완료",
+   "tugs": [
+    "서해25호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "pob": "08:30",
+   "ship": "OCEAN APHRODITE",
+   "route": "B.WAA-02→MDB-42",
+   "status": "완료",
+   "tugs": [
+    "보령3호",
+    "보령5호"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "pob": "08:30",
+   "ship": "AMAZON VIRTUE",
+   "route": "MDS-36→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "대동8호",
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "pob": "08:00",
+   "ship": "OCEAN APHRODITE",
+   "route": "MDB-42→B.WAA-02",
+   "status": "완료",
+   "tugs": [
+    "보령3호",
+    "보령5호"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "pob": "08:00",
+   "ship": "HAKATA PRINCESS",
+   "route": "PS2→MDS-36",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "pob": "07:30",
+   "ship": "TORM SPLENDID",
+   "route": "MDH-21→PS2",
+   "status": "완료",
+   "tugs": [
+    "서해53호",
+    "삼우47호"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "pob": "07:15",
+   "ship": "SEAWAYS SAN SABA",
+   "route": "SPM-01→WAA-12 MDK",
+   "status": "완료",
+   "tugs": [
+    "대동10호",
+    "상록8호"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "pob": "07:00",
+   "ship": "JN SIRIUS",
+   "route": "MDK-14→PS2",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "해양1호"
+   ]
+  },
+  {
+   "date": "2026-11-02",
+   "pob": "05:30",
+   "ship": "NO.3 SJ GAS",
+   "route": "MDK-11→PS3",
+   "status": "완료",
+   "tugs": [
+    "상록9호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "20:15",
+   "ship": "PHENIX EXPRESS",
+   "route": "MDK-19→PS3",
+   "status": "야간예보",
+   "tugs": [
+    "동양1호",
+    "상록9호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "20:00",
+   "ship": "SEAWAYS SAN SABA",
+   "route": "→",
+   "status": "취소",
+   "tugs": [
+    "대동10호",
+    "상록8호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "20:00",
+   "ship": "CORAL ACTINIA",
+   "route": "MDH-24→PS3",
+   "status": "야간예보",
+   "tugs": [
+    "서해36호",
+    "해양1호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "19:00",
+   "ship": "FARRIE RUSS",
+   "route": "WAA-5 MDK→MDK-16",
+   "status": "정시마감",
+   "tugs": [
+    "대동5호",
+    "대동9호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "14:30",
+   "ship": "GOLDEN CREATION",
+   "route": "MDK-16→PS2",
+   "status": "완료",
+   "tugs": [
+    "해양1호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "13:30",
+   "ship": "SILVER PHILIPPA",
+   "route": "MDN-11→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동9호",
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "12:30",
+   "ship": "OCEAN CARRIER",
+   "route": "PS4→MDT-63",
+   "status": "완료",
+   "tugs": [
+    "해양5호",
+    "상록6호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "12:30",
+   "ship": "DOOLA STAR",
+   "route": "MDK-17→PS3",
+   "status": "완료",
+   "tugs": [
+    "해양1호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "11:30",
+   "ship": "AQUATRAVESIA",
+   "route": "WAA-9 MDK→MDK-15",
+   "status": "완료",
+   "tugs": [
+    "삼우47호",
+    "서해63호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "08:30",
+   "ship": "YANGZE 53",
+   "route": "MDK-15→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동8호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "08:00",
+   "ship": "TORM SPLENDID",
+   "route": "WAA-08→MDH-21",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "서해36호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "08:00",
+   "ship": "FORTUNE KAREN",
+   "route": "MDK-14→PS2",
+   "status": "완료",
+   "tugs": [
+    "국양7호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "07:45",
+   "ship": "FC ADONIS",
+   "route": "MDS-37→PS2",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "대동5호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "07:30",
+   "ship": "KASTELLI WAVE",
+   "route": "MDT-61→MDT-61",
+   "status": "완료",
+   "tugs": [
+    "해양5호",
+    "상록6호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "07:30",
+   "ship": "FC GLORIA",
+   "route": "MDS-32→PS3",
+   "status": "완료",
+   "tugs": [
+    "서해23호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "07:20",
+   "ship": "AMAZON VIRTUE",
+   "route": "PS2→MDS-36",
+   "status": "완료",
+   "tugs": [
+    "대동12호",
+    "서해63호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "07:10",
+   "ship": "CYH FUJIAN",
+   "route": "PS2→MDS-31",
+   "status": "완료",
+   "tugs": [
+    "대동12호",
+    "서해63호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "07:00",
+   "ship": "PHENIX EXPRESS",
+   "route": "WAA-1 MDK→MDK-19",
+   "status": "완료",
+   "tugs": [
+    "국양7호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "06:30",
+   "ship": "NO.3 SJ GAS",
+   "route": "WAA-3 MDK→MDK-11",
+   "status": "완료",
+   "tugs": [
+    "대동7호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "06:30",
+   "ship": "CHEMROAD NEXUS",
+   "route": "MDH-23→PS2",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "대동5호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "06:30",
+   "ship": "ADONIS",
+   "route": "MDT-63→PS4",
+   "status": "완료",
+   "tugs": [
+    "해양5호",
+    "상록6호",
+    "상록7호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "06:20",
+   "ship": "NEW GLOBAL",
+   "route": "WAA-02→MDS-34",
+   "status": "완료",
+   "tugs": [
+    "서해23호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-11-01",
+   "pob": "05:30",
+   "ship": "GAS OCEANROAD",
+   "route": "MDK-11→PS3",
+   "status": "완료",
+   "tugs": [
+    "대동7호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "19:30",
+   "ship": "CHEMROAD NEXUS",
+   "route": "MDH-23→PS2",
+   "status": "야간예보",
+   "tugs": [
+    "대동12호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "19:00",
+   "ship": "BOW SATURN",
+   "route": "MDS-31→PS2",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "삼우47"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "18:30",
+   "ship": "GOLDEN CREATION",
+   "route": "WAA-3 MDK→MDK-16",
+   "status": "완료",
+   "tugs": [
+    "삼우호",
+    "해양1호"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "18:30",
+   "ship": "CORAL ACTINIA",
+   "route": "WAA-04→MDH-24",
+   "status": "완료",
+   "tugs": [
+    "동양9호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "17:00",
+   "ship": "GAS OCEANROAD",
+   "route": "PS3→MDK-11",
+   "status": "완료",
+   "tugs": [
+    "삼우호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "14:00",
+   "ship": "OC GRANDE",
+   "route": "MDK-16→PS2",
+   "status": "완료",
+   "tugs": [
+    "서해23호",
+    "서해36호"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "14:00",
+   "ship": "DOOLA STAR",
+   "route": "WAA-1 MDK→MDK-17",
+   "status": "완료",
+   "tugs": [
+    "동양1호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "14:00",
+   "ship": "ADONIS",
+   "route": "MDT-63→PS4",
+   "status": "완료",
+   "tugs": [
+    "해양5호",
+    "상록6호",
+    "서해63호"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "12:30",
+   "ship": "XING SHENG YUAN",
+   "route": "MDK-19→PS2",
+   "status": "완료",
+   "tugs": [
+    "해양1호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "12:00",
+   "ship": "TORM SPLENDID",
+   "route": "MDS-36→MDH-21",
+   "status": "완료",
+   "tugs": [
+    "대동9호",
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "12:00",
+   "ship": "JN JUPITER",
+   "route": "MDS-37→PS2",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "11:30",
+   "ship": "OCEAN CARRIER",
+   "route": "→",
+   "status": "취소",
+   "tugs": [
+    "해양5호",
+    "상록6호"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "11:30",
+   "ship": "DS VEGA",
+   "route": "MDK-18→PS2",
+   "status": "완료",
+   "tugs": [
+    "동양1호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "10:45",
+   "ship": "PAN KOMIPO",
+   "route": "B.WAA-04→MDB-41",
+   "status": "완료",
+   "tugs": [
+    "상록10호",
+    "해양9호",
+    "신성호"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "10:15",
+   "ship": "XIN WEI YANG",
+   "route": "SPM-01→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동10호",
+    "상록8호"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "10:15",
+   "ship": "SEAWAYS SAN SABA",
+   "route": "WAA-10 MDK→SPM-01",
+   "status": "완료",
+   "tugs": [
+    "대동10호",
+    "상록8호"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "07:30",
+   "ship": "NO.3 SJ GAS",
+   "route": "MDH-22→WAA-01",
+   "status": "완료",
+   "tugs": [
+    "대동7호",
+    "상록9호"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "07:00",
+   "ship": "FC GLORIA",
+   "route": "PS3→MDS-32",
+   "status": "완료",
+   "tugs": [
+    "동양1호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "06:30",
+   "ship": "SILVER PHILIPPA",
+   "route": "PS2-2→MDN-11",
+   "status": "완료",
+   "tugs": [
+    "대동12호",
+    "서해53호"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "06:00",
+   "ship": "YUAN SHAN 9",
+   "route": "MDS-33→PS3",
+   "status": "완료",
+   "tugs": [
+    "동양1호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-10-31",
+   "pob": "06:00",
+   "ship": "SAEHAN ASTRO",
+   "route": "WAA-03→MDH-25",
+   "status": "완료",
+   "tugs": [
+    "동양1호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "18:00",
+   "ship": "OC GRANDE",
+   "route": "WAA-3→MDK-16",
+   "status": "완료",
+   "tugs": [
+    "대산1호",
+    "서해36호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "17:15",
+   "ship": "CHEMROAD NEXUS",
+   "route": "MDS-31→MDH-23",
+   "status": "완료",
+   "tugs": [
+    "상록6호",
+    "상록7호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "17:00",
+   "ship": "XING SHENG YUAN",
+   "route": "PS2-2→MDK-19",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "17:00",
+   "ship": "FOREVER ASSURANCE",
+   "route": "MDK-19→PS2",
+   "status": "완료",
+   "tugs": [
+    "상록7호",
+    "상록6호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "16:30",
+   "ship": "DS VEGA",
+   "route": "WAA-5→MDK-18",
+   "status": "완료",
+   "tugs": [
+    "동양1호",
+    "대동5호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "13:30",
+   "ship": "PROTEUS STEPHANIE",
+   "route": "MDN-11→WAA-09",
+   "status": "완료",
+   "tugs": [
+    "상록6호",
+    "상록7호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "12:30",
+   "ship": "SAEHAN ASTRO",
+   "route": "PS3→MDK-12",
+   "status": "완료",
+   "tugs": [
+    "대산1호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "12:30",
+   "ship": "HAFNIA LILLESAND",
+   "route": "MDS-36→WAA-09",
+   "status": "완료",
+   "tugs": [
+    "대동9호",
+    "대동12호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "12:15",
+   "ship": "TORM SPLENDID",
+   "route": "PS2→MDS-36",
+   "status": "완료",
+   "tugs": [
+    "대동12호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "11:30",
+   "ship": "TONG SHUN",
+   "route": "MDB-41→B.WAA-02",
+   "status": "완료",
+   "tugs": [
+    "상록10호",
+    "해양9호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "11:30",
+   "ship": "PRISM AGILITY",
+   "route": "MDA-52→PS1",
+   "status": "완료",
+   "tugs": [
+    "보령5호",
+    "보령3호",
+    "보령11호",
+    "신성호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "11:30",
+   "ship": "CHEMROAD NEXUS",
+   "route": "→해양1호",
+   "status": "취소",
+   "tugs": [
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "11:30",
+   "ship": "BOW SATURN",
+   "route": "→대동5호",
+   "status": "취소",
+   "tugs": [
+    "서해36호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "10:00",
+   "ship": "SEA EMPIRE",
+   "route": "PS2→MDT-51",
+   "status": "완료",
+   "tugs": [
+    "상록6호",
+    "상록7호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "08:00",
+   "ship": "C.CREATOR",
+   "route": "PS2→WAA-11 MDK",
+   "status": "완료",
+   "tugs": [
+    "대동9호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "07:00",
+   "ship": "PAN MUTIARA",
+   "route": "MDA-01→PS1",
+   "status": "완료",
+   "tugs": [
+    "상록10호",
+    "해양9호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "06:45",
+   "ship": "BEI LUN 17",
+   "route": "MB5-01→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동12호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "06:30",
+   "ship": "NO.3 SJ GAS",
+   "route": "PS3→MDH-22",
+   "status": "완료",
+   "tugs": [
+    "삼우호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "06:15",
+   "ship": "AFRICAN SANDPIPER",
+   "route": "PS2-2→MB5-01",
+   "status": "완료",
+   "tugs": [
+    "대동12호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "06:00",
+   "ship": "YUAN SHAN 9",
+   "route": "PS3→MDS-33",
+   "status": "완료",
+   "tugs": [
+    "서해25호",
+    "대동7호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "06:00",
+   "ship": "JN JUPITER",
+   "route": "WAA-04→MDS-37",
+   "status": "완료",
+   "tugs": [
+    "국양7호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "06:00",
+   "ship": "FORTUNE KAREN",
+   "route": "MDK-16→PS2",
+   "status": "완료",
+   "tugs": [
+    "해양1호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-10-30",
+   "pob": "05:30",
+   "ship": "WOOLIM 5",
+   "route": "MDK-18→PS2",
+   "status": "완료",
+   "tugs": [
+    "해양1호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "19:00",
+   "ship": "NO.3 SJ GAS",
+   "route": "MDK-11→PS3",
+   "status": "완료",
+   "tugs": [
+    "대산1호",
+    "서해25호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "18:30",
+   "ship": "ATROTOS HERACLES",
+   "route": "MDT-51→PS2",
+   "status": "완료",
+   "tugs": [
+    "상록6호",
+    "상록7호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "17:00",
+   "ship": "YANGZE 53",
+   "route": "WAA-8→MDK-15",
+   "status": "완료",
+   "tugs": [
+    "대동8호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "17:00",
+   "ship": "CHEMROAD NEXUS",
+   "route": "PS2→MDS-31",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "서해53호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "16:30",
+   "ship": "BEI LUN 17",
+   "route": "MB5-01→PS2",
+   "status": "취소",
+   "tugs": [
+    "대동9호",
+    "삼우47호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "16:00",
+   "ship": "AFRICAN SANDPIPER",
+   "route": "PS2-2→MB5-01",
+   "status": "취소",
+   "tugs": [
+    "대동9호",
+    "삼우47호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "12:45",
+   "ship": "MS SHARON",
+   "route": "MDH-23→PS3",
+   "status": "완료",
+   "tugs": [
+    "대산1호",
+    "서해25호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "12:30",
+   "ship": "PAN MUTIARA",
+   "route": "MDA-01→PS1",
+   "status": "취소",
+   "tugs": [
+    "해양9호",
+    "상록10호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "11:30",
+   "ship": "SHAN HU ZUO",
+   "route": "MDK-15→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "서해36호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "11:30",
+   "ship": "SAEHAN CARINA",
+   "route": "WAA-03→MDH-25",
+   "status": "완료",
+   "tugs": [
+    "대동7호",
+    "서해25호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "11:00",
+   "ship": "HONG KAI",
+   "route": "MDH-25→PS3",
+   "status": "완료",
+   "tugs": [
+    "서해25호",
+    "대동7호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "10:30",
+   "ship": "NO.3 SJ GAS",
+   "route": "WAA-1→MDK-11",
+   "status": "완료",
+   "tugs": [
+    "동양1호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "10:30",
+   "ship": "ENERGY ATHENA",
+   "route": "MDK-16→PS2",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "09:45",
+   "ship": "OCEAN APHRODITE",
+   "route": "B.WAA-04→MDB-42",
+   "status": "완료",
+   "tugs": [
+    "보령7호",
+    "보령9호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "09:30",
+   "ship": "MARAN VIRTUE",
+   "route": "PS2→MDT-53",
+   "status": "완료",
+   "tugs": [
+    "서해63호",
+    "대동12호",
+    "서해53호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "08:45",
+   "ship": "HAFNIA LILLESAND",
+   "route": "PS2→MDS-36",
+   "status": "완료",
+   "tugs": [
+    "상록6호",
+    "상록7호",
+    "대동5호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "08:30",
+   "ship": "PRISM AGILITY",
+   "route": "PS1→MDA-52",
+   "status": "완료",
+   "tugs": [
+    "보령5호",
+    "보령3호",
+    "보령11호",
+    "신성호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "06:30",
+   "ship": "PILATUS 65",
+   "route": "MDK-11→PS3",
+   "status": "완료",
+   "tugs": [
+    "삼우호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "06:30",
+   "ship": "LYRIC MAGNOLIA",
+   "route": "MDH-21→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동12호",
+    "상록6호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "06:00",
+   "ship": "YC COSMOS",
+   "route": "MDS-34→PS3",
+   "status": "완료",
+   "tugs": [
+    "서해23호",
+    "대동7호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "06:00",
+   "ship": "XIN WEI YANG",
+   "route": "WAA-11→SPM-01",
+   "status": "완료",
+   "tugs": [
+    "상록8호",
+    "대동10호"
+   ]
+  },
+  {
+   "date": "2026-10-29",
+   "pob": "05:30",
+   "ship": "JN EMERALD",
+   "route": "WAA-06→MDS-33",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-10-28",
+   "pob": "21:30",
+   "ship": "PILATUS 65",
+   "route": "MDK-11→PS3",
+   "status": "19:00 이후 야간 신규 배정",
+   "tugs": [
+    "삼우호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-10-28",
+   "pob": "18:00",
+   "ship": "DOOLA STAR",
+   "route": "MDK-17→PS3",
+   "status": "완료",
+   "tugs": [
+    "동양1호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-10-28",
+   "pob": "11:30",
+   "ship": "YC COSMOS",
+   "route": "WAA-06→MDS-34",
+   "status": "완료",
+   "tugs": [
+    "해양1호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-10-28",
+   "pob": "11:30",
+   "ship": "KS YU HONG",
+   "route": "MDB-42→PS1",
+   "status": "완료",
+   "tugs": [
+    "상록10호",
+    "해양9호"
+   ]
+  },
+  {
+   "date": "2026-10-28",
+   "pob": "11:30",
+   "ship": "HONG KAI",
+   "route": "WAA-03→MDH-25",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "대동5호"
+   ]
+  },
+  {
+   "date": "2026-10-28",
+   "pob": "11:00",
+   "ship": "ATROTOS HERACLES",
+   "route": "WAQ-01→MDT-51",
+   "status": "완료",
+   "tugs": [
+    "상록7호",
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-10-28",
+   "pob": "10:00",
+   "ship": "PILATUS 65",
+   "route": "PS3→MDK-11",
+   "status": "완료",
+   "tugs": [
+    "서해25호",
+    "대동7호"
+   ]
+  },
+  {
+   "date": "2026-10-28",
+   "pob": "09:30",
+   "ship": "MS SHARON",
+   "route": "WAA-05→MDH-23",
+   "status": "완료",
+   "tugs": [
+    "서해23호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-10-28",
+   "pob": "09:30",
+   "ship": "JO LYRIC MAGNOLIA",
+   "route": "WAA-09→MDH-21",
+   "status": "완료",
+   "tugs": [
+    "서해63호",
+    "상록6호"
+   ]
+  },
+  {
+   "date": "2026-10-28",
+   "pob": "09:15",
+   "ship": "WAN MING FU QIANG",
+   "route": "T.WAA-01→MDT-53",
+   "status": "취소료 발생",
+   "tugs": [
+    "상록7호",
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-10-28",
+   "pob": "09:00",
+   "ship": "SHAN HU ZUO",
+   "route": "WAA-9→MDK-15",
+   "status": "완료",
+   "tugs": [
+    "대동8호",
+    "대동12호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-10-28",
+   "pob": "08:30",
+   "ship": "FOREVER ASSURANCE",
+   "route": "WAA-8→MDK-19",
+   "status": "완료",
+   "tugs": [
+    "삼우47호",
+    "서해53호"
+   ]
+  },
+  {
+   "date": "2026-10-28",
+   "pob": "07:45",
+   "ship": "XIN WEI YANG",
+   "route": "WAA-11→SPM-01",
+   "status": "취소료 발생",
+   "tugs": [
+    "대동9호",
+    "상록8호"
+   ]
+  },
+  {
+   "date": "2026-10-28",
+   "pob": "05:30",
+   "ship": "ISLA DE BIOKO",
+   "route": "MDK-15→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동10호",
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-10-28",
+   "pob": "05:30",
+   "ship": "DOOLA STAR",
+   "route": "PS3→MDK-17",
+   "status": "완료",
+   "tugs": [
+    "대동8호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-10-27",
+   "pob": "11:00",
+   "ship": "ISLA DE BIOKO",
+   "route": "MDK-15→PS2",
+   "status": "취소",
+   "tugs": [
+    "대동12호",
+    "대동10호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "21:30",
+   "ship": "NO.3 SJ GAS",
+   "route": "MDK-11→WAA-1 MDK",
+   "status": "야간배정(신규주기)",
+   "tugs": [
+    "대산1호",
+    "서해23호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "21:30",
+   "ship": "GASCHEM CARIBIC",
+   "route": "MDK-19→WAA-05",
+   "status": "야간배정(신규주기)",
+   "tugs": [
+    "해양2호",
+    "대동5호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "19:00",
+   "ship": "TWIN CASTOR",
+   "route": "SPM-01→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동12호",
+    "상록8호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "18:15",
+   "ship": "ATROTOS HERACLES",
+   "route": "MDT-51→PS2",
+   "status": "취소",
+   "tugs": [
+    "상록6호",
+    "상록7호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "17:45",
+   "ship": "ATROTOS HERACLES",
+   "route": "MDT-51→WAQ-01",
+   "status": "완료",
+   "tugs": [
+    "상록6호",
+    "상록7호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "17:15",
+   "ship": "WAN MING FU QIANG",
+   "route": "MDT-53→T.WAA-01",
+   "status": "완료",
+   "tugs": [
+    "상록6호",
+    "상록7호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "17:00",
+   "ship": "HONG KAI",
+   "route": "MDH-25→WAA-04",
+   "status": "취소",
+   "tugs": [
+    "대동5호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "16:40",
+   "ship": "ENERGY ATHENA",
+   "route": "MDS-31→WAA-09",
+   "status": "완료",
+   "tugs": [
+    "대동9호",
+    "삼우47"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "16:00",
+   "ship": "POLARIS",
+   "route": "MDS-37→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "15:30",
+   "ship": "YU HONG",
+   "route": "MDB-42→PS1",
+   "status": "취소",
+   "tugs": [
+    "상록10호",
+    "해양9호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "15:30",
+   "ship": "MALAZGIRT",
+   "route": "MDS-36→WAA-09",
+   "status": "완료",
+   "tugs": [
+    "대동9호",
+    "삼우47"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "15:30",
+   "ship": "FANFARE",
+   "route": "MDK-16→PS2",
+   "status": "완료",
+   "tugs": [
+    "해양2호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "15:30",
+   "ship": "DOOLA STAR",
+   "route": "PS3→MDK-16",
+   "status": "취소",
+   "tugs": [
+    "해양2호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "15:30",
+   "ship": "CORAL PALMATA",
+   "route": "MDH-24→PS2",
+   "status": "완료",
+   "tugs": [
+    "삼우호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "11:00",
+   "ship": "HONG KAI",
+   "route": "PS3→WAA-03",
+   "status": "완료",
+   "tugs": [
+    "대동8호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "11:00",
+   "ship": "FORTUNE KAREN",
+   "route": "MDK-14→PS2",
+   "status": "완료",
+   "tugs": [
+    "동양1호",
+    "해양1호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "10:00",
+   "ship": "TWIN CASTOR",
+   "route": "SPM-01→WAA-12 MDK",
+   "status": "취소",
+   "tugs": [
+    "상록8호",
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "10:00",
+   "ship": "HUA NAN 5",
+   "route": "MDH-25→PS3",
+   "status": "완료",
+   "tugs": [
+    "국양7호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "09:30",
+   "ship": "MORNING SPARROW",
+   "route": "MDN-11→WAA-09",
+   "status": "완료",
+   "tugs": [
+    "삼우47",
+    "대동9호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "09:00",
+   "ship": "SEAWAYS SAN SABA",
+   "route": "PS2→WAA-10 MDK",
+   "status": "완료",
+   "tugs": [
+    "상록7호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "08:30",
+   "ship": "NO.3 SJ GAS",
+   "route": "WAA-2 MDK→MDK-11",
+   "status": "완료",
+   "tugs": [
+    "상록9호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "08:00",
+   "ship": "WAN MING FU QIANG",
+   "route": "PS2→MDT-53",
+   "status": "완료",
+   "tugs": [
+    "대동10호",
+    "상록6호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "07:45",
+   "ship": "SEONGHO ACE",
+   "route": "MDK-18→PS2",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "해양1호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "07:30",
+   "ship": "TONG SHUN",
+   "route": "B.WAA-03→MDB-41",
+   "status": "완료",
+   "tugs": [
+    "상록10호",
+    "해양9호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "07:30",
+   "ship": "GOLDEN JOY HANA",
+   "route": "MDK-19→PS3",
+   "status": "완료",
+   "tugs": [
+    "상록9호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "07:00",
+   "ship": "GASCHEM CARIBIC",
+   "route": "PS2-2→MDK-19",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "해양1호"
+   ]
+  },
+  {
+   "date": "2026-10-26",
+   "pob": "07:00",
+   "ship": "ASTREANA",
+   "route": "MDK-11→PS3",
+   "status": "완료",
+   "tugs": [
+    "상록9호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "20:00",
+   "ship": "SUNNY LAUREL",
+   "route": "MB4-01→PS3",
+   "status": "야간배정(신규주기)",
+   "tugs": [
+    "해양1호",
+    "서해36호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "15:00",
+   "ship": "TORM ELISE",
+   "route": "MDH-21→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동10호",
+    "서해63호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "15:00",
+   "ship": "HL LEADER",
+   "route": "MDT-53→PS2",
+   "status": "완료",
+   "tugs": [
+    "상록6호",
+    "상록7호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "15:00",
+   "ship": "CASPIAN SEA",
+   "route": "MDK-15→PS2",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "동양9호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "14:30",
+   "ship": "ISLA DE BIOKO",
+   "route": "PS2→MDK-15",
+   "status": "완료",
+   "tugs": [
+    "동양9호",
+    "서해36호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "14:00",
+   "ship": "NAN LIN WAN",
+   "route": "MDS-36→PS2",
+   "status": "완료",
+   "tugs": [
+    "서해53호",
+    "서해63호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "13:30",
+   "ship": "MALAZGIRT",
+   "route": "PS2→MDS-36",
+   "status": "완료",
+   "tugs": [
+    "서해53호",
+    "상록7호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "13:00",
+   "ship": "GOLDEN JOY HANA",
+   "route": "WAA-06→MDK-19",
+   "status": "완료",
+   "tugs": [
+    "서해23호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "12:30",
+   "ship": "SEONGHO ACE",
+   "route": "WAA-5 MDK→MDK-18",
+   "status": "완료",
+   "tugs": [
+    "대동7호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "09:45",
+   "ship": "HL KOMIPO",
+   "route": "MDB-41→PS1",
+   "status": "완료",
+   "tugs": [
+    "해양9호",
+    "상록10호",
+    "신성호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "09:30",
+   "ship": "POLARIS",
+   "route": "WAA-04→MDS-37",
+   "status": "완료",
+   "tugs": [
+    "해양2호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "09:30",
+   "ship": "KEOYOUNG BLUE 5",
+   "route": "MDH-23→PS3",
+   "status": "완료",
+   "tugs": [
+    "대동7호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "09:30",
+   "ship": "HUA NAN 5",
+   "route": "PS3→MDH-25",
+   "status": "완료",
+   "tugs": [
+    "해양1호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "09:00",
+   "ship": "NO.3 SJ GAS",
+   "route": "MDH-22→WAA-01",
+   "status": "완료",
+   "tugs": [
+    "대동7호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "09:00",
+   "ship": "JN JUPITER",
+   "route": "MDS-31→PS2",
+   "status": "완료",
+   "tugs": [
+    "해양1호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "09:00",
+   "ship": "BELIEF GAS",
+   "route": "PS3→MDH-22",
+   "status": "완료",
+   "tugs": [
+    "상록9호",
+    "대산1호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "08:30",
+   "ship": "TONG ZHOU 6",
+   "route": "MDH-26→PS3",
+   "status": "완료",
+   "tugs": [
+    "대동7호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "08:30",
+   "ship": "SEAMERIDIAN",
+   "route": "MDS-37→PS2",
+   "status": "완료",
+   "tugs": [
+    "삼우47",
+    "대동9호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "08:30",
+   "ship": "FANFARE",
+   "route": "PS2-2→MDK-16",
+   "status": "완료",
+   "tugs": [
+    "대동8호",
+    "대동5호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "08:30",
+   "ship": "ENERGY ATHENA",
+   "route": "PS2→MDS-31",
+   "status": "완료",
+   "tugs": [
+    "대동9호",
+    "삼우47"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "08:00",
+   "ship": "OC GRANDE",
+   "route": "MDK-16→WAA-3 MDK",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "08:00",
+   "ship": "NEW HARMONY",
+   "route": "MDS-34→PS3",
+   "status": "완료",
+   "tugs": [
+    "서해23호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "07:30",
+   "ship": "XIN WEI YANG",
+   "route": "PS2→WAA-11 MDK",
+   "status": "완료",
+   "tugs": [
+    "대동10호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "07:30",
+   "ship": "SUNNY LAUREL",
+   "route": "PS3→MB4-01",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "서해25호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "07:30",
+   "ship": "KASTELLI WAVE",
+   "route": "PS4→MDT-61",
+   "status": "완료",
+   "tugs": [
+    "서해63호",
+    "상록6호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "07:30",
+   "ship": "ASTREANA",
+   "route": "WAA-2 MDK→MDK-11",
+   "status": "완료",
+   "tugs": [
+    "상록9호",
+    "대산1호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "07:15",
+   "ship": "CORAL PALMATA",
+   "route": "PS2-2→MDH-24",
+   "status": "완료",
+   "tugs": [
+    "동양9호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "07:00",
+   "ship": "PAN MUTIARA",
+   "route": "B.WAA-03→MDA-01",
+   "status": "완료",
+   "tugs": [
+    "상록10호",
+    "해양9호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "06:00",
+   "ship": "XIN WEI YANG",
+   "route": "SPM-01→PS2",
+   "status": "완료",
+   "tugs": [
+    "상록8호",
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-10-25",
+   "pob": "06:00",
+   "ship": "TWIN CASTOR",
+   "route": "WAA-11 MDK→SPM-01",
+   "status": "완료",
+   "tugs": [
+    "상록8호",
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "21:30",
+   "ship": "DOOLA STAR",
+   "route": "MDK-14→PS3",
+   "status": "예보(야간)",
+   "tugs": [
+    "대동5호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "21:00",
+   "ship": "NEW HARMONY",
+   "route": "MDS-34→PS3",
+   "status": "취소",
+   "tugs": [
+    "서해36호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "19:30",
+   "ship": "ORIENTAL AQUAMARINE",
+   "route": "MDK-19→PS2",
+   "status": "도선완료",
+   "tugs": [
+    "대동9호",
+    "대동10호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "19:30",
+   "ship": "ASTREANA",
+   "route": "WAA-2 MDK→MDK-11",
+   "status": "취소",
+   "tugs": [
+    "대동7호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "16:15",
+   "ship": "TWIN CASTOR",
+   "route": "PS2→WAA-11 MDK",
+   "status": "완료",
+   "tugs": [
+    "상록7호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "15:30",
+   "ship": "SEAMERIDIAN",
+   "route": "MDS-37→PS2",
+   "status": "취소",
+   "tugs": [
+    "대동5호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "15:30",
+   "ship": "HORIZON DREAM",
+   "route": "MDT-61→PS4",
+   "status": "예보(오후)",
+   "tugs": [
+    "백두",
+    "해나루1"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "15:30",
+   "ship": "BAO LIAN",
+   "route": "MB2-01→PS3",
+   "status": "완료",
+   "tugs": [
+    "동양1호",
+    "서해25호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "15:00",
+   "ship": "XIN WEI YANG",
+   "route": "PS2→SPM-01",
+   "status": "완료",
+   "tugs": [
+    "대동12호",
+    "상록8호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "15:00",
+   "ship": "MORNING SPARROW",
+   "route": "WAA-09→MDN-11",
+   "status": "완료",
+   "tugs": [
+    "해양1호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "14:00",
+   "ship": "ZHONG XIN FA ZHAN",
+   "route": "MDT-51→PS2",
+   "status": "완료",
+   "tugs": [
+    "대동10호",
+    "서해63호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "14:00",
+   "ship": "YU HONG",
+   "route": "B.WAA-02→MDB-42",
+   "status": "예보(오후)",
+   "tugs": [
+    "해양9호",
+    "상록10호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "14:00",
+   "ship": "TORM ELISE",
+   "route": "PS2-2→MDH-21",
+   "status": "완료",
+   "tugs": [
+    "삼우47",
+    "상록6호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "14:00",
+   "ship": "CASPIAN SEA",
+   "route": "PS2-2→MDK-15",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "동양9호",
+    "대동10호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "14:00",
+   "ship": "ATROTOS HERACLES",
+   "route": "PS2→MDT-51",
+   "status": "완료",
+   "tugs": [
+    "대동10호",
+    "서해63호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "13:30",
+   "ship": "YU HONG",
+   "route": "MDB-42→B.WAA-02",
+   "status": "예보(오후)",
+   "tugs": [
+    "상록10호",
+    "해양9호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "13:00",
+   "ship": "NAN LIN WAN",
+   "route": "MDH-21→MDS-36",
+   "status": "완료",
+   "tugs": [
+    "서해53호",
+    "뉴대륙"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "09:30",
+   "ship": "TONG ZHOU 6",
+   "route": "PS3→MDH-26",
+   "status": "작업완료",
+   "tugs": [
+    "상록9호",
+    "서해25호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "09:30",
+   "ship": "SHAN HU ZUO",
+   "route": "MDS-31→WAA-10",
+   "status": "작업완료",
+   "tugs": [
+    "서해53호",
+    "서해63호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "09:30",
+   "ship": "NAVIG8 GUIDE",
+   "route": "MDK-15→WAA-9 MDK",
+   "status": "작업완료",
+   "tugs": [
+    "대동9호",
+    "삼우47"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "09:30",
+   "ship": "JN JUPITER",
+   "route": "WAA-03→MDS-31",
+   "status": "작업완료",
+   "tugs": [
+    "대동8호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "09:00",
+   "ship": "NEW HARMONY",
+   "route": "WAA-03→MDS-34",
+   "status": "작업완료",
+   "tugs": [
+    "서해36호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "08:30",
+   "ship": "WISDOM VENTURE",
+   "route": "SPM-01→PS2",
+   "status": "도선완료",
+   "tugs": [
+    "대동12호",
+    "상록8호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "08:30",
+   "ship": "ASPEN EXPRESS",
+   "route": "MDN-11→PS2",
+   "status": "도선완료",
+   "tugs": [
+    "대동8호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "08:10",
+   "ship": "OC GRANDE",
+   "route": "PS2→MDK-16",
+   "status": "도선완료",
+   "tugs": [
+    "해양1호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "08:00",
+   "ship": "PACIFIC ANNA",
+   "route": "MDS-36→PS2",
+   "status": "도선완료",
+   "tugs": [
+    "대동10호",
+    "상록6호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "08:00",
+   "ship": "NO.3 SJ GAS",
+   "route": "WAA-03→MDH-22",
+   "status": "도선완료",
+   "tugs": [
+    "대산1호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "08:00",
+   "ship": "HENG HUI 108",
+   "route": "MDH-24→PS3",
+   "status": "도선완료",
+   "tugs": [
+    "동양9호",
+    "서해36호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "08:00",
+   "ship": "GOLDEN SUNNY HANA",
+   "route": "MDS-34→PS3",
+   "status": "도선완료",
+   "tugs": [
+    "삼우호",
+    "대동7호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "07:00",
+   "ship": "JN EMERALD",
+   "route": "WAA-4 MDK→MDK-18",
+   "status": "도선완료",
+   "tugs": [
+    "서해23호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "06:30",
+   "ship": "HL MIDLAND",
+   "route": "B.WAA-04→MDB-43",
+   "status": "도선완료",
+   "tugs": [
+    "상록10호",
+    "해양9호",
+    "보령3호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "06:20",
+   "ship": "HEUNG-A PIONEER",
+   "route": "MDK-18→PS2",
+   "status": "도선완료",
+   "tugs": [
+    "해양2호",
+    "서해23호"
+   ]
+  },
+  {
+   "date": "2026-10-24",
+   "pob": "06:00",
+   "ship": "DOOLA STAR",
+   "route": "PS3→MDK-14",
+   "status": "도선완료",
+   "tugs": [
+    "해양1호",
+    "상록9호"
+   ]
+  }
+ ],
+ "others_covered": [
+  "2026-10-24",
+  "2026-10-25",
+  "2026-10-26",
+  "2026-10-27",
+  "2026-10-28",
+  "2026-10-29",
+  "2026-10-30",
+  "2026-10-31",
+  "2026-11-01",
+  "2026-11-02",
+  "2026-11-03",
+  "2026-11-04",
+  "2026-11-05",
+  "2026-11-06",
+  "2026-11-07",
+  "2026-11-08",
+  "2026-11-09",
+  "2026-11-10",
+  "2026-11-11",
+  "2026-11-12"
  ]
 }

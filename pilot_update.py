@@ -53,6 +53,39 @@ def _unused(es):
 wb = openpyxl.load_workbook(XLSX, data_only=True)
 year = dt.datetime.now(KST).year
 new_rows, new_extras, done = [], [], []
+# 다른 선박의 도선 배정(예선이 붙은 건)도 모아 둔다 — 특이 사항 시간대에 어떤 작업이 있었는지 적는 데 쓴다.
+PL.setdefault('others', []); PL.setdefault('others_covered', [])
+okey = lambda a: (a['date'], a['pob'], a['ship'])
+ohave = {okey(a) for a in PL['others']}
+new_others, odone = [], []
+for ws in wb:
+    m = re.match(r'(\d{1,2})월\s*(\d{1,2})일_예선작업', ws.title)
+    if not m: continue
+    cyc = dt.date(year, int(m[1]), int(m[2]))
+    # 최근 3일 탭은 야간 배정이 뒤늦게 붙을 수 있어 매번 다시 훑는다(중복은 본선·일자·POB로 거름)
+    if cyc.isoformat() in PL['others_covered'] and (dt.datetime.now(KST).date() - cyc).days > 3: continue
+    rows = list(ws.iter_rows(values_only=True))
+    hi = next((i for i, r in enumerate(rows) if r and '본선명' in [str(c).strip() if c else '' for c in r]), None)
+    if hi is None: continue
+    H = [str(c).strip() if c else '' for c in rows[hi]]
+    col = lambda *names: next((H.index(n) for n in names if n in H), None)
+    cD, cS, cP, cN, cF, cT = col('일자'), col('진행상태'), col('POB 시각'), col('본선명'), col('출발지(FROM)'), col('도착지(TO)')
+    cTug = [c for c in (col('배정 예인선 1'), col('배정 예인선 2'), col('배정 예인선 3')) if c is not None]
+    for r in rows[hi + 1:]:
+        if not r or cN is None or not r[cN]: continue
+        tugs = [x.strip() for c in cTug if r[c] for x in re.split(r'[,/·]', str(r[c]))
+                if re.search(r'[0-9A-Za-z가-힣]', x) and not re.search(r'자력|없음|미배정', x)]
+        if not tugs: continue
+        d, t = to_date(r[cD], year) if cD is not None else cyc, to_time(r[cP])
+        if not d or not t: continue
+        o = {'date': d.isoformat(), 'pob': t.strftime('%H:%M'), 'ship': str(r[cN]).strip(),
+             'route': f"{r[cF] or ''}→{r[cT] or ''}", 'status': str(r[cS] or '').strip() if cS is not None else '', 'tugs': tugs}
+        if okey(o) in ohave: continue
+        ohave.add(okey(o)); new_others.append(o)
+    odone.append(cyc.isoformat())
+PL['others'] += new_others
+PL['others'].sort(key=okey, reverse=True)
+PL['others_covered'] = sorted(set(PL['others_covered']) | set(odone))
 for ws in wb:
     m = re.match(r'(\d{1,2})월\s*(\d{1,2})일_예선작업', ws.title)
     if not m: continue
@@ -131,4 +164,4 @@ PL['extras'].sort(key=lambda x: (x['date'], x['time']), reverse=True)
 PL['covered'] = sorted(set(PL['covered']) | set(done))
 if done: PL['checked'] = dt.datetime.now(KST).strftime('%Y-%m-%d')
 json.dump(PL, open(pp, 'w'), ensure_ascii=False, indent=1)
-print(json.dumps({'new_days': done, 'assignments': new_rows, 'extras': new_extras}, ensure_ascii=False, indent=1))
+print(json.dumps({'new_days': done, 'assignments': new_rows, 'extras': new_extras, 'others_days': odone, 'others_added': len(new_others)}, ensure_ascii=False, indent=1))
