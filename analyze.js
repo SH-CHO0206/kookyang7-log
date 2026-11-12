@@ -86,7 +86,7 @@
     var n = 0; ev.forEach(function (e) { e.day = kstDay(e.t0); e.s = kst(e.t0); e.e = kst(e.t1, false); if (e.kind === 'work') e.no = ++n; });
     return ev;
   }
-  // Tie AIS events to pilot assignments (pilot.json). Counts and the orange cumulative numbers come only from
+  // Tie AIS events to pilot assignments (pilot.json). Counts and the orange monthly numbers (YYYY-MM #n) come only from
   // assignments; AIS movement on compared days that no assignment explains is flagged red as a special note.
   //  - assignment ranges = the "HH:MM~HH:MM" spans written in each non-cancelled assignment's AIS text
   //  - an outing (sortie) runs from leaving the home berth to returning; legs and waits inside an outing that
@@ -110,8 +110,13 @@
       var o = {}; for (var k in a) o[k] = a[k]; o.t = day0(a.date) + hm(a.pob); o.cancel = /취소/.test(a.status || ''); o.ranges = []; o.evs = []; return o;
     }).sort(function (x, y) { return x.t - y.t; });
     var asg = all.filter(function (a) { return !a.cancel; });
+    // numbering restarts every month (by assignment date): label "YYYY-MM #n"; seq is the internal running index
+    var perMonth = {};
     asg.forEach(function (a, i) {
-      a.no = i + 1;
+      a.seq = i + 1;
+      var mo = a.date.slice(0, 7);
+      a.no = perMonth[mo] = (perMonth[mo] || 0) + 1;
+      a.label = mo + ' #' + a.no;
       if (/^(불일치|판정)/.test(a.verdict || '')) return;
       var re = /(\d{1,2}):(\d{2})\s*~\s*(\d{1,2}):(\d{2})/g, m, b = day0(a.date);
       while ((m = re.exec(a.ais || ''))) {
@@ -132,7 +137,7 @@
           if (o >= Math.min(60, Math.max(1, (e.t1 - e.t0) * 0.5)) && o > bo) { bo = o; best = a; }
         });
       });
-      if (best) { info[i].asg = best.no; best.evs.push(i); }
+      if (best) { info[i].asg = best.seq; best.evs.push(i); }
     });
     // outings
     var sorties = [], cur = null;
@@ -159,7 +164,7 @@
       var ctx;
       if (hasAsg) {
         var ns = []; s.idx.forEach(function (i) { var n = info[i].asg; if (n && ns.indexOf(n) < 0) ns.push(n); });
-        ctx = '배정 작업 ' + ns.map(function (n) { return '#' + n + ' ' + asg[n - 1].ship; }).join(', ') + ' 출동 중 배정 외 기동';
+        ctx = '배정 작업 ' + ns.map(function (n) { return asg[n - 1].label + ' ' + asg[n - 1].ship; }).join(', ') + ' 출동 중 배정 외 기동';
       } else {
         var cx = all.filter(function (a) { return a.cancel && a.t >= t0 - 7200 && a.t <= t1 + 7200; });
         ctx = cx.length ? '배정 없는 출동 — 취소된 배정 ' + cx.map(function (a) { return a.ship + ' (POB ' + a.pob + ')'; }).join(', ') + ' 시간대' : '배정 없는 출동';
@@ -171,6 +176,21 @@
       count: function (d) { return covered[d] ? asg.filter(function (a) { return a.date === d; }).length : null; },
       noteCount: function (d) { return covered[d] ? notes.filter(function (n) { return n.day === d; }).length : null; } };
   }
-  var api = { analyze: analyze, link: link, kst: kst, kstDay: kstDay, dist: dist };
+  // Calendar periods (KST dates): weeks run Monday–Sunday, months are calendar months.
+  function addDays(ds, n) { var d = new Date(Date.parse(ds + 'T00:00:00Z') + n * 86400000); return d.toISOString().slice(0, 10); }
+  function weekStart(ds) { var w = new Date(Date.parse(ds + 'T00:00:00Z')).getUTCDay(); return addDays(ds, -((w + 6) % 7)); }
+  // period(mode, anyDayInside) -> {mode, key, from, to (inclusive YYYY-MM-DD), title}
+  function period(mode, ds) {
+    if (mode === 'month') {
+      var mo = ds.slice(0, 7), y = +mo.slice(0, 4), m = +mo.slice(5, 7);
+      var last = new Date(Date.UTC(y, m, 0)).getUTCDate();
+      return { mode: 'month', key: mo, from: mo + '-01', to: mo + '-' + String(last).padStart(2, '0'), title: y + '년 ' + m + '월' };
+    }
+    var a = weekStart(ds), b = addDays(a, 6);
+    return { mode: 'week', key: a, from: a, to: b, title: a + '(월) ~ ' + b.slice(5) + '(일)' };
+  }
+  function inPeriod(p, ds) { return ds >= p.from && ds <= p.to; }
+  var api = { analyze: analyze, link: link, kst: kst, kstDay: kstDay, dist: dist,
+    addDays: addDays, weekStart: weekStart, period: period, inPeriod: inPeriod };
   if (typeof module !== 'undefined' && module.exports) module.exports = api; else root.KY7 = api;
 })(this);

@@ -44,6 +44,7 @@ dl.meta dd{margin:0;font-variant-numeric:tabular-nums}
 .calgrid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
 .calgrid .wd{font-size:11px;color:var(--ink-2);text-align:center;padding:2px 0}
 .calgrid .wd.sun{color:var(--alert)}
+.cell.inper{background:color-mix(in srgb,var(--work) 9%,var(--land))}
 .cell{font:inherit;min-height:58px;padding:4px 5px;border:1px solid var(--rule);border-radius:4px;background:var(--land);color:var(--ink);display:flex;flex-direction:column;align-items:flex-start;gap:1px;text-align:left;cursor:pointer;min-width:0}
 .cell:disabled{background:transparent;border-color:transparent;color:var(--ink-2);opacity:.45;cursor:default}
 .cell .dn{font-family:var(--f-data);font-size:12px;font-weight:600}
@@ -90,6 +91,19 @@ tbody tr.alert td{background:color-mix(in srgb,var(--alert) 7%,transparent)}
 .secgrid{display:grid;gap:12px}
 table.pilot{min-width:640px}
 #msg{color:var(--ink-2)}
+.lbl{font-family:var(--f-data);font-weight:600;color:var(--work);white-space:nowrap;font-variant-numeric:tabular-nums}
+.perhead{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.perhead .seg{display:inline-flex;gap:0}
+.perhead .seg button{border-radius:0;padding:4px 14px;background:var(--card)}
+.perhead .seg button:first-child{border-radius:14px 0 0 14px}.perhead .seg button:last-child{border-radius:0 14px 14px 0;margin-left:-1px}
+.perhead .seg button[aria-pressed="true"]{background:var(--ink);color:var(--card);border-color:var(--ink)}
+.perhead .nav{display:inline-flex;align-items:center;gap:8px}
+.perhead .nav button:disabled{opacity:.35;cursor:default}
+.perhead #pertitle{font-family:var(--f-data);font-weight:600}
+.kpi{display:flex;flex-wrap:wrap;gap:6px 22px;font-size:14px}
+.kpi b{font-family:var(--f-data);font-size:1.25rem}
+h3{font-size:1rem;margin:4px 0 0}
+table.pertbl{min-width:960px}table.pertbl td:nth-child(4){min-width:150px}
 svg text{font-family:var(--f-data)}
 </style>
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}</style>
@@ -99,7 +113,7 @@ svg text{font-family:var(--f-data)}
 <header>
   <div>
     <h1>KOOK YANG 7 작업일지</h1>
-    <p class="sub">예인선 · AIS 항적 기반 누적 일지 · 매일 19:30 마감 갱신</p>
+    <p class="sub">예인선 · AIS 항적 기반 일지 · 매일 19:30 마감 갱신 · 주간(월~일)·월간 보고</p>
   </div>
   <dl class="meta">
     <div><dt>MMSI</dt><dd>440066190</dd></div>
@@ -136,16 +150,15 @@ svg text{font-family:var(--f-data)}
   <span><i style="background:var(--mid)"></i>감속 (3~7 kn)</span>
   <span><i style="background:var(--work)"></i>3 kn 미만 저속·정지</span>
   <span><i style="background:var(--alert);height:4px"></i>배정 없는 움직임 (특이 사항)</span>
-  <span><span class="n" style="width:16px;height:16px;font-size:9px">1</span> 배정 작업 누적 번호</span>
-  <span>▲ 주변 대형선 (확인 시점 위치)</span>
+  <span><span class="n" style="width:16px;height:16px;font-size:9px">1</span> 배정 작업 월별 번호 (예: 2026-11 #1) · 옆 글자는 도선 배정 기록의 본선명</span>
   <span>육지 윤곽 © OpenStreetMap contributors</span>
 </div>
 
 <section id="logsec" class="secgrid">
 <h2 id="logtitle">작업일지</h2>
-<p class="note">시각은 한국시간(KST)입니다. 주황 번호는 도선 배정 작업의 누적 번호이고, 빨간 행은 배정 없이 움직인 구간(특이 사항)입니다. 행을 누르면 지도에 표시됩니다. 축척을 '자동'으로 두면 그날 항적이 대산항 안이면 상세, 평택·인천까지 가면 광역, 여수 등 더 멀리 가면 전국 지도로 바뀝니다.</p>
+<p class="note">시각은 한국시간(KST)입니다. 주황 번호는 도선 배정 작업의 월별 번호(매달 1번부터)이고, 빨간 행은 배정 없이 움직인 구간(특이 사항)입니다. 행을 누르면 지도에 표시됩니다. 축척을 '자동'으로 두면 그날 항적이 대산항 안이면 상세, 평택·인천까지 가면 광역, 여수 등 더 멀리 가면 전국 지도로 바뀝니다.</p>
 <div class="tbl"><table>
-  <thead><tr><th>#</th><th>시작</th><th>종료</th><th>움직임</th><th>인접 선박 (거리)</th><th>구분</th></tr></thead>
+  <thead><tr><th>#</th><th>시작</th><th>종료</th><th>움직임</th><th>본선 (도선 배정 기록)</th><th>구분</th></tr></thead>
   <tbody id="log"></tbody>
 </table></div>
 </section>
@@ -153,7 +166,7 @@ svg text{font-family:var(--f-data)}
 <h2 id="pilottitle">도선 배정 대조</h2>
 <p class="note" id="pilotnote">도선사회 배정 기록에서 국양7호가 예선으로 배정된 작업과, 그 시간대 국양7호 AIS 기록을 맞춰 본 결과입니다.</p>
 <div class="tbl"><table class="pilot">
-  <thead><tr><th>#</th><th>POB</th><th>본선 (구간)</th><th>배정</th><th>배정 상태</th><th>국양7호 AIS 기록</th><th>판정</th></tr></thead>
+  <thead><tr><th>번호</th><th>POB</th><th>본선 (구간)</th><th>배정</th><th>배정 상태</th><th>국양7호 AIS 기록</th><th>판정</th></tr></thead>
   <tbody id="pilot"></tbody>
 </table></div>
 </section>
@@ -167,14 +180,29 @@ svg text{font-family:var(--f-data)}
 </section>
 
 <section id="sumsec" class="sumsec">
-<h2>누적 요약</h2>
-<p class="note">기록이 시작된 날부터 지금까지 날짜별·월별 합계입니다. 작업 건수는 도선 배정 기록 기준이며, 배정 자료와 대조하기 전 날짜는 '대조 전'으로 둡니다. 날짜를 누르면 위 지도와 일지가 그날로 바뀝니다. 항해 거리는 AIS 위치 사이 직선거리의 합(해리)입니다.</p>
+<div class="perhead">
+  <h2 id="perh" style="margin:0">주간 보고</h2>
+  <div class="seg" role="group" aria-label="보고 단위"><button type="button" data-p="week" aria-pressed="true">주간 (월~일)</button><button type="button" data-p="month" aria-pressed="false">월간</button></div>
+  <div class="nav"><button type="button" id="perprev" aria-label="이전 기간">◀</button><span id="pertitle">—</span><button type="button" id="pernext" aria-label="다음 기간">▶</button></div>
+</div>
+<div class="kpi" id="perkpi"></div>
+<p class="note">선택한 주(월요일~일요일) 또는 달의 날짜별 합계와 배정 작업·특이 사항 목록입니다. 작업 번호는 매달 1번부터 다시 매기며(예: 2026-11 #3), 도선 배정 기록(국양7호 배정, 취소 제외)만 셉니다. 날짜·행을 누르면 위 지도와 일지가 그날로 바뀝니다. 항해 거리는 AIS 위치 사이 직선거리의 합(해리)입니다.</p>
 <div class="tbl"><table class="sum">
   <thead><tr><th>날짜</th><th>배정 작업</th><th>특이 사항</th><th>항해 거리</th><th>운항 범위</th><th>도선 배정 대조</th></tr></thead>
   <tbody id="sum"></tbody>
 </table></div>
+<h3>배정 작업</h3>
+<div class="tbl"><table class="pilot pertbl">
+  <thead><tr><th>번호</th><th>날짜</th><th>POB</th><th>본선 (구간)</th><th>배정</th><th>배정 상태</th><th>국양7호 AIS 기록</th><th>판정</th></tr></thead>
+  <tbody id="perasg"></tbody>
+</table></div>
+<h3 class="red">특이 사항</h3>
+<div class="tbl"><table class="pilot">
+  <thead><tr><th>날짜</th><th>시각</th><th>AIS 움직임</th><th>배정과의 관계</th></tr></thead>
+  <tbody id="pernotes"></tbody>
+</table></div>
 </section>
-<p class="note">근거: MarineTraffic 최근 24시간 항적을 매일 받아 누적한 기록과, 대산항 도선 배정 기록(국양7호가 배정 예인선인 건, 취소 제외)을 맞춘 결과입니다. 작업 건수와 누적 번호는 배정 기록만 셉니다. 계류지 밖 3 kn 미만 저속 기동·정지가 3분 이상이면 작업성 움직임으로 보고, 배정 시간대의 기록과 겹치지 않으면 특이 사항으로 분류합니다. 주변 선박은 매일 확인 시점의 위치라서, 그 전에 떠난 선박은 이름이 나오지 않을 수 있습니다. 실제 작업 여부는 선사 기록으로 확인이 필요합니다.</p>
+<p class="note">근거: MarineTraffic 최근 24시간 항적을 매일 받아 누적한 기록과, 대산항 도선 배정 기록(국양7호가 배정 예인선인 건, 취소 제외)을 맞춘 결과입니다. 작업 건수와 월별 작업 번호는 배정 기록만 셉니다. 계류지 밖 3 kn 미만 저속 기동·정지가 3분 이상이면 작업성 움직임으로 보고, 배정 시간대의 기록과 겹치지 않으면 특이 사항으로 분류합니다. 작업 상대 본선은 도선 배정 기록(도선일지)의 본선명입니다. 실제 작업 여부는 선사 기록으로 확인이 필요합니다.</p>
 </div>
 
 <script src="./analyze.js"></script>
@@ -205,7 +233,7 @@ function markScale(){document.querySelectorAll('.scale button').forEach(b=>{cons
   if(m==='auto')b.textContent=MODE==='auto'?'자동 ('+SCALE_NAMES[CUR]+')':'자동'})}
 document.querySelectorAll('.scale button').forEach(b=>b.addEventListener('click',()=>{MODE=b.dataset.m;
   try{localStorage.setItem('ky7-scale',MODE)}catch(e){}if(P){stop();draw();}else markScale()}));
-let PL=null,BM=null,LK=null,D,EV,day,P,segs=[],dot,lbl,hl,T0,T1,X,Y,timer=null,DAYS=[],MONTH=null;
+let PMODE='week',PER=null,PL=null,BM=null,LK=null,D,EV,day,P,segs=[],dot,lbl,hl,T0,T1,X,Y,timer=null,DAYS=[],MONTH=null;
 const slider=document.getElementById('slider'),clock=document.getElementById('clock'),btn=document.getElementById('play');
 
 Promise.all([fetch('./data.json',{cache:'no-store'}).then(r=>r.json()),fetch('./basemap.json').then(r=>r.ok?r.json():null).catch(()=>null),fetch('./pilot.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null)]).then(([d,bm,pl])=>{
@@ -215,7 +243,8 @@ Promise.all([fetch('./data.json',{cache:'no-store'}).then(r=>r.json()),fetch('./
   document.getElementById('range').textContent=KY7.kst(D.points[0][0])+' ~ '+KY7.kst(D.points[D.points.length-1][0]);
   document.getElementById('upd').textContent=KY7.kst(D.updated);
   const days=[...new Set(D.points.map(p=>KY7.kstDay(p[0])))];DAYS=days;
-  renderSummary(days);
+  try{const v=localStorage.getItem('ky7-period');if(v==='week'||v==='month')PMODE=v}catch(e){}
+  if(window.KY7_PRINT){printLayout(window.KY7_PRINT);return}
   pick(days[days.length-1]);
 }).catch(()=>{document.getElementById('msg').textContent='항적 데이터를 불러오지 못했습니다. 페이지를 새로 고쳐 주세요.'});
 
@@ -224,9 +253,10 @@ function pick(dy){
   document.getElementById('logtitle').textContent='작업일지 · '+dy;
   P=D.points.filter(p=>KY7.kstDay(p[0])===dy);
   draw();renderLog();renderPilot();renderNotes();
+  const np=KY7.period(PMODE,dy);if(!PER||PER.mode!==np.mode||!KY7.inPeriod(PER,dy)){PER=np;renderPeriod()}else markPeriodCal();
 }
 // Calendar: one month at a time; counts come from pilot assignments only
-const WD=['일','월','화','수','목','금','토'];
+const WD=['월','화','수','목','금','토','일'];
 function renderCal(){
   const g=document.getElementById('calgrid');g.innerHTML='';
   const [y,m]=MONTH.split('-').map(Number);
@@ -234,13 +264,13 @@ function renderCal(){
   const months=[...new Set(DAYS.map(d=>d.slice(0,7)))];
   const i=months.indexOf(MONTH);
   document.getElementById('calprev').disabled=i<=0;document.getElementById('calnext').disabled=i<0||i>=months.length-1;
-  WD.forEach((w,k)=>{const d=document.createElement('div');d.className='wd'+(k===0?' sun':'');d.textContent=w;g.appendChild(d)});
-  const first=new Date(Date.UTC(y,m-1,1)).getUTCDay(),n=new Date(Date.UTC(y,m,0)).getUTCDate();
+  WD.forEach((w,k)=>{const d=document.createElement('div');d.className='wd'+(k===6?' sun':'');d.textContent=w;g.appendChild(d)});
+  const first=(new Date(Date.UTC(y,m-1,1)).getUTCDay()+6)%7,n=new Date(Date.UTC(y,m,0)).getUTCDate();
   for(let k=0;k<first;k++)g.appendChild(document.createElement('div'));
   const today=KY7.kstDay(Date.now()/1000);
   for(let dd=1;dd<=n;dd++){
     const ds=MONTH+'-'+String(dd).padStart(2,'0'),has=DAYS.includes(ds);
-    const b=document.createElement('button');b.type='button';b.className='cell'+(ds===today?' today':'');b.dataset.day=ds;
+    const b=document.createElement('button');b.type='button';b.className='cell'+(ds===today?' today':'')+(PER&&KY7.inPeriod(PER,ds)?' inper':'');b.dataset.day=ds;
     b.setAttribute('aria-pressed',ds===day);
     let h=`<span class="dn">${dd}</span>`;
     if(has){const c=LK.count(ds),x=LK.noteCount(ds);
@@ -294,13 +324,6 @@ function draw(){
   el('line',{x1:bx,x2:bx+px,y1:by,y2:by,stroke:'var(--ink)','stroke-width':2});
   [bx,bx+px].forEach(x=>el('line',{x1:x,x2:x,y1:by-5,y2:by+5,stroke:'var(--ink)','stroke-width':2}));
   tx(bx+px/2,by-9,m>=1000?m/1000+' km':m+' m',{'font-size':11,fill:'var(--ink)','text-anchor':'middle'});
-  // ships: latest snapshot on or after this day, else latest
-  const dEnd=Math.max(...P.map(p=>p[0]));
-  const snaps=D.snapshots.slice().sort((a,b)=>Math.abs(a.ts-dEnd)-Math.abs(b.ts-dEnd));
-  const shown=new Set();
-  if(snaps[0]&&mode==='detail')snaps[0].ships.forEach(([n,t,len,la,lo])=>{if(!vis(la,lo)||shown.has(n))return;shown.add(n);const x=X(lo),y=Y(la),r=Math.max(4,Math.min(9,len/28));
-    el('path',{d:`M${x},${y-r} L${x+r*.8},${y+r*.7} L${x-r*.8},${y+r*.7}Z`,fill:'var(--ship)'});
-    tx(x+r+3,y+4,n,{'font-size':10.5,fill:'var(--ship)'})});
   // moored spots
   EV.filter(e=>e.kind==='moored'&&e.day===day).forEach(e=>{if(!vis(e.lat,e.lon))return;
     el('rect',{x:X(e.lon)-5,y:Y(e.lat)-5,width:10,height:10,fill:'none',stroke:'var(--ink)','stroke-width':2})});
@@ -314,7 +337,8 @@ function draw(){
   LK.asg.filter(a=>a.date===day&&a.evs.length).forEach(a=>{const e=EV[a.evs[0]];if(!vis(e.lat,e.lon))return;const x=X(e.lon),y=Y(e.lat);
     el('circle',{cx:x,cy:y,r:24,fill:'var(--work)','fill-opacity':.12,stroke:'var(--work)','stroke-dasharray':'3 3'});
     el('circle',{cx:x+20,cy:y-20,r:10,fill:'var(--work)'});
-    tx(x+20,y-16,String(a.no),{'font-size':11,'font-weight':600,fill:'var(--card)','text-anchor':'middle'})});
+    tx(x+20,y-16,String(a.no),{'font-size':11,'font-weight':600,fill:'var(--card)','text-anchor':'middle'});
+    tx(x+33,y-16,a.ship,{'font-size':10.5,fill:'var(--ship)'})});
   LK.notes.filter(n=>n.day===day).forEach(n=>{const w=n.idx.map(i=>EV[i]).find(e=>e.kind==='work')||EV[n.idx[0]];if(!vis(w.lat,w.lon))return;const x=X(w.lon),y=Y(w.lat);
     el('circle',{cx:x,cy:y,r:20,fill:'var(--alert)','fill-opacity':.08,stroke:'var(--alert)','stroke-dasharray':'3 3'});
     el('circle',{cx:x-17,cy:y-17,r:9,fill:'var(--alert)'});
@@ -334,30 +358,72 @@ function stop(){clearInterval(timer);timer=null;btn.textContent='재생'}
 btn.addEventListener('click',()=>{if(timer)return stop();if(+slider.value>=1000)slider.value=0;btn.textContent='정지';
   timer=setInterval(()=>{slider.value=Math.min(1000,+slider.value+4);show(T0+(T1-T0)*slider.value/1000);if(+slider.value>=1000)stop()},60)});
 
-function renderSummary(days){
+// Period report: week (Mon–Sun) or month, chosen by the viewer
+const scopeName={detail:'대산항',region:'광역',nation:'전국'};
+function dayStat(dy){const pts=D.points.filter(p=>KY7.kstDay(p[0])===dy);
+  let nm=0,lo0=Infinity,la0=Infinity,lo1=-Infinity,la1=-Infinity;
+  pts.forEach((p,i)=>{lo0=Math.min(lo0,p[1]);lo1=Math.max(lo1,p[1]);la0=Math.min(la0,p[2]);la1=Math.max(la1,p[2]);
+    if(i&&p[0]-pts[i-1][0]<1800)nm+=KY7.dist(pts[i-1][2],pts[i-1][1],p[2],p[1])/1852});
+  return {dy,n:LK.count(dy),x:LK.noteCount(dy),nm,scope:autoMode(lo0,la0,lo1,la1)}}
+function periods(){return [...new Set(DAYS.map(d=>KY7.period(PMODE,d).key))]}
+function markPeriodCal(){document.querySelectorAll('#calgrid .cell').forEach(b=>b.classList.toggle('inper',!!(PER&&b.dataset.day&&KY7.inPeriod(PER,b.dataset.day))))}
+function goDay(dy){pick(dy);document.getElementById('map').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'})}
+function rowLink(tr,dy){tr.tabIndex=0;tr.addEventListener('click',()=>goDay(dy));tr.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();goDay(dy)}})}
+function renderPeriod(){
+  const p=PER;
+  document.querySelectorAll('.perhead .seg button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.p===p.mode));
+  document.getElementById('perh').textContent=p.mode==='week'?'주간 보고':'월간 보고';
+  document.getElementById('pertitle').textContent=p.title;
+  const ps=periods(),i=ps.indexOf(p.key);
+  document.getElementById('perprev').disabled=i<=0;document.getElementById('pernext').disabled=i<0||i>=ps.length-1;
+  const rows=DAYS.filter(d=>KY7.inPeriod(p,d)).map(dayStat);
   const tb=document.getElementById('sum');tb.innerHTML='';
-  const fmtMin=m=>m>=60?Math.floor(m/60)+'시간 '+Math.round(m%60)+'분':Math.round(m)+'분';
-  const rows=days.map(dy=>{const pts=D.points.filter(p=>KY7.kstDay(p[0])===dy);
-    let nm=0,lo0=Infinity,la0=Infinity,lo1=-Infinity,la1=-Infinity;
-    pts.forEach((p,i)=>{lo0=Math.min(lo0,p[1]);lo1=Math.max(lo1,p[1]);la0=Math.min(la0,p[2]);la1=Math.max(la1,p[2]);
-      if(i&&p[0]-pts[i-1][0]<1800)nm+=KY7.dist(pts[i-1][2],pts[i-1][1],p[2],p[1])/1852});
-    return {dy,n:LK.count(dy),x:LK.noteCount(dy),nm,scope:autoMode(lo0,la0,lo1,la1)}});
-  const scopeName={detail:'대산항',region:'광역',nation:'전국'};
-  const add=(html,cls,dy)=>{const tr=document.createElement('tr');tr.innerHTML=html;if(cls)tr.className=cls;
-    if(dy){tr.tabIndex=0;const go=()=>{pick(dy);document.getElementById('map').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'nearest'})};
-      tr.addEventListener('click',go);tr.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}})}
-    tb.appendChild(tr)};
-  const months=[...new Set(rows.map(r=>r.dy.slice(0,7)))];
   const na='<span class="muted">대조 전</span>';
-  const cnt=(n,c)=>n===null?na:n+'건';const xc=x=>x===null?na:x?`<span class="red"><b>${x}건</b></span>`:'0건';
-  const tot=(rs)=>{const c=rs.filter(r=>r.n!==null);return {n:c.reduce((a,r)=>a+r.n,0),x:c.reduce((a,r)=>a+r.x,0),nm:rs.reduce((a,r)=>a+r.nm,0),cd:c.length,d:rs.length}};
-  const cdl=t=>t.cd<t.d?` <span class="muted">(대조 ${t.cd}일)</span>`:'';
-  months.forEach(mo=>{const rs=rows.filter(r=>r.dy.startsWith(mo));
-    rs.forEach(r=>add(`<td class="t">${r.dy}</td><td>${cnt(r.n)}</td><td>${xc(r.x)}</td><td class="t">${r.nm.toFixed(1)} nm</td><td>${scopeName[r.scope]}</td><td>${pilotCell(r.dy)}</td>`,'',r.dy));
-    const t=tot(rs);
-    add(`<td class="t">${mo.replace('-','년 ')}월 소계 (${t.d}일)</td><td>${t.cd?t.n+'건'+cdl(t):na}</td><td>${t.cd?t.x+'건':na}</td><td class="t">${t.nm.toFixed(1)} nm</td><td></td><td></td>`,'subtotal')});
-  const T=tot(rows);
-  add(`<td>전체 (${T.d}일)</td><td>${T.n}건${cdl(T)}</td><td>${T.x}건</td><td class="t">${T.nm.toFixed(1)} nm</td><td></td><td></td>`,'total');
+  const cnt=n=>n===null?na:n+'건';const xc=x=>x===null?na:x?`<span class="red"><b>${x}건</b></span>`:'0건';
+  const add=(html,cls,dy)=>{const tr=document.createElement('tr');tr.innerHTML=html;if(cls)tr.className=cls;if(dy)rowLink(tr,dy);tb.appendChild(tr)};
+  const WDK=['일','월','화','수','목','금','토'];
+  rows.forEach(r=>add(`<td class="t">${r.dy} (${WDK[new Date(r.dy+'T00:00:00Z').getUTCDay()]})</td><td>${cnt(r.n)}</td><td>${xc(r.x)}</td><td class="t">${r.nm.toFixed(1)} nm</td><td>${scopeName[r.scope]}</td><td>${pilotCell(r.dy)}</td>`,'',r.dy));
+  const c=rows.filter(r=>r.n!==null),T={n:c.reduce((a,r)=>a+r.n,0),x:c.reduce((a,r)=>a+r.x,0),nm:rows.reduce((a,r)=>a+r.nm,0),cd:c.length,d:rows.length};
+  const cdl=T.cd<T.d?` <span class="muted">(대조 ${T.cd}일)</span>`:'';
+  if(!rows.length)add('<td colspan="6" class="muted">이 기간에는 수집된 항적이 없습니다.</td>');
+  else add(`<td>${p.mode==='week'?'주간':'월간'} 합계 (${T.d}일)</td><td>${T.cd?T.n+'건'+cdl:na}</td><td>${T.cd?T.x+'건':na}</td><td class="t">${T.nm.toFixed(1)} nm</td><td></td><td></td>`,'total');
+  // kpi
+  document.getElementById('perkpi').innerHTML=`<span>배정 작업 <b class="md">${T.cd?T.n:'—'}</b>건</span><span>특이 사항 <b class="red">${T.cd?T.x:'—'}</b>건</span><span>항해 <b>${T.nm.toFixed(1)}</b> nm</span>`+(T.cd<T.d?`<span class="muted">배정 대조 전 ${T.d-T.cd}일 제외</span>`:'');
+  // assignments in period
+  const at=document.getElementById('perasg');at.innerHTML='';
+  const as=LK.all.filter(a=>KY7.inPeriod(p,a.date));
+  if(!as.length)at.innerHTML='<tr><td colspan="8" class="muted">이 기간에 국양7호 배정 작업이 없거나 아직 대조하지 않았습니다.</td></tr>';
+  as.forEach(x=>{const tr=document.createElement('tr');
+    tr.innerHTML=`<td>${x.cancel?'<span class="muted">취소</span>':`<span class="lbl">${x.label}</span>`}</td><td class="t">${x.date.slice(5)}</td><td class="t">${x.pob}</td><td>${x.ship} <span class="muted">(${x.route})</span></td><td>예선 ${x.role}</td><td>${x.status}</td><td>${x.ais}</td><td><span class="pill ${VCLS(x.verdict)}">${x.verdict}</span></td>`;
+    rowLink(tr,x.date);at.appendChild(tr)});
+  const nt=document.getElementById('pernotes');nt.innerHTML='';
+  const ns=LK.notes.filter(n=>KY7.inPeriod(p,n.day));
+  if(!ns.length)nt.innerHTML='<tr><td colspan="4" class="muted">배정 없이 움직인 구간이 없습니다.</td></tr>';
+  ns.forEach(n=>{const tr=document.createElement('tr');tr.className='alert';
+    tr.innerHTML=`<td class="t">${n.day.slice(5)}</td><td class="t">${KY7.kst(n.t0,false)}~${KY7.kst(n.t1,false)}</td><td>${n.text}</td><td>${n.context}</td>`;
+    rowLink(tr,n.day);nt.appendChild(tr)});
+  markPeriodCal();
+}
+document.querySelectorAll('.perhead .seg button').forEach(b=>b.addEventListener('click',()=>{PMODE=b.dataset.p;try{localStorage.setItem('ky7-period',PMODE)}catch(e){}
+  PER=KY7.period(PMODE,day||DAYS[DAYS.length-1]);renderPeriod()}));
+document.getElementById('perprev').addEventListener('click',()=>{const ps=periods(),i=ps.indexOf(PER.key);if(i>0){PER=KY7.period(PMODE,ps[i-1]);renderPeriod()}});
+document.getElementById('pernext').addEventListener('click',()=>{const ps=periods(),i=ps.indexOf(PER.key);if(i<ps.length-1){PER=KY7.period(PMODE,ps[i+1]);renderPeriod()}});
+// Print layout (make_pdf.py sets window.KY7_PRINT={mode:'week'|'month',day:'YYYY-MM-DD',upto:'YYYY-MM-DD'})
+function printLayout(o){
+  PMODE=o.mode;PER=KY7.period(o.mode,o.day);
+  const days=DAYS.filter(d=>KY7.inPeriod(PER,d)&&(!o.upto||d<=o.upto));
+  const out=document.createElement('div');out.style.display='grid';out.style.gap='12px';
+  const parts=['.plate','.legend','#logsec','#pilotsec','#notesec'].map(q=>document.querySelector(q));
+  days.forEach(dy=>{pick(dy);const c=LK.count(dy),x=LK.noteCount(dy);
+    const sec=document.createElement('section');sec.style.display='grid';sec.style.gap='10px';sec.className='pagebreak';
+    const h=document.createElement('h2');h.textContent=dy+' · '+(c===null?'도선 배정 대조 전':'배정 작업 '+c+'건 · 특이 사항 '+x+'건');sec.appendChild(h);
+    parts.forEach((p,j)=>{const cp=p.cloneNode(true);cp.removeAttribute('id');if(j>=3&&c===null)return;sec.appendChild(cp)});out.appendChild(sec)});
+  PER=KY7.period(o.mode,o.day);renderPeriod();
+  parts.forEach(p=>p.remove());document.querySelectorAll('.wrap > .note').forEach(n=>n.remove());
+  const ss=document.getElementById('sumsec');ss.parentNode.removeChild(ss);const hd=document.querySelector('.wrap > header');hd.after(ss);ss.after(out);
+  document.getElementById('perh').textContent=(o.mode==='week'?'주간 보고 · ':'월간 보고 · ')+PER.title+(o.upto&&o.upto<PER.to?' · '+o.upto+'까지 집계':'');
+  document.querySelectorAll('.perhead .seg,.perhead .nav').forEach(n=>n.remove());
+  document.body.dataset.ready='1';
 }
 // Pilot-assignment comparison (pilot.json): assignments where KOOK YANG 7 was a named tug, judged against its AIS track
 const VCLS=v=>v.startsWith('불일치')?'hi':v.startsWith('확인')?'md':v.startsWith('판정')?'muted':'ok';
@@ -377,7 +443,7 @@ function renderPilot(){
   const a=LK.all.filter(x=>x.date===day);
   if(!a.length)tb.innerHTML='<tr><td colspan="7" class="muted">이 날짜에 국양7호 배정 작업이 없습니다.</td></tr>';
   a.forEach(x=>{const tr=document.createElement('tr');
-    tr.innerHTML=`<td>${x.cancel?'<span class="muted">취소</span>':`<span class="n">${x.no}</span>`}</td><td class="t">${x.pob}</td><td>${x.ship} <span class="muted">(${x.route})</span></td><td>예선 ${x.role}</td><td>${x.status}</td><td>${x.ais}</td><td><span class="pill ${VCLS(x.verdict)}">${x.verdict}</span></td>`;
+    tr.innerHTML=`<td>${x.cancel?'<span class="muted">취소</span>':`<span class="lbl">${x.label}</span>`}</td><td class="t">${x.pob}</td><td>${x.ship} <span class="muted">(${x.route})</span></td><td>예선 ${x.role}</td><td>${x.status}</td><td>${x.ais}</td><td><span class="pill ${VCLS(x.verdict)}">${x.verdict}</span></td>`;
     if(x.evs.length){tr.tabIndex=0;const go=()=>focusSpan(EV[x.evs[0]].t0,EV[x.evs[x.evs.length-1]].t1,tr);tr.addEventListener('click',go);tr.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();go()}})}
     tb.appendChild(tr)});
 }
@@ -395,8 +461,8 @@ function renderLog(){
     const tr=document.createElement('tr');tr.tabIndex=0;
     const w=e.kind==='work';
     tr.className=inf.red?'alert':(a||w)?'':'quiet';
-    const near=w?(e.near.length?e.near.map(n=>`${n.name} (${n.d} m)`).join(', '):'500 m 이내 확인된 대형선 없음'):'—';
-    const tag=a?`<span class="pill md">배정 #${a.no} ${a.ship}</span>`:inf.red?'<span class="pill red">특이 사항</span>':(w&&!cov)?'<span class="muted">작업성 움직임 (배정 대조 전)</span>':'';
+    const near=a?`${a.ship} <span class="muted">(${a.route})</span>`:w?(cov?'<span class="muted">배정 기록 없음</span>':'<span class="muted">배정 대조 전</span>'):'—';
+    const tag=a?`<span class="pill md">배정 ${a.label}</span>`:inf.red?'<span class="pill red">특이 사항</span>':(w&&!cov)?'<span class="muted">작업성 움직임 (배정 대조 전)</span>':'';
     const no=a?`<span class="n">${a.no}</span>`:inf.red?'<span class="n x">!</span>':'';
     tr.innerHTML=`<td>${no}</td><td class="t">${e.s}</td><td class="t">${e.e}</td><td>${e.text}</td><td>${near}</td><td>${tag}</td>`;
     const go=()=>focusSpan(e.t0,e.t1,tr);
