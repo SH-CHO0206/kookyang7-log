@@ -31,9 +31,43 @@
   "2026-11-18",
   "2026-11-19",
   "2026-11-20",
-  "2026-11-21"
+  "2026-11-21",
+  "2026-11-22"
  ],
  "assignments": [
+  {
+   "date": "2026-11-22",
+   "pob": "06:00",
+   "ship": "OC GRANDE",
+   "route": "PS2-2→MDK-14",
+   "role": 1,
+   "status": "완료",
+   "ais": "07:21 출항, 07:57~08:27 저속 기동, 08:28 복귀",
+   "verdict": "일치",
+   "auto": true
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "05:30",
+   "ship": "WOOLIM 7",
+   "route": "MDK-14→PS2",
+   "role": 1,
+   "status": "완료",
+   "ais": "05:04 출항, 05:11~05:36 저속 기동, 05:40 복귀",
+   "verdict": "일치",
+   "auto": true
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "01:00",
+   "ship": "SUNNY LAUREL",
+   "route": "MB4-01→PS3",
+   "role": 1,
+   "status": "예보",
+   "ais": "00:17 출항, 00:27~01:10 저속 기동, 01:15 복귀",
+   "verdict": "일치",
+   "auto": true
+  },
   {
    "date": "2026-11-21",
    "pob": "17:00",
@@ -716,11 +750,309 @@
  ],
  "others": [
   {
+   "date": "2026-11-22",
+   "pob": "21:30",
+   "ship": "HONG JIA",
+   "route": "MDH-25→WAA-04",
+   "status": "야간예보",
+   "tugs": [
+    "서해23호",
+    "서해25호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "19:30",
+   "ship": "XING SHENG YUAN",
+   "route": "MDH-26→PS2",
+   "status": "야간예보",
+   "tugs": [
+    "동양1호",
+    "서해36호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "19:30",
+   "ship": "FORTUNE HARMONY",
+   "route": "MDT-53→PS2",
+   "status": "야간예보",
+   "tugs": [
+    "서해63호",
+    "서해53호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "19:30",
+   "ship": "CAPELLA",
+   "route": "MDH-23→PS2",
+   "status": "야간예보",
+   "tugs": [
+    "대동5호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "19:00",
+   "ship": "XIA HUAI",
+   "route": "PS3→MDS-32",
+   "status": "취소",
+   "tugs": [
+    "해양1호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "18:00",
+   "ship": "HESTIA",
+   "route": "WAA-9 MDK→MDK-19",
+   "status": "예보",
+   "tugs": [
+    "대동9호",
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "16:00",
+   "ship": "C.CREATOR",
+   "route": "SPM-01→PS2",
+   "status": "예보",
+   "tugs": [
+    "대동10호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "15:30",
+   "ship": "PAN IRIS",
+   "route": "PS1→B.WAA-04",
+   "status": "예보",
+   "tugs": [
+    "상록10호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "15:00",
+   "ship": "ANDROS NAVIGATOR",
+   "route": "MDT-63→PS4",
+   "status": "취소",
+   "tugs": [
+    "서해63호",
+    "삼우47",
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "14:30",
+   "ship": "PIS LOMBOK",
+   "route": "MDH-21→PS2",
+   "status": "예보",
+   "tugs": [
+    "상록7호",
+    "삼우47"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "14:30",
+   "ship": "HONG JIA",
+   "route": "PS3→MDH-25",
+   "status": "예보",
+   "tugs": [
+    "상록9호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "14:00",
+   "ship": "TORM DAMINI",
+   "route": "MDK-15→WAA-8 MDK",
+   "status": "예보",
+   "tugs": [
+    "대동5호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "14:00",
+   "ship": "HAFNIA TANZANITE",
+   "route": "WAA-8 MDK→MDK-15",
+   "status": "예보",
+   "tugs": [
+    "대동5호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "13:30",
+   "ship": "MORNING GENTLY",
+   "route": "MDH-25→WAA-04",
+   "status": "예보",
+   "tugs": [
+    "상록9호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "12:45",
+   "ship": "ZHAO YUAN",
+   "route": "PS3→MDK-12",
+   "status": "예보",
+   "tugs": [
+    "서해23호",
+    "서해25호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "12:00",
+   "ship": "WOOYANG VENUS",
+   "route": "B.WAA-03→MDB-41",
+   "status": "예보",
+   "tugs": [
+    "상록10호",
+    "해양9호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "09:00",
+   "ship": "RIXTA OLDENDORFF",
+   "route": "MDB-41→PS1",
+   "status": "도선",
+   "tugs": [
+    "상록10호",
+    "해양9호",
+    "보령9호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "08:30",
+   "ship": "NEW GLOBAL",
+   "route": "MDS-34→PS3",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "해양1호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "07:30",
+   "ship": "TONG SHUN",
+   "route": "MDB-43→B.WAA-03",
+   "status": "완료",
+   "tugs": [
+    "상록10호",
+    "해양9호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "07:30",
+   "ship": "PACIFIC PRIDE",
+   "route": "PS2→MDS-31",
+   "status": "완료",
+   "tugs": [
+    "대동9호",
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "07:30",
+   "ship": "JN CAMELLIA",
+   "route": "MDS-37→PS2",
+   "status": "완료",
+   "tugs": [
+    "해양2호",
+    "대동5호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "07:00",
+   "ship": "GAS JOURNEY",
+   "route": "PS3→MDS-33",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "해양1호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "06:00",
+   "ship": "OC GRANDE",
+   "route": "PS2-2→MDK-14",
+   "status": "완료",
+   "tugs": [
+    "국양7호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "05:30",
+   "ship": "WOOLIM 7",
+   "route": "MDK-14→PS2",
+   "status": "완료",
+   "tugs": [
+    "국양7호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-22",
+   "pob": "01:00",
+   "ship": "SUNNY LAUREL",
+   "route": "MB4-01→PS3",
+   "status": "예보",
+   "tugs": [
+    "국양7호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "20:30",
+   "ship": "NEW CHALLENGE",
+   "route": "MDS-32→PS3",
+   "status": "예보",
+   "tugs": [
+    "대동7호",
+    "삼우호"
+   ]
+  },
+  {
    "date": "2026-11-21",
    "pob": "20:00",
    "ship": "TONG ZHOU 6",
    "route": "MDS-33→WAA-02",
    "status": "야간예보",
+   "tugs": [
+    "대동7호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "19:40",
+   "ship": "TONG ZHOU 6",
+   "route": "MDS-33→WAA-02",
+   "status": "도선",
    "tugs": [
     "대동7호",
     "삼우호"
@@ -7065,6 +7397,7 @@
   "2026-11-18",
   "2026-11-19",
   "2026-11-20",
-  "2026-11-21"
+  "2026-11-21",
+  "2026-11-22"
  ]
 }
