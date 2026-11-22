@@ -1,7 +1,7 @@
 {
  "source": "대산항 예인선 MMSI 및 일일 작업 현황 대시보드 (원출처: 대산항도선사회 도선예보현황)",
  "basis": "19:30 마감 (전일 19:30 ~ 당일 19:30)",
- "checked": "2026-11-19",
+ "checked": "2026-11-22",
  "covered": [
   "2026-10-24",
   "2026-10-25",
@@ -29,9 +29,55 @@
   "2026-11-16",
   "2026-11-17",
   "2026-11-18",
-  "2026-11-19"
+  "2026-11-19",
+  "2026-11-20",
+  "2026-11-21"
  ],
  "assignments": [
+  {
+   "date": "2026-11-21",
+   "pob": "17:00",
+   "ship": "FORTUNE HARMONY",
+   "route": "T.WAA-01→MDT-53",
+   "role": 2,
+   "status": "예보",
+   "ais": "16:48 출항, 17:03~17:06 저속 기동, 17:18~17:21 저속 기동, 17:22 복귀",
+   "verdict": "일치",
+   "auto": true
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "11:00",
+   "ship": "SUNNY LAUREL",
+   "route": "PS3→MB4-01",
+   "role": 1,
+   "status": "도선",
+   "ais": "POB 전후 AIS 수신 없음",
+   "verdict": "판정 불가 (AIS 공백)",
+   "auto": true
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "10:30",
+   "ship": "HANYU FREESIA",
+   "route": "PS2-2→MDH-23",
+   "role": 1,
+   "status": "도선",
+   "ais": "POB 전후 AIS 수신 없음",
+   "verdict": "판정 불가 (AIS 공백)",
+   "auto": true
+  },
+  {
+   "date": "2026-11-20",
+   "pob": "18:00",
+   "ship": "MANDAL",
+   "route": "PS2-2→MDK-16",
+   "role": 2,
+   "status": "취소",
+   "ais": "POB 전후 계류지 정박 (위치 59회 수신)",
+   "verdict": "일치 (취소 부합)",
+   "auto": true
+  },
   {
    "date": "2026-11-17",
    "pob": "14:00",
@@ -669,6 +715,429 @@
   }
  ],
  "others": [
+  {
+   "date": "2026-11-21",
+   "pob": "20:00",
+   "ship": "TONG ZHOU 6",
+   "route": "MDS-33→WAA-02",
+   "status": "야간예보",
+   "tugs": [
+    "대동7호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "19:30",
+   "ship": "CAPELLA",
+   "route": "WAA-08→MDH-23",
+   "status": "야간예보",
+   "tugs": [
+    "삼우47",
+    "대동12호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "17:30",
+   "ship": "HONG JUN",
+   "route": "WAQ-01→MDT-51",
+   "status": "예보",
+   "tugs": [
+    "상록7호",
+    "서해53호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "17:00",
+   "ship": "MANDAL",
+   "route": "PS2-2→MDK-16",
+   "status": "예보",
+   "tugs": [
+    "해양1호",
+    "대동9호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "17:00",
+   "ship": "FORTUNE HARMONY",
+   "route": "T.WAA-01→MDT-53",
+   "status": "예보",
+   "tugs": [
+    "서해36호",
+    "국양7호",
+    "동양9호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "15:15",
+   "ship": "WOOYANG VENUS",
+   "route": "PS1→MDB-41",
+   "status": "취소",
+   "tugs": [
+    "상록10호",
+    "해양9호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "14:00",
+   "ship": "STELLAR LADY",
+   "route": "PS2→MB5-01",
+   "status": "예보",
+   "tugs": [
+    "대동9호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "14:00",
+   "ship": "MORNING GENTLY",
+   "route": "PS3→MDH-25",
+   "status": "예보",
+   "tugs": [
+    "서해23호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "14:00",
+   "ship": "FORTUNE KAREN",
+   "route": "MDK-16→PS2",
+   "status": "예보",
+   "tugs": [
+    "해양1호",
+    "상록9호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "13:15",
+   "ship": "RIXTA OLDENDORFF",
+   "route": "MDB-41→PS1",
+   "status": "취소",
+   "tugs": [
+    "상록10호",
+    "해양9호",
+    "보령11호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "13:00",
+   "ship": "SIX SEVEN",
+   "route": "MDT-61→MDT-61",
+   "status": "예보",
+   "tugs": [
+    "상록7호",
+    "서해53호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "13:00",
+   "ship": "NEW PRIME",
+   "route": "WAA-12→MDN-11",
+   "status": "예보",
+   "tugs": [
+    "상록6호",
+    "상록8호",
+    "서해63",
+    "삼우47",
+    "대동12"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "13:00",
+   "ship": "C.CREATOR",
+   "route": "PS2→SPM-01",
+   "status": "예보",
+   "tugs": [
+    "대동10호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "12:30",
+   "ship": "SEA GRACE",
+   "route": "B.WAA-02→MDB-42",
+   "status": "예보",
+   "tugs": [
+    "보령3호",
+    "보령5호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "12:00",
+   "ship": "XING SHENG YUAN",
+   "route": "PS2-2→MDH-26",
+   "status": "예보",
+   "tugs": [
+    "서해23호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "12:00",
+   "ship": "SEA GRACE",
+   "route": "MDB-42→B.WAA-02",
+   "status": "예보",
+   "tugs": [
+    "보령3호",
+    "보령5호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "12:00",
+   "ship": "PIS LOMBOK",
+   "route": "WAA-08→MDH-21",
+   "status": "예보",
+   "tugs": [
+    "대동9호",
+    "서해36호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "11:00",
+   "ship": "SUNNY LAUREL",
+   "route": "PS3→MB4-01",
+   "status": "도선",
+   "tugs": [
+    "국양7호",
+    "대동9호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "10:30",
+   "ship": "HANYU FREESIA",
+   "route": "PS2-2→MDH-23",
+   "status": "도선",
+   "tugs": [
+    "국양7호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "10:00",
+   "ship": "SHAIL LUSAIL",
+   "route": "MDA-01→B.WAA-02",
+   "status": "도선",
+   "tugs": [
+    "상록10호",
+    "해양9호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "07:00",
+   "ship": "JN CAMELLIA",
+   "route": "PS2→MDS-37",
+   "status": "완료",
+   "tugs": [
+    "서해36호",
+    "해양1호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "07:00",
+   "ship": "BUENA DIOSA",
+   "route": "MDK-11→PS3",
+   "status": "완료",
+   "tugs": [
+    "대산1호",
+    "서해25호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "06:00",
+   "ship": "WOOLIM 7",
+   "route": "PS2-2→MDK-14",
+   "status": "완료",
+   "tugs": [
+    "대동8호",
+    "대동5호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "06:00",
+   "ship": "TORM DAMINI",
+   "route": "PS2-2→MDK-15",
+   "status": "완료",
+   "tugs": [
+    "대동12호",
+    "상록6호"
+   ]
+  },
+  {
+   "date": "2026-11-21",
+   "pob": "06:00",
+   "ship": "ALIAI",
+   "route": "PS2→MDS-36",
+   "status": "완료",
+   "tugs": [
+    "삼우47",
+    "서해53호"
+   ]
+  },
+  {
+   "date": "2026-11-20",
+   "pob": "23:00",
+   "ship": "SUNNY LAUREL",
+   "route": "PS3→MB4-01",
+   "status": "야간예보",
+   "tugs": [
+    "대동8호",
+    "대동5호"
+   ]
+  },
+  {
+   "date": "2026-11-20",
+   "pob": "19:20",
+   "ship": "NEW CHALLENGE",
+   "route": "WAA-05→MDS-32",
+   "status": "야간예보",
+   "tugs": [
+    "서해25호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-20",
+   "pob": "19:00",
+   "ship": "TONG ZHOU 6",
+   "route": "PS3→MDS-33",
+   "status": "야간예보",
+   "tugs": [
+    "서해25호",
+    "동양1호"
+   ]
+  },
+  {
+   "date": "2026-11-20",
+   "pob": "18:45",
+   "ship": "PIS LOMBOK",
+   "route": "WAA-08→MDH-21",
+   "status": "완료",
+   "tugs": [
+    "대동12호",
+    "해양5호"
+   ]
+  },
+  {
+   "date": "2026-11-20",
+   "pob": "18:00",
+   "ship": "WOOLIM 7",
+   "route": "PS2-2→MDK-14",
+   "status": "완료",
+   "tugs": [
+    "해양1호",
+    "해양2호"
+   ]
+  },
+  {
+   "date": "2026-11-20",
+   "pob": "18:00",
+   "ship": "TORM DAMINI",
+   "route": "PS2-2→MDK-15",
+   "status": "완료",
+   "tugs": [
+    "상록7호",
+    "상록6호"
+   ]
+  },
+  {
+   "date": "2026-11-20",
+   "pob": "18:00",
+   "ship": "NEW GLOBAL",
+   "route": "WAA-06→MDS-34",
+   "status": "완료",
+   "tugs": [
+    "대산1호",
+    "삼우호"
+   ]
+  },
+  {
+   "date": "2026-11-20",
+   "pob": "18:00",
+   "ship": "MANDAL",
+   "route": "PS2-2→MDK-16",
+   "status": "취소",
+   "tugs": [
+    "동양9호",
+    "국양7호"
+   ]
+  },
+  {
+   "date": "2026-11-20",
+   "pob": "18:00",
+   "ship": "JN CAMELLIA",
+   "route": "PS2→MDS-37",
+   "status": "완료",
+   "tugs": [
+    "삼우호",
+    "서해36호"
+   ]
+  },
+  {
+   "date": "2026-11-20",
+   "pob": "18:00",
+   "ship": "EXCELLENCE",
+   "route": "MB2-01→PS3",
+   "status": "완료",
+   "tugs": [
+    "동양1호",
+    "대동5호"
+   ]
+  },
+  {
+   "date": "2026-11-20",
+   "pob": "18:00",
+   "ship": "CAPELLA",
+   "route": "PS2-2→MDH-23",
+   "status": "완료",
+   "tugs": [
+    "대동5호",
+    "대동8호"
+   ]
+  },
+  {
+   "date": "2026-11-20",
+   "pob": "18:00",
+   "ship": "ALIAI",
+   "route": "PS2→MDS-36",
+   "status": "완료",
+   "tugs": [
+    "삼우47",
+    "상록8호"
+   ]
+  },
+  {
+   "date": "2026-11-20",
+   "pob": "16:45",
+   "ship": "BUENA DIOSA",
+   "route": "PS3→MDK-11",
+   "status": "완료",
+   "tugs": [
+    "대동7호",
+    "동양1호"
+   ]
+  },
   {
    "date": "2026-11-18",
    "pob": "12:00",
@@ -6594,6 +7063,8 @@
   "2026-11-16",
   "2026-11-17",
   "2026-11-18",
-  "2026-11-19"
+  "2026-11-19",
+  "2026-11-20",
+  "2026-11-21"
  ]
 }
